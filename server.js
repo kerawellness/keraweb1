@@ -157,6 +157,10 @@ async function uploadToDrive(auth, fileData) {
 }
 
 // ---------- 1️⃣ Serve static files (your website) ----------
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app.use(express.static(__dirname, {
   maxAge: '1h',
   etag: true,
@@ -326,11 +330,15 @@ app.get('/api/debug', async (req, res) => {
 });
 
 // ---------- 3️⃣ Start local server ----------
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🟢 Local Node.js server running securely at http://localhost:${PORT}`);
-  if (!process.env.APPS_SCRIPT_URL && !process.env.IMGBB_API_KEY) {
-    console.warn('⚠️  Image uploads disabled: add APPS_SCRIPT_URL or IMGBB_API_KEY to .env to show images in Google Sheets.');
-    console.warn('   Deploy apps-script-upload.gs → see file header for setup steps.');
-  }
-});
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🟢 Local Node.js server running securely at http://localhost:${PORT}`);
+    if (!process.env.APPS_SCRIPT_URL && !process.env.IMGBB_API_KEY) {
+      console.warn('⚠️  Image uploads disabled: add APPS_SCRIPT_URL or IMGBB_API_KEY to .env to show images in Google Sheets.');
+      console.warn('   Deploy apps-script-upload.gs → see file header for setup steps.');
+    }
+  });
+}
+
+module.exports = app;

@@ -6,6 +6,16 @@ module.exports = async (req, res) => {
   }
 
   try {
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        // body remains string
+      }
+    }
+    body = body || {};
+
     const {
       Timestamp,
       LeadID,
@@ -22,7 +32,7 @@ module.exports = async (req, res) => {
       Status,
       reportFile,
       Email
-    } = req.body;
+    } = body;
 
     // Validate essential fields
     if (!FullName || !WhatsAppNumber || !Email) {
@@ -37,7 +47,7 @@ module.exports = async (req, res) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(req.body)
+      body: JSON.stringify(body)
     });
 
     const text = await response.text();
