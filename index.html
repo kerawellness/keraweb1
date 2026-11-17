@@ -46,7 +46,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/styles.min.css">
-  <script src="./assets/js/language-switch.min.js"></script>
+    <script>
+    (function() {
+      try {
+        var lang = localStorage.getItem('preferred_language') || 'en';
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      } catch (e) {}
+    })();
+  </script>
+  <script src="./assets/js/language-switch.min.js" defer></script>
   <style>
     /* Styling adjustments specifically for the Black, Gold and White Luxury look */
     html, body {
@@ -335,13 +344,13 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="video-background">
-      <video autoplay muted loop playsinline preload="auto" id="heroVideo" referrerpolicy="no-referrer">
+      <video autoplay muted loop playsinline preload="metadata" id="heroVideo" referrerpolicy="no-referrer">
         <source src="assets/videos/homepage.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
     </div>
     <div class="container">
-      <div class="hero-content" data-reveal style="max-width: 860px; position: relative; z-index: 3;">
+      <div class="hero-content" style="max-width: 860px; position: relative; z-index: 3;">
         <div class="hero-badge">
           <span class="lang-en">Global Dental Tourism Concierge</span>
           <span class="lang-ar">بوابة سياحة الأسنان العلاجية العالمية</span>
@@ -820,7 +829,7 @@
           <!-- Video Card 1 -->
           <div class="patient-video-card card-hover">
             <div class="patient-video-wrapper">
-              <video preload="metadata" playsinline controls poster="assets/videos/patient-testimonial-1-poster.jpg" src="assets/videos/patient-testimonial-1.mp4"></video>
+              <video preload="none" playsinline controls poster="assets/videos/patient-testimonial-1-poster.jpg" src="assets/videos/patient-testimonial-1.mp4"></video>
             </div>
             <div class="patient-video-info">
               <div class="patient-video-badge">
@@ -842,7 +851,7 @@
           <!-- Video Card 2 -->
           <div class="patient-video-card card-hover">
             <div class="patient-video-wrapper">
-              <video preload="metadata" playsinline controls poster="assets/videos/patient-testimonial-2-poster.jpg" src="assets/videos/patient-testimonial-2.mp4"></video>
+              <video preload="none" playsinline controls poster="assets/videos/patient-testimonial-2-poster.jpg" src="assets/videos/patient-testimonial-2.mp4"></video>
             </div>
             <div class="patient-video-info">
               <div class="patient-video-badge">

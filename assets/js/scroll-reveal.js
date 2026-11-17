@@ -13,12 +13,16 @@
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        const delay = el.dataset.revealDelay || 0;
-        setTimeout(() => el.classList.add("is-visible"), Number(delay));
+        const delay = Number(el.dataset.revealDelay || 0);
+        if (delay > 0) {
+          setTimeout(() => el.classList.add("is-visible"), delay);
+        } else {
+          el.classList.add("is-visible");
+        }
         revealObserver.unobserve(el);
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.02, rootMargin: "0px 0px 80px 0px" }
   );
 
   revealEls.forEach((el) => revealObserver.observe(el));

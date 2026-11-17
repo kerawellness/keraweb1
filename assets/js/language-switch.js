@@ -264,12 +264,24 @@ function updateActiveNavLink() {
 
 window.updateActiveNavLink = updateActiveNavLink;
 
+let navUpdateTicking = false;
+function throttledUpdateActiveNavLink() {
+  if (!navUpdateTicking) {
+    requestAnimationFrame(() => {
+      updateActiveNavLink();
+      navUpdateTicking = false;
+    });
+    navUpdateTicking = true;
+  }
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const preferredLang = localStorage.getItem('preferred_language') || 'en';
   setLanguage(preferredLang);
   updateActiveNavLink();
-  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
-  window.addEventListener('resize', updateActiveNavLink, { passive: true });
+  window.addEventListener('scroll', throttledUpdateActiveNavLink, { passive: true });
+  window.addEventListener('resize', throttledUpdateActiveNavLink, { passive: true });
   window.addEventListener('languageChanged', updateActiveNavLink);
   setupHeroVideos();
   bindConsultationCTAs();

@@ -42,7 +42,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.min.css">
-  <script src="./js/language-switch.min.js"></script>
+    <script>
+    (function() {
+      try {
+        var lang = localStorage.getItem('preferred_language') || 'en';
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      } catch (e) {}
+    })();
+  </script>
+  <script src="./js/language-switch.min.js" defer></script>
   <style>
     body {
       background: var(--white);
@@ -259,13 +268,13 @@
   <!-- Treatment Hero Section -->
   <section class="treatment-hero dental">
     <div class="video-background">
-      <video autoplay muted loop playsinline preload="auto" id="heroVideo" data-video-file="dental.mp4" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" id="heroVideo" data-video-file="dental.mp4" aria-hidden="true">
         <source src="videos/dental.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
     </div>
     <div class="container">
-      <div class="treatment-hero-content" data-reveal style="position: relative; z-index: 3;">
+      <div class="treatment-hero-content" style="position: relative; z-index: 3;">
         <div class="hero-badge">
           <span class="lang-en">Global Dental Tourism &amp; Implants Concierge</span>
           <span class="lang-ar">بوابة سياحة الأسنان العلاجية العالمية</span>
@@ -511,7 +520,7 @@
 
         <div class="doctor-card card-hover" data-sector="pediatric">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20M.%20Raj%20Mohan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. M. Raj Mohan - Pediatric Dentistry" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20M.%20Raj%20Mohan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. M. Raj Mohan - Pediatric Dentistry" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Pediatric Dentistry</span>
               <span class="lang-ar">طب أسنان الأطفال</span>
@@ -529,7 +538,7 @@
 
         <div class="doctor-card card-hover" data-sector="maxillofacial">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Manikandan%20Ramanathan%20%E2%80%93%20BDS%2C%20MDS%2C%20FDSRCS%20(England)%2C%20FFDRCS%20(Ireland).jpg" alt="Dr. Manikandan Ramanathan - Oral & Maxillofacial Surgery" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Manikandan%20Ramanathan%20%E2%80%93%20BDS%2C%20MDS%2C%20FDSRCS%20(England)%2C%20FFDRCS%20(Ireland).jpg" alt="Dr. Manikandan Ramanathan - Oral & Maxillofacial Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Oral &amp; Maxillofacial</span>
               <span class="lang-ar">جراحة الوجه والفكين</span>
@@ -547,7 +556,7 @@
 
         <div class="doctor-card card-hover" data-sector="aesthetics">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Preeti%20L.%20Anand%20%E2%80%93%20BDS%2C%20MDS%2C%20PGCOI.jpg" alt="Dr. Preeti L. Anand - Aesthetic Dentistry & Implants" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Preeti%20L.%20Anand%20%E2%80%93%20BDS%2C%20MDS%2C%20PGCOI.jpg" alt="Dr. Preeti L. Anand - Aesthetic Dentistry & Implants" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Aesthetics &amp; Implants</span>
               <span class="lang-ar">تجميل وزراعة الأسنان</span>
@@ -565,7 +574,7 @@
 
         <div class="doctor-card card-hover" data-sector="orthodontics">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20S.%20Elangovan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. S. Elangovan - Orthodontics" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20S.%20Elangovan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. S. Elangovan - Orthodontics" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Orthodontics</span>
               <span class="lang-ar">تقويم الأسنان</span>
@@ -600,7 +609,7 @@
           <!-- Video Card 1 -->
           <div class="patient-video-card card-hover">
             <div class="patient-video-wrapper">
-              <video preload="metadata" playsinline controls poster="videos/patient-testimonial-1-poster.jpg" src="videos/patient-testimonial-1.mp4"></video>
+              <video preload="none" playsinline controls poster="videos/patient-testimonial-1-poster.jpg" src="videos/patient-testimonial-1.mp4"></video>
             </div>
             <div class="patient-video-info">
               <div class="patient-video-badge">
@@ -622,7 +631,7 @@
           <!-- Video Card 2 -->
           <div class="patient-video-card card-hover">
             <div class="patient-video-wrapper">
-              <video preload="metadata" playsinline controls poster="videos/patient-testimonial-2-poster.jpg" src="videos/patient-testimonial-2.mp4"></video>
+              <video preload="none" playsinline controls poster="videos/patient-testimonial-2-poster.jpg" src="videos/patient-testimonial-2.mp4"></video>
             </div>
             <div class="patient-video-info">
               <div class="patient-video-badge">

@@ -157,7 +157,11 @@ async function uploadToDrive(auth, fileData) {
 }
 
 // ---------- 1️⃣ Serve static files (your website) ----------
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {
+  maxAge: '1h',
+  etag: true,
+  lastModified: true
+}));
 
 // ---------- 2️⃣ API route to receive form submissions securely ----------
 app.post('/api/submit', async (req, res) => {

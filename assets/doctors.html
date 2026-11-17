@@ -14,7 +14,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.min.css">
-  <script src="./js/language-switch.min.js"></script>
+    <script>
+    (function() {
+      try {
+        var lang = localStorage.getItem('preferred_language') || 'en';
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      } catch (e) {}
+    })();
+  </script>
+  <script src="./js/language-switch.min.js" defer></script>
 
   <script>
     // Universal image fallback guard for doctor images
@@ -846,7 +855,7 @@
 
   <!-- Page Hero Header -->
   <header class="page-hero-header">
-    <div class="container" data-reveal>
+    <div class="container">
       <div class="hero-badge" style="display: inline-block; margin-bottom: 14px; background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); color: var(--gold-light);">
         <span class="lang-en">Multi-Specialty Clinical Excellence</span>
         <span class="lang-ar">نخبة كبار الاستشاريين والجراحين المعتمدين</span>
@@ -1062,7 +1071,7 @@
           <div class="doctor-grid" id="doctorsGrid">
         <div class="doctor-card card-hover" data-sector="Anesthesiology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Deepak%20B%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesiology)%2C%20Fellowship%20in%20Transplant%20Anaesthesia%20%26%20Critical%20Care.jpg" alt="Dr. Deepak B - Cardiac & Transplant Anesthesiology" decoding="async">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Deepak%20B%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesiology)%2C%20Fellowship%20in%20Transplant%20Anaesthesia%20%26%20Critical%20Care.jpg" alt="Dr. Deepak B - Cardiac & Transplant Anesthesiology" decoding="async" loading="eager">
             <div class="doc-sector-badge">
               <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
               <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
@@ -1082,7 +1091,7 @@
 
         <div class="doctor-card card-hover" data-sector="Anesthesiology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Dhivya%20D%20%E2%80%93%20MBBS%2C%20DA%2C%20DNB%20(Anaesthesia)%2C%20DrNB%20(Cardiac%20Anaesthesia)%2C%20FIACTA.jpg" alt="Dr. Dhivya D - Cardiac & Transplant Anesthesiology" decoding="async">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Dhivya%20D%20%E2%80%93%20MBBS%2C%20DA%2C%20DNB%20(Anaesthesia)%2C%20DrNB%20(Cardiac%20Anaesthesia)%2C%20FIACTA.jpg" alt="Dr. Dhivya D - Cardiac & Transplant Anesthesiology" decoding="async" loading="eager">
             <div class="doc-sector-badge">
               <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
               <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
@@ -1102,7 +1111,7 @@
 
         <div class="doctor-card card-hover" data-sector="Anesthesiology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Anesthesiology/Dr.%20G.%20N.%20Jeevanandam%20%E2%80%93%20MD%2C%20FNB%20(Cardiac%20Anaesthesia)%2C%20FTEE.jpg" alt="Dr. G. N. Jeevanandam - Cardiac & Transplant Anesthesiology" decoding="async">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20G.%20N.%20Jeevanandam%20%E2%80%93%20MD%2C%20FNB%20(Cardiac%20Anaesthesia)%2C%20FTEE.jpg" alt="Dr. G. N. Jeevanandam - Cardiac & Transplant Anesthesiology" decoding="async" loading="eager">
             <div class="doc-sector-badge">
               <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
               <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
@@ -1122,7 +1131,7 @@
 
         <div class="doctor-card card-hover" data-sector="Anesthesiology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Vigneshwaran%20K%20%E2%80%93%20MBBS%2C%20DA%2C%20FRCA%2C%20Fellowship%20in%20Liver%20Transplant%20Anaesthesia%20(UK).jpg" alt="Dr. Vigneshwaran K - Cardiac & Transplant Anesthesiology" decoding="async">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Vigneshwaran%20K%20%E2%80%93%20MBBS%2C%20DA%2C%20FRCA%2C%20Fellowship%20in%20Liver%20Transplant%20Anaesthesia%20(UK).jpg" alt="Dr. Vigneshwaran K - Cardiac & Transplant Anesthesiology" decoding="async" loading="eager">
             <div class="doc-sector-badge">
               <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
               <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
@@ -1142,7 +1151,7 @@
 
         <div class="doctor-card card-hover" data-sector="Critical Care">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Buddhan%20Rajarathinam%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesia)%2C%20EDIC%2C%20IDCCM%2C%20PDFCCM.jpg" alt="Dr. Buddhan Rajarathinam - Critical Care & ICU" decoding="async">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Buddhan%20Rajarathinam%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesia)%2C%20EDIC%2C%20IDCCM%2C%20PDFCCM.jpg" alt="Dr. Buddhan Rajarathinam - Critical Care & ICU" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Critical Care & ICU</span>
               <span class="lang-ar">العناية المركزة والحرجة</span>
@@ -1162,7 +1171,7 @@
 
         <div class="doctor-card card-hover" data-sector="Critical Care">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Gokulakrishnan%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesia)%2C%20DrNB%20(Critical%20Care%20Medicine).jpg" alt="Dr. Gokulakrishnan - Critical Care & ICU" decoding="async">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Gokulakrishnan%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesia)%2C%20DrNB%20(Critical%20Care%20Medicine).jpg" alt="Dr. Gokulakrishnan - Critical Care & ICU" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Critical Care & ICU</span>
               <span class="lang-ar">العناية المركزة والحرجة</span>
@@ -1182,7 +1191,7 @@
 
         <div class="doctor-card card-hover" data-sector="Critical Care">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Critical%20Care/Dr.%20N.%20Sridhar%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesiology)%2C%20FRCA%20(UK)%2C%20FFICM.jpg" alt="Dr. N. Sridhar - Critical Care & ICU" decoding="async">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20N.%20Sridhar%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesiology)%2C%20FRCA%20(UK)%2C%20FFICM.jpg" alt="Dr. N. Sridhar - Critical Care & ICU" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Critical Care & ICU</span>
               <span class="lang-ar">العناية المركزة والحرجة</span>
@@ -1202,7 +1211,7 @@
 
         <div class="doctor-card card-hover" data-sector="Critical Care">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Critical%20Care/Dr.%20P.%20Saravana%20Kumar%20%E2%80%93%20MBBS%2C%20MD%2C%20DM%20(Critical%20Care).jpg" alt="Dr. P. Saravana Kumar - Critical Care & ICU" decoding="async">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20P.%20Saravana%20Kumar%20%E2%80%93%20MBBS%2C%20MD%2C%20DM%20(Critical%20Care).jpg" alt="Dr. P. Saravana Kumar - Critical Care & ICU" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Critical Care & ICU</span>
               <span class="lang-ar">العناية المركزة والحرجة</span>
@@ -1222,7 +1231,7 @@
 
         <div class="doctor-card card-hover" data-sector="Critical Care">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Vetriselvan%20P%20%E2%80%93%20MBBS%2C%20MD%2C%20MRCP%20(A)%2C%20DM%20(AIIMS%2C%20New%20Delhi).jpg" alt="Dr. Vetriselvan P - Critical Care & ICU" decoding="async">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Vetriselvan%20P%20%E2%80%93%20MBBS%2C%20MD%2C%20MRCP%20(A)%2C%20DM%20(AIIMS%2C%20New%20Delhi).jpg" alt="Dr. Vetriselvan P - Critical Care & ICU" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Critical Care & ICU</span>
               <span class="lang-ar">العناية المركزة والحرجة</span>
@@ -1242,7 +1251,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20M.%20Raj%20Mohan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. M. Raj Mohan - Dental & Maxillofacial" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20M.%20Raj%20Mohan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. M. Raj Mohan - Dental & Maxillofacial" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dental & Maxillofacial</span>
               <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
@@ -1262,7 +1271,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Manikandan%20Ramanathan%20%E2%80%93%20BDS%2C%20MDS%2C%20FDSRCS%20(England)%2C%20FFDRCS%20(Ireland).jpg" alt="Dr. Manikandan Ramanathan - Dental & Maxillofacial" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Manikandan%20Ramanathan%20%E2%80%93%20BDS%2C%20MDS%2C%20FDSRCS%20(England)%2C%20FFDRCS%20(Ireland).jpg" alt="Dr. Manikandan Ramanathan - Dental & Maxillofacial" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dental & Maxillofacial</span>
               <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
@@ -1282,7 +1291,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Preeti%20L.%20Anand%20%E2%80%93%20BDS%2C%20MDS%2C%20PGCOI.jpg" alt="Dr. Preeti L. Anand - Dental & Maxillofacial" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Preeti%20L.%20Anand%20%E2%80%93%20BDS%2C%20MDS%2C%20PGCOI.jpg" alt="Dr. Preeti L. Anand - Dental & Maxillofacial" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dental & Maxillofacial</span>
               <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
@@ -1302,7 +1311,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20S.%20Elangovan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. S. Elangovan - Dental & Maxillofacial" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20S.%20Elangovan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. S. Elangovan - Dental & Maxillofacial" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dental & Maxillofacial</span>
               <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
@@ -1322,7 +1331,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Vijayalakshmi%20P%20%E2%80%93%20BDS%2C%20MDS%20(Oral%20%26%20Maxillofacial%20Surgery)%2C%20FAOMSI%20(Fellowship%20in%20Craniofacial%20Trauma).jpg" alt="Dr. Vijayalakshmi P - Dental & Maxillofacial" decoding="async">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Vijayalakshmi%20P%20%E2%80%93%20BDS%2C%20MDS%20(Oral%20%26%20Maxillofacial%20Surgery)%2C%20FAOMSI%20(Fellowship%20in%20Craniofacial%20Trauma).jpg" alt="Dr. Vijayalakshmi P - Dental & Maxillofacial" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dental & Maxillofacial</span>
               <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
@@ -1342,7 +1351,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dermatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dermatology/Dr.%20A.%20S.%20Niraaimathi%20%E2%80%93%20MBBS%2C%20MD%2C%20DNB.jpg" alt="Dr. A. S. Niraaimathi - Dermatology & Skin Care" decoding="async">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20A.%20S.%20Niraaimathi%20%E2%80%93%20MBBS%2C%20MD%2C%20DNB.jpg" alt="Dr. A. S. Niraaimathi - Dermatology & Skin Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dermatology & Skin Care</span>
               <span class="lang-ar">الجلدية والتجميل</span>
@@ -1362,7 +1371,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dermatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dermatology/Dr.%20M.%20Shoba%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. M. Shoba - Dermatology & Skin Care" decoding="async">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20M.%20Shoba%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. M. Shoba - Dermatology & Skin Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dermatology & Skin Care</span>
               <span class="lang-ar">الجلدية والتجميل</span>
@@ -1382,7 +1391,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dermatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dermatology/Dr.%20Pravin%20Vinil%20Raja%20%E2%80%93%20MBBS%2C%20MD%2C%20DVL.jpg" alt="Dr. Pravin Vinil Raja - Dermatology & Skin Care" decoding="async">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20Pravin%20Vinil%20Raja%20%E2%80%93%20MBBS%2C%20MD%2C%20DVL.jpg" alt="Dr. Pravin Vinil Raja - Dermatology & Skin Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dermatology & Skin Care</span>
               <span class="lang-ar">الجلدية والتجميل</span>
@@ -1402,7 +1411,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dermatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dermatology/Dr.%20R.%20Indhra%20Priyadharshini%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. R. Indhra Priyadharshini - Dermatology & Skin Care" decoding="async">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20R.%20Indhra%20Priyadharshini%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. R. Indhra Priyadharshini - Dermatology & Skin Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dermatology & Skin Care</span>
               <span class="lang-ar">الجلدية والتجميل</span>
@@ -1422,7 +1431,7 @@
 
         <div class="doctor-card card-hover" data-sector="Dermatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Dermatology/Dr.%20V.%20Madhumitha%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. V. Madhumitha - Dermatology & Skin Care" decoding="async">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20V.%20Madhumitha%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. V. Madhumitha - Dermatology & Skin Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Dermatology & Skin Care</span>
               <span class="lang-ar">الجلدية والتجميل</span>
@@ -1442,7 +1451,7 @@
 
         <div class="doctor-card card-hover" data-sector="Diabetology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Diabetology/Dr.%20Ezhilan%20Naganathan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. Ezhilan Naganathan - Diabetology & Endocrinology" decoding="async">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20Ezhilan%20Naganathan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. Ezhilan Naganathan - Diabetology & Endocrinology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Diabetology & Endocrinology</span>
               <span class="lang-ar">الغدد الصماء والسكري</span>
@@ -1462,7 +1471,7 @@
 
         <div class="doctor-card card-hover" data-sector="Diabetology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Diabetology/Dr.%20Gopal%20Parthasarathy%20%E2%80%93%20MBBS%2C%20D.Sc.%20(Hon.).jpg" alt="Dr. Gopal Parthasarathy - Diabetology & Endocrinology" decoding="async">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20Gopal%20Parthasarathy%20%E2%80%93%20MBBS%2C%20D.Sc.%20(Hon.).jpg" alt="Dr. Gopal Parthasarathy - Diabetology & Endocrinology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Diabetology & Endocrinology</span>
               <span class="lang-ar">الغدد الصماء والسكري</span>
@@ -1482,7 +1491,7 @@
 
         <div class="doctor-card card-hover" data-sector="Diabetology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Diabetology/Dr.%20K.%20Baraneedharan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. K. Baraneedharan - Diabetology & Endocrinology" decoding="async">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20K.%20Baraneedharan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. K. Baraneedharan - Diabetology & Endocrinology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Diabetology & Endocrinology</span>
               <span class="lang-ar">الغدد الصماء والسكري</span>
@@ -1502,7 +1511,7 @@
 
         <div class="doctor-card card-hover" data-sector="Diabetology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Diabetology/Dr.%20S.%20Sivaram%20Kannan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FRCP%20(Glasgow).jpg" alt="Dr. S. Sivaram Kannan - Diabetology & Endocrinology" decoding="async">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20S.%20Sivaram%20Kannan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FRCP%20(Glasgow).jpg" alt="Dr. S. Sivaram Kannan - Diabetology & Endocrinology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Diabetology & Endocrinology</span>
               <span class="lang-ar">الغدد الصماء والسكري</span>
@@ -1522,7 +1531,7 @@
 
         <div class="doctor-card card-hover" data-sector="Endocrinology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Endocrinology/Dr.%20Dhalapathy%20Sadacharan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Endocrine%20Surgery).jpg" alt="Dr. Dhalapathy Sadacharan - Endocrine Surgery" decoding="async">
+            <img src="../assets/images/doctor/Endocrinology/Dr.%20Dhalapathy%20Sadacharan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Endocrine%20Surgery).jpg" alt="Dr. Dhalapathy Sadacharan - Endocrine Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Endocrine Surgery</span>
               <span class="lang-ar">جراحة الغدد الصماء</span>
@@ -1542,7 +1551,7 @@
 
         <div class="doctor-card card-hover" data-sector="Endocrinology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Endocrinology/Dr.%20S.%20Sivaprakash%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Endocrinology).jpg" alt="Dr. S. Sivaprakash - Endocrine Surgery" decoding="async">
+            <img src="../assets/images/doctor/Endocrinology/Dr.%20S.%20Sivaprakash%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Endocrinology).jpg" alt="Dr. S. Sivaprakash - Endocrine Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Endocrine Surgery</span>
               <span class="lang-ar">جراحة الغدد الصماء</span>
@@ -1562,7 +1571,7 @@
 
         <div class="doctor-card card-hover" data-sector="Endocrinology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Endocrinology/Dr.%20Vignesh%20%E2%80%93%20MD%2C%20DM.jpg" alt="Dr. Vignesh - Endocrine Surgery" decoding="async">
+            <img src="../assets/images/doctor/Endocrinology/Dr.%20Vignesh%20%E2%80%93%20MD%2C%20DM.jpg" alt="Dr. Vignesh - Endocrine Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Endocrine Surgery</span>
               <span class="lang-ar">جراحة الغدد الصماء</span>
@@ -1582,7 +1591,7 @@
 
         <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Deepika%20M%20Vijai%20%E2%80%93%20MBBS%2C%20MS%20(ENT).jpg" alt="Dr. Deepika M Vijai - ENT & Head/Neck Surgery" decoding="async">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Deepika%20M%20Vijai%20%E2%80%93%20MBBS%2C%20MS%20(ENT).jpg" alt="Dr. Deepika M Vijai - ENT & Head/Neck Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">ENT & Head/Neck Surgery</span>
               <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
@@ -1602,7 +1611,7 @@
 
         <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Niraj%20Kumar%20Joshi%20%E2%80%93%20MBBS%2C%20MD%20(Physiology)%2C%20DNB%20(Oto-Rhino-Laryngology)%2C%20FAGE.jpg" alt="Dr. Niraj Kumar Joshi - ENT & Head/Neck Surgery" decoding="async">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Niraj%20Kumar%20Joshi%20%E2%80%93%20MBBS%2C%20MD%20(Physiology)%2C%20DNB%20(Oto-Rhino-Laryngology)%2C%20FAGE.jpg" alt="Dr. Niraj Kumar Joshi - ENT & Head/Neck Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">ENT & Head/Neck Surgery</span>
               <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
@@ -1622,7 +1631,7 @@
 
         <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Preethi%20P%20%E2%80%93%20MBBS%2C%20DLO%2C%20DNB%20(ENT).jpg" alt="Dr. Preethi P - ENT & Head/Neck Surgery" decoding="async">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Preethi%20P%20%E2%80%93%20MBBS%2C%20DLO%2C%20DNB%20(ENT).jpg" alt="Dr. Preethi P - ENT & Head/Neck Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">ENT & Head/Neck Surgery</span>
               <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
@@ -1642,7 +1651,7 @@
 
         <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Vinothan%20%E2%80%93%20MBBS%2C%20DLO%2C%20MS%20(ENT)%2C%20DNB%20(ENT).jpg" alt="Dr. Vinothan - ENT & Head/Neck Surgery" decoding="async">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Vinothan%20%E2%80%93%20MBBS%2C%20DLO%2C%20MS%20(ENT)%2C%20DNB%20(ENT).jpg" alt="Dr. Vinothan - ENT & Head/Neck Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">ENT & Head/Neck Surgery</span>
               <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
@@ -1662,7 +1671,7 @@
 
         <div class="doctor-card card-hover" data-sector="Gastroenterology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Gastroenterology/Dr.%20M.%20A.%20Arvind%20%E2%80%93%20MBBS%2C%20MD%2C%20DM%20(Medical%20Gastroenterology)%2C%20Fellowship%20in%20ERCP%20(2018)%2C%20Fellowship%20in%20Advanced%20EUS%20(2022).jpg" alt="Dr. M. A. Arvind - Gastroenterology & GI Surgery" decoding="async">
+            <img src="../assets/images/doctor/Gastroenterology/Dr.%20M.%20A.%20Arvind%20%E2%80%93%20MBBS%2C%20MD%2C%20DM%20(Medical%20Gastroenterology)%2C%20Fellowship%20in%20ERCP%20(2018)%2C%20Fellowship%20in%20Advanced%20EUS%20(2022).jpg" alt="Dr. M. A. Arvind - Gastroenterology & GI Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gastroenterology & GI Surgery</span>
               <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
@@ -1682,7 +1691,7 @@
 
         <div class="doctor-card card-hover" data-sector="Gastroenterology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Gastroenterology/Dr.%20S.%20Vadivel%20Kumaran%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology).jpg" alt="Dr. S. Vadivel Kumaran - Gastroenterology & GI Surgery" decoding="async">
+            <img src="../assets/images/doctor/Gastroenterology/Dr.%20S.%20Vadivel%20Kumaran%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology).jpg" alt="Dr. S. Vadivel Kumaran - Gastroenterology & GI Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gastroenterology & GI Surgery</span>
               <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
@@ -1702,7 +1711,7 @@
 
         <div class="doctor-card card-hover" data-sector="Gastroenterology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Gastroenterology/Dr.%20Swati%20Raju%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology)%2C%20Postdoctoral%20Fellowship%20in%20Liver%20Diseases%20(Chennai).jpg" alt="Dr. Swati Raju - Gastroenterology & GI Surgery" decoding="async">
+            <img src="../assets/images/doctor/Gastroenterology/Dr.%20Swati%20Raju%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology)%2C%20Postdoctoral%20Fellowship%20in%20Liver%20Diseases%20(Chennai).jpg" alt="Dr. Swati Raju - Gastroenterology & GI Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gastroenterology & GI Surgery</span>
               <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
@@ -1722,7 +1731,7 @@
 
         <div class="doctor-card card-hover" data-sector="Gastroenterology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Gastroenterology/Prof.%20D.%20Kannan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Surgical%20Gastroenterology)%2C%20FRCS%20(Glasgow).jpg" alt="Prof. D. Kannan - Gastroenterology & GI Surgery" decoding="async">
+            <img src="../assets/images/doctor/Gastroenterology/Prof.%20D.%20Kannan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Surgical%20Gastroenterology)%2C%20FRCS%20(Glasgow).jpg" alt="Prof. D. Kannan - Gastroenterology & GI Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gastroenterology & GI Surgery</span>
               <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
@@ -1742,7 +1751,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Medicine">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Ezhilan%20Naganathan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. Ezhilan Naganathan - General & Internal Medicine" decoding="async">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Ezhilan%20Naganathan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. Ezhilan Naganathan - General & Internal Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Internal Medicine</span>
               <span class="lang-ar">الطب الباطني العام</span>
@@ -1762,7 +1771,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Medicine">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Medicine/dr.%20S.%20Sivaram%20Kannan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FRCP%20(Glasgow).jpg" alt="Dr. S. Sivaram Kannan - General & Internal Medicine" decoding="async">
+            <img src="../assets/images/doctor/General%20Medicine/dr.%20S.%20Sivaram%20Kannan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FRCP%20(Glasgow).jpg" alt="Dr. S. Sivaram Kannan - General & Internal Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Internal Medicine</span>
               <span class="lang-ar">الطب الباطني العام</span>
@@ -1782,7 +1791,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Medicine">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Supriyaa%20B%20B%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FIDM%2C%20FIID.jpg" alt="Dr. Supriyaa B B - General & Internal Medicine" decoding="async">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Supriyaa%20B%20B%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FIDM%2C%20FIID.jpg" alt="Dr. Supriyaa B B - General & Internal Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Internal Medicine</span>
               <span class="lang-ar">الطب الباطني العام</span>
@@ -1802,7 +1811,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Medicine">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Thangaprajan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20MRCP%20(UK).jpg" alt="Dr. Thangaprajan - General & Internal Medicine" decoding="async">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Thangaprajan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20MRCP%20(UK).jpg" alt="Dr. Thangaprajan - General & Internal Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Internal Medicine</span>
               <span class="lang-ar">الطب الباطني العام</span>
@@ -1822,7 +1831,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Medicine">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Yashica%20Priya%20R%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20CCEBDM.jpg" alt="Dr. Yashica Priya R - General & Internal Medicine" decoding="async">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Yashica%20Priya%20R%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20CCEBDM.jpg" alt="Dr. Yashica Priya R - General & Internal Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Internal Medicine</span>
               <span class="lang-ar">الطب الباطني العام</span>
@@ -1842,7 +1851,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Surgery/Dr.%20A.%20Aravinth%20%E2%80%93%20MBBS%2C%20MS%2C%20DNB.jpg" alt="Dr. A. Aravinth - General & Laparoscopic Surgery" decoding="async">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20A.%20Aravinth%20%E2%80%93%20MBBS%2C%20MS%2C%20DNB.jpg" alt="Dr. A. Aravinth - General & Laparoscopic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Laparoscopic Surgery</span>
               <span class="lang-ar">الجراحة العامة والمناظير</span>
@@ -1862,7 +1871,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Surgery/Dr.%20Muralidharan%20Parthasarathy%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20FRCS%20(General%20Surgery).jpg" alt="Dr. Muralidharan Parthasarathy - General & Laparoscopic Surgery" decoding="async">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20Muralidharan%20Parthasarathy%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20FRCS%20(General%20Surgery).jpg" alt="Dr. Muralidharan Parthasarathy - General & Laparoscopic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Laparoscopic Surgery</span>
               <span class="lang-ar">الجراحة العامة والمناظير</span>
@@ -1882,7 +1891,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Surgery/Dr.%20P.%20V.%20Dhanapal%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FAIS.jpg" alt="Dr. P. V. Dhanapal - General & Laparoscopic Surgery" decoding="async">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20P.%20V.%20Dhanapal%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FAIS.jpg" alt="Dr. P. V. Dhanapal - General & Laparoscopic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Laparoscopic Surgery</span>
               <span class="lang-ar">الجراحة العامة والمناظير</span>
@@ -1902,7 +1911,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Surgery/Dr.%20S.%20Srividhya%20%E2%80%93%20MS%20(General%20Surgery)%2C%20FMAS%2C%20DMAS%2C%20DLO%20(Otorhinolaryngology).jpg" alt="Dr. S. Srividhya - General & Laparoscopic Surgery" decoding="async">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20S.%20Srividhya%20%E2%80%93%20MS%20(General%20Surgery)%2C%20FMAS%2C%20DMAS%2C%20DLO%20(Otorhinolaryngology).jpg" alt="Dr. S. Srividhya - General & Laparoscopic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Laparoscopic Surgery</span>
               <span class="lang-ar">الجراحة العامة والمناظير</span>
@@ -1922,7 +1931,7 @@
 
         <div class="doctor-card card-hover" data-sector="General Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/General%20Surgery/Dr.%20Senthil%20Gnanasekaran%20%E2%80%93%20MBBS%2C%20MS%2C%20MCh%2C%20PDF%20(Liver%20Transplant).jpg" alt="Dr. Senthil Gnanasekaran - General & Laparoscopic Surgery" decoding="async">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20Senthil%20Gnanasekaran%20%E2%80%93%20MBBS%2C%20MS%2C%20MCh%2C%20PDF%20(Liver%20Transplant).jpg" alt="Dr. Senthil Gnanasekaran - General & Laparoscopic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">General & Laparoscopic Surgery</span>
               <span class="lang-ar">الجراحة العامة والمناظير</span>
@@ -1942,7 +1951,7 @@
 
         <div class="doctor-card card-hover" data-sector="Geriatrics">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Geriatrics/Dr.K.Sushmitha%20mbbs%2Cmd.jpg" alt="Dr. K.Sushmitha mbbs,md - Geriatric Medicine" decoding="async">
+            <img src="../assets/images/doctor/Geriatrics/Dr.K.Sushmitha%20mbbs%2Cmd.jpg" alt="Dr. K.Sushmitha mbbs,md - Geriatric Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Geriatric Medicine</span>
               <span class="lang-ar">طب ورعاية كبار السن</span>
@@ -1962,7 +1971,7 @@
 
         <div class="doctor-card card-hover" data-sector="Geriatrics">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Geriatrics/dr.s.lavanya%20mbbs%2Cmd.jpg" alt="Dr. s.lavanya mbbs,md - Geriatric Medicine" decoding="async">
+            <img src="../assets/images/doctor/Geriatrics/dr.s.lavanya%20mbbs%2Cmd.jpg" alt="Dr. s.lavanya mbbs,md - Geriatric Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Geriatric Medicine</span>
               <span class="lang-ar">طب ورعاية كبار السن</span>
@@ -1982,7 +1991,7 @@
 
         <div class="doctor-card card-hover" data-sector="Infectious Disease">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Infectious%20Disease/Dr.%20Sowmya%20Sridharan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FNB%20(Infectious%20Disease)%2C%20MRCP%20(UK)%2C%20CIC.jpg" alt="Dr. Sowmya Sridharan - Infectious Diseases" decoding="async">
+            <img src="../assets/images/doctor/Infectious%20Disease/Dr.%20Sowmya%20Sridharan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FNB%20(Infectious%20Disease)%2C%20MRCP%20(UK)%2C%20CIC.jpg" alt="Dr. Sowmya Sridharan - Infectious Diseases" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Infectious Diseases</span>
               <span class="lang-ar">الأمراض المعدية</span>
@@ -2002,7 +2011,7 @@
 
         <div class="doctor-card card-hover" data-sector="Laboratory Services">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Laboratory%20Services/Dr.%20Meenachi%20Chidambaram%20%E2%80%93%20MBBS%2C%20MD%20(Microbiology).jpg" alt="Dr. Meenachi Chidambaram - Laboratory & Diagnostics" decoding="async">
+            <img src="../assets/images/doctor/Laboratory%20Services/Dr.%20Meenachi%20Chidambaram%20%E2%80%93%20MBBS%2C%20MD%20(Microbiology).jpg" alt="Dr. Meenachi Chidambaram - Laboratory & Diagnostics" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Laboratory & Diagnostics</span>
               <span class="lang-ar">المختبرات والتحاليل الطبية</span>
@@ -2022,7 +2031,7 @@
 
         <div class="doctor-card card-hover" data-sector="Laboratory Services">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Laboratory%20Services/Dr.%20Thilagavathy%20%E2%80%93%20MBBS%2C%20MD%20(Microbiology).jpg" alt="Dr. Thilagavathy - Laboratory & Diagnostics" decoding="async">
+            <img src="../assets/images/doctor/Laboratory%20Services/Dr.%20Thilagavathy%20%E2%80%93%20MBBS%2C%20MD%20(Microbiology).jpg" alt="Dr. Thilagavathy - Laboratory & Diagnostics" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Laboratory & Diagnostics</span>
               <span class="lang-ar">المختبرات والتحاليل الطبية</span>
@@ -2042,7 +2051,7 @@
 
         <div class="doctor-card card-hover" data-sector="Liver Disease">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20D.%20Gawtham%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FMAS%2C%20Fellowship%20in%20Hepatobiliary%20and%20Liver%20Transplant%20Surgery%20(Medanta%2C%20Gurugram).jpg" alt="Dr. D. Gawtham - Liver & Organ Transplant" decoding="async">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20D.%20Gawtham%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FMAS%2C%20Fellowship%20in%20Hepatobiliary%20and%20Liver%20Transplant%20Surgery%20(Medanta%2C%20Gurugram).jpg" alt="Dr. D. Gawtham - Liver & Organ Transplant" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Liver & Organ Transplant</span>
               <span class="lang-ar">أمراض وزراعة الكبد</span>
@@ -2062,7 +2071,7 @@
 
         <div class="doctor-card card-hover" data-sector="Liver Disease">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Sumanth%20Srivatsan%20C%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery).jpg" alt="Dr. Sumanth Srivatsan C - Liver & Organ Transplant" decoding="async">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Sumanth%20Srivatsan%20C%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery).jpg" alt="Dr. Sumanth Srivatsan C - Liver & Organ Transplant" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Liver & Organ Transplant</span>
               <span class="lang-ar">أمراض وزراعة الكبد</span>
@@ -2082,7 +2091,7 @@
 
         <div class="doctor-card card-hover" data-sector="Liver Disease">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Swaminathan%20Sambandam%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20Abdominal%20Transplant%20Fellowship%20(USA).jpg" alt="Dr. Swaminathan Sambandam - Liver & Organ Transplant" decoding="async">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Swaminathan%20Sambandam%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20Abdominal%20Transplant%20Fellowship%20(USA).jpg" alt="Dr. Swaminathan Sambandam - Liver & Organ Transplant" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Liver & Organ Transplant</span>
               <span class="lang-ar">أمراض وزراعة الكبد</span>
@@ -2102,7 +2111,7 @@
 
         <div class="doctor-card card-hover" data-sector="Liver Disease">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Swati%20Raju%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology)%2C%20Postdoctoral%20Fellowship%20in%20Liver%20Diseases%20(Chennai).jpg" alt="Dr. Swati Raju - Liver & Organ Transplant" decoding="async">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Swati%20Raju%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology)%2C%20Postdoctoral%20Fellowship%20in%20Liver%20Diseases%20(Chennai).jpg" alt="Dr. Swati Raju - Liver & Organ Transplant" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Liver & Organ Transplant</span>
               <span class="lang-ar">أمراض وزراعة الكبد</span>
@@ -2122,7 +2131,7 @@
 
         <div class="doctor-card card-hover" data-sector="Liver Disease">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Liver%20Disease/Prof.%20D.%20Kannan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Surgical%20Gastroenterology)%2C%20FRCS%20(Glasgow).jpg" alt="Prof. D. Kannan - Liver & Organ Transplant" decoding="async">
+            <img src="../assets/images/doctor/Liver%20Disease/Prof.%20D.%20Kannan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Surgical%20Gastroenterology)%2C%20FRCS%20(Glasgow).jpg" alt="Prof. D. Kannan - Liver & Organ Transplant" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Liver & Organ Transplant</span>
               <span class="lang-ar">أمراض وزراعة الكبد</span>
@@ -2142,7 +2151,7 @@
 
         <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Aarthy%20P%20%E2%80%93%20MBBS%2C%20MS%2C%20DrNB.jpg" alt="Dr. Aarthy P - Nephrology & Urology" decoding="async">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Aarthy%20P%20%E2%80%93%20MBBS%2C%20MS%2C%20DrNB.jpg" alt="Dr. Aarthy P - Nephrology & Urology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Nephrology & Urology</span>
               <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
@@ -2162,7 +2171,7 @@
 
         <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Anandan%20Nagalingam%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FRCS%20(Edinburgh)%2C%20Diploma%20in%20Urology%20(London).jpg" alt="Dr. Anandan Nagalingam - Nephrology & Urology" decoding="async">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Anandan%20Nagalingam%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FRCS%20(Edinburgh)%2C%20Diploma%20in%20Urology%20(London).jpg" alt="Dr. Anandan Nagalingam - Nephrology & Urology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Nephrology & Urology</span>
               <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
@@ -2182,7 +2191,7 @@
 
         <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Anu%20Ramesh%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20DNB%20(General%20Surgery)%2C%20MCh%20(Urology).jpg" alt="Dr. Anu Ramesh - Nephrology & Urology" decoding="async">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Anu%20Ramesh%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20DNB%20(General%20Surgery)%2C%20MCh%20(Urology).jpg" alt="Dr. Anu Ramesh - Nephrology & Urology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Nephrology & Urology</span>
               <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
@@ -2202,7 +2211,7 @@
 
         <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Balaji%20Kirushnan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DNB%20(Nephrology).jpg" alt="Dr. Balaji Kirushnan - Nephrology & Urology" decoding="async">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Balaji%20Kirushnan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DNB%20(Nephrology).jpg" alt="Dr. Balaji Kirushnan - Nephrology & Urology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Nephrology & Urology</span>
               <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
@@ -2222,7 +2231,7 @@
 
         <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20R.%20Balasubramaniyam%20%E2%80%93%20MBBS%2C%20DNB%20(General%20Medicine)%2C%20DNB%20(Nephrology).jpg" alt="Dr. R. Balasubramaniyam - Nephrology & Urology" decoding="async">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20R.%20Balasubramaniyam%20%E2%80%93%20MBBS%2C%20DNB%20(General%20Medicine)%2C%20DNB%20(Nephrology).jpg" alt="Dr. R. Balasubramaniyam - Nephrology & Urology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Nephrology & Urology</span>
               <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
@@ -2242,7 +2251,7 @@
 
         <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Parimala%20Devi%20%E2%80%93%20MBBS%2C%20DGO%2C%20DNB%20(OBG)%2C%20FMAS%2C%20F.ART%2C%20DRM%20(Germany).jpg" alt="Dr. Parimala Devi - Gynecology, Obstetrics & IVF" decoding="async">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Parimala%20Devi%20%E2%80%93%20MBBS%2C%20DGO%2C%20DNB%20(OBG)%2C%20FMAS%2C%20F.ART%2C%20DRM%20(Germany).jpg" alt="Dr. Parimala Devi - Gynecology, Obstetrics & IVF" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gynecology, Obstetrics & IVF</span>
               <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
@@ -2262,7 +2271,7 @@
 
         <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Sahityalakshmi%20Manoharan%20%E2%80%93%20MBBS%2C%20MS%20(O%26G)%2C%20DNB%20(O%26G)%2C%20Fellowship%20in%20Reproductive%20Medicine%2C%20Fellowship%20in%20Cosmetic%20Gynaecology.jpg" alt="Dr. Sahityalakshmi Manoharan - Gynecology, Obstetrics & IVF" decoding="async">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Sahityalakshmi%20Manoharan%20%E2%80%93%20MBBS%2C%20MS%20(O%26G)%2C%20DNB%20(O%26G)%2C%20Fellowship%20in%20Reproductive%20Medicine%2C%20Fellowship%20in%20Cosmetic%20Gynaecology.jpg" alt="Dr. Sahityalakshmi Manoharan - Gynecology, Obstetrics & IVF" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gynecology, Obstetrics & IVF</span>
               <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
@@ -2282,7 +2291,7 @@
 
         <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Sheela%20M%20%E2%80%93%20MBBS%2C%20DGO%2C%20MRCOG%20(UK)%2C%20MRCPI%20O%26G%20(Ireland)%2C%20EFOG-EBCOG%20(Europe)%2C%20DMAS%2C%20FMAS.jpg" alt="Dr. Sheela M - Gynecology, Obstetrics & IVF" decoding="async">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Sheela%20M%20%E2%80%93%20MBBS%2C%20DGO%2C%20MRCOG%20(UK)%2C%20MRCPI%20O%26G%20(Ireland)%2C%20EFOG-EBCOG%20(Europe)%2C%20DMAS%2C%20FMAS.jpg" alt="Dr. Sheela M - Gynecology, Obstetrics & IVF" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gynecology, Obstetrics & IVF</span>
               <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
@@ -2302,7 +2311,7 @@
 
         <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Shruthi%20Sreedhar%20%E2%80%93%20MS%20(OG)%2C%20MRCOG%2C%20FMAS.jpg" alt="Dr. Shruthi Sreedhar - Gynecology, Obstetrics & IVF" decoding="async">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Shruthi%20Sreedhar%20%E2%80%93%20MS%20(OG)%2C%20MRCOG%2C%20FMAS.jpg" alt="Dr. Shruthi Sreedhar - Gynecology, Obstetrics & IVF" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gynecology, Obstetrics & IVF</span>
               <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
@@ -2322,7 +2331,7 @@
 
         <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Thendral%20%E2%80%93%20MBBS%2C%20MS%20(OBG)%2C%20DNB%20(OBG)%2C%20FMAS%2C%20MRCOG.jpg" alt="Dr. Thendral - Gynecology, Obstetrics & IVF" decoding="async">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Thendral%20%E2%80%93%20MBBS%2C%20MS%20(OBG)%2C%20DNB%20(OBG)%2C%20FMAS%2C%20MRCOG.jpg" alt="Dr. Thendral - Gynecology, Obstetrics & IVF" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Gynecology, Obstetrics & IVF</span>
               <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
@@ -2342,7 +2351,7 @@
 
         <div class="doctor-card card-hover" data-sector="Ophthalmology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Ophthalmology/Dr.%20Anil%20Chandra%20%E2%80%93%20MBBS%2C%20MS%20(Ophthalmology).jpg" alt="Dr. Anil Chandra - Ophthalmology & Eye Care" decoding="async">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20Anil%20Chandra%20%E2%80%93%20MBBS%2C%20MS%20(Ophthalmology).jpg" alt="Dr. Anil Chandra - Ophthalmology & Eye Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Ophthalmology & Eye Care</span>
               <span class="lang-ar">طب وجراحة العيون</span>
@@ -2362,7 +2371,7 @@
 
         <div class="doctor-card card-hover" data-sector="Ophthalmology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Ophthalmology/Dr.%20J.%20Radha%20%E2%80%93%20MBBS%2C%20DO%2C%20DNB%20(Ophthalmology)%2C%20FICO%2C%20FIGO.jpg" alt="Dr. J. Radha - Ophthalmology & Eye Care" decoding="async">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20J.%20Radha%20%E2%80%93%20MBBS%2C%20DO%2C%20DNB%20(Ophthalmology)%2C%20FICO%2C%20FIGO.jpg" alt="Dr. J. Radha - Ophthalmology & Eye Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Ophthalmology & Eye Care</span>
               <span class="lang-ar">طب وجراحة العيون</span>
@@ -2382,7 +2391,7 @@
 
         <div class="doctor-card card-hover" data-sector="Ophthalmology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Ophthalmology/Dr.%20K.%20S.%20Suganya%20%E2%80%93%20MBBS%2C%20MS%20(Ophthalmology)%2C%20Fellowship%20in%20Paediatric%20Ophthalmology%20and%20Squint.jpg" alt="Dr. K. S. Suganya - Ophthalmology & Eye Care" decoding="async">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20K.%20S.%20Suganya%20%E2%80%93%20MBBS%2C%20MS%20(Ophthalmology)%2C%20Fellowship%20in%20Paediatric%20Ophthalmology%20and%20Squint.jpg" alt="Dr. K. S. Suganya - Ophthalmology & Eye Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Ophthalmology & Eye Care</span>
               <span class="lang-ar">طب وجراحة العيون</span>
@@ -2402,7 +2411,7 @@
 
         <div class="doctor-card card-hover" data-sector="Ophthalmology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Ophthalmology/Dr.%20Sudha%20Bhuvaneshwari%20%E2%80%93%20MBBS%2C%20Diploma%20in%20Ophthalmology.jpg" alt="Dr. Sudha Bhuvaneshwari - Ophthalmology & Eye Care" decoding="async">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20Sudha%20Bhuvaneshwari%20%E2%80%93%20MBBS%2C%20Diploma%20in%20Ophthalmology.jpg" alt="Dr. Sudha Bhuvaneshwari - Ophthalmology & Eye Care" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Ophthalmology & Eye Care</span>
               <span class="lang-ar">طب وجراحة العيون</span>
@@ -2422,7 +2431,7 @@
 
         <div class="doctor-card card-hover" data-sector="Orthopaedicians">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20A.%20William%20Abraham%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FIJR.jpg" alt="Dr. A. William Abraham - Orthopaedics & Joint Surgery" decoding="async">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20A.%20William%20Abraham%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FIJR.jpg" alt="Dr. A. William Abraham - Orthopaedics & Joint Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Orthopaedics & Joint Surgery</span>
               <span class="lang-ar">جراحة العظام والمفاصل</span>
@@ -2442,7 +2451,7 @@
 
         <div class="doctor-card card-hover" data-sector="Orthopaedicians">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20Aravindan%20Selvaraj%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FRCS%20(Orthopaedics)%2C%20UK%20%26%20Ireland.jpg" alt="Dr. Aravindan Selvaraj - Orthopaedics & Joint Surgery" decoding="async">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20Aravindan%20Selvaraj%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FRCS%20(Orthopaedics)%2C%20UK%20%26%20Ireland.jpg" alt="Dr. Aravindan Selvaraj - Orthopaedics & Joint Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Orthopaedics & Joint Surgery</span>
               <span class="lang-ar">جراحة العظام والمفاصل</span>
@@ -2462,7 +2471,7 @@
 
         <div class="doctor-card card-hover" data-sector="Orthopaedicians">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20Mukunth%20Krishnamoorthy%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FIA%20(Germany)%2C%20Executive%20Hip%20Fellowship%20(UK).jpg" alt="Dr. Mukunth Krishnamoorthy - Orthopaedics & Joint Surgery" decoding="async">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20Mukunth%20Krishnamoorthy%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FIA%20(Germany)%2C%20Executive%20Hip%20Fellowship%20(UK).jpg" alt="Dr. Mukunth Krishnamoorthy - Orthopaedics & Joint Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Orthopaedics & Joint Surgery</span>
               <span class="lang-ar">جراحة العظام والمفاصل</span>
@@ -2482,7 +2491,7 @@
 
         <div class="doctor-card card-hover" data-sector="Orthopaedicians">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20P.%20Keerthivasan%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20DNB%20(Orthopaedics)%2C%20Postdoctoral%20Fellowship%20in%20Spine%20Surgery.jpg" alt="Dr. P. Keerthivasan - Orthopaedics & Joint Surgery" decoding="async">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20P.%20Keerthivasan%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20DNB%20(Orthopaedics)%2C%20Postdoctoral%20Fellowship%20in%20Spine%20Surgery.jpg" alt="Dr. P. Keerthivasan - Orthopaedics & Joint Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Orthopaedics & Joint Surgery</span>
               <span class="lang-ar">جراحة العظام والمفاصل</span>
@@ -2502,7 +2511,7 @@
 
         <div class="doctor-card card-hover" data-sector="Orthopaedicians">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20V.%20Singaravadivelu%20%E2%80%93%20MBBS%2C%20D.Ortho%2C%20MS%20(Orthopaedics)%2C%20PhD.jpg" alt="Dr. V. Singaravadivelu - Orthopaedics & Joint Surgery" decoding="async">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20V.%20Singaravadivelu%20%E2%80%93%20MBBS%2C%20D.Ortho%2C%20MS%20(Orthopaedics)%2C%20PhD.jpg" alt="Dr. V. Singaravadivelu - Orthopaedics & Joint Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Orthopaedics & Joint Surgery</span>
               <span class="lang-ar">جراحة العظام والمفاصل</span>
@@ -2522,7 +2531,7 @@
 
         <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Karthik%20Thiyagarajan%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics)%2C%20DNB%20(Neonatology).jpg" alt="Dr. Karthik Thiyagarajan - Paediatrics & Neonatology" decoding="async">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Karthik%20Thiyagarajan%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics)%2C%20DNB%20(Neonatology).jpg" alt="Dr. Karthik Thiyagarajan - Paediatrics & Neonatology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Paediatrics & Neonatology</span>
               <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
@@ -2542,7 +2551,7 @@
 
         <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Lakshmi%20Prashant%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics).jpg" alt="Dr. Lakshmi Prashant - Paediatrics & Neonatology" decoding="async">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Lakshmi%20Prashant%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics).jpg" alt="Dr. Lakshmi Prashant - Paediatrics & Neonatology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Paediatrics & Neonatology</span>
               <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
@@ -2562,7 +2571,7 @@
 
         <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Pushkala%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics)%2C%20PGDID.jpg" alt="Dr. Pushkala - Paediatrics & Neonatology" decoding="async">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Pushkala%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics)%2C%20PGDID.jpg" alt="Dr. Pushkala - Paediatrics & Neonatology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Paediatrics & Neonatology</span>
               <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
@@ -2582,7 +2591,7 @@
 
         <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Sivasankar%20Jayakumar%20%E2%80%93%20MBBS%2C%20MRCS%20(Glasgow%2C%20UK)%2C%20PGCME%2C%20FEBPS%20(UK).jpg" alt="Dr. Sivasankar Jayakumar - Paediatrics & Neonatology" decoding="async">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Sivasankar%20Jayakumar%20%E2%80%93%20MBBS%2C%20MRCS%20(Glasgow%2C%20UK)%2C%20PGCME%2C%20FEBPS%20(UK).jpg" alt="Dr. Sivasankar Jayakumar - Paediatrics & Neonatology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Paediatrics & Neonatology</span>
               <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
@@ -2602,7 +2611,7 @@
 
         <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Velmurugan%20R%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Paediatric%20Surgery).jpg" alt="Dr. Velmurugan R - Paediatrics & Neonatology" decoding="async">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Velmurugan%20R%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Paediatric%20Surgery).jpg" alt="Dr. Velmurugan R - Paediatrics & Neonatology" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Paediatrics & Neonatology</span>
               <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
@@ -2622,7 +2631,7 @@
 
         <div class="doctor-card card-hover" data-sector="Plastic Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Arul%20Mozhi%20Mangai%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Plastic%20%26%20Reconstructive%20Surgery).jpg" alt="Dr. Arul Mozhi Mangai - Plastic & Cosmetic Surgery" decoding="async">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Arul%20Mozhi%20Mangai%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Plastic%20%26%20Reconstructive%20Surgery).jpg" alt="Dr. Arul Mozhi Mangai - Plastic & Cosmetic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Plastic & Cosmetic Surgery</span>
               <span class="lang-ar">جراحة التجميل والترميم</span>
@@ -2642,7 +2651,7 @@
 
         <div class="doctor-card card-hover" data-sector="Plastic Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Sathish%20Manivel%20%E2%80%93%20MBBS%2C%20DNB%20(General%20Surgery)%2C%20MCh%20(Plastic%20%26%20Reconstructive%20Surgery).jpg" alt="Dr. Sathish Manivel - Plastic & Cosmetic Surgery" decoding="async">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Sathish%20Manivel%20%E2%80%93%20MBBS%2C%20DNB%20(General%20Surgery)%2C%20MCh%20(Plastic%20%26%20Reconstructive%20Surgery).jpg" alt="Dr. Sathish Manivel - Plastic & Cosmetic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Plastic & Cosmetic Surgery</span>
               <span class="lang-ar">جراحة التجميل والترميم</span>
@@ -2662,7 +2671,7 @@
 
         <div class="doctor-card card-hover" data-sector="Plastic Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Sharat%20Kumar%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FMAS%20(Fellowship%20in%20Minimal%20Access%20Surgery)%2C%20MCh%20(Plastic%20Surgery).jpg" alt="Dr. Sharat Kumar - Plastic & Cosmetic Surgery" decoding="async">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Sharat%20Kumar%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FMAS%20(Fellowship%20in%20Minimal%20Access%20Surgery)%2C%20MCh%20(Plastic%20Surgery).jpg" alt="Dr. Sharat Kumar - Plastic & Cosmetic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Plastic & Cosmetic Surgery</span>
               <span class="lang-ar">جراحة التجميل والترميم</span>
@@ -2682,7 +2691,7 @@
 
         <div class="doctor-card card-hover" data-sector="Plastic Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Plastic%20Surgery/Prof.%20V.%20B.%20Narayana%20Murthy%20%E2%80%93%20MBBS%2C%20FRCS%20(Glasgow).jpg" alt="Prof. V. B. Narayana Murthy - Plastic & Cosmetic Surgery" decoding="async">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Prof.%20V.%20B.%20Narayana%20Murthy%20%E2%80%93%20MBBS%2C%20FRCS%20(Glasgow).jpg" alt="Prof. V. B. Narayana Murthy - Plastic & Cosmetic Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Plastic & Cosmetic Surgery</span>
               <span class="lang-ar">جراحة التجميل والترميم</span>
@@ -2702,7 +2711,7 @@
 
         <div class="doctor-card card-hover" data-sector="Psychiatry">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Psychiatry/Dr.%20A.%20Geetha%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. A. Geetha - Psychiatry & Behavioral Health" decoding="async">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20A.%20Geetha%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. A. Geetha - Psychiatry & Behavioral Health" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Psychiatry & Behavioral Health</span>
               <span class="lang-ar">الطب النفسي والصحة النفسية</span>
@@ -2722,7 +2731,7 @@
 
         <div class="doctor-card card-hover" data-sector="Psychiatry">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Psychiatry/Dr.%20M.%20B.%20Abdul%20Rahuman%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. M. B. Abdul Rahuman - Psychiatry & Behavioral Health" decoding="async">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20M.%20B.%20Abdul%20Rahuman%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. M. B. Abdul Rahuman - Psychiatry & Behavioral Health" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Psychiatry & Behavioral Health</span>
               <span class="lang-ar">الطب النفسي والصحة النفسية</span>
@@ -2742,7 +2751,7 @@
 
         <div class="doctor-card card-hover" data-sector="Psychiatry">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Psychiatry/Dr.%20Singaravelu%20Thiyagarajan%20%E2%80%93%20MBBS%2C%20DPM%2C%20MRCP%20(UK)%2C%20CCT%20(Psychiatry).jpg" alt="Dr. Singaravelu Thiyagarajan - Psychiatry & Behavioral Health" decoding="async">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20Singaravelu%20Thiyagarajan%20%E2%80%93%20MBBS%2C%20DPM%2C%20MRCP%20(UK)%2C%20CCT%20(Psychiatry).jpg" alt="Dr. Singaravelu Thiyagarajan - Psychiatry & Behavioral Health" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Psychiatry & Behavioral Health</span>
               <span class="lang-ar">الطب النفسي والصحة النفسية</span>
@@ -2762,7 +2771,7 @@
 
         <div class="doctor-card card-hover" data-sector="Psychiatry">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Psychiatry/Dr.%20V.%20Kandasamy%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. V. Kandasamy - Psychiatry & Behavioral Health" decoding="async">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20V.%20Kandasamy%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. V. Kandasamy - Psychiatry & Behavioral Health" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Psychiatry & Behavioral Health</span>
               <span class="lang-ar">الطب النفسي والصحة النفسية</span>
@@ -2782,7 +2791,7 @@
 
         <div class="doctor-card card-hover" data-sector="Psychiatry">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Psychiatry/Dr.%20Yamini%20Kannappan%20%E2%80%93%20MBBS%2C%20Diploma%20in%20Psychological%20Medicine%2C%20DNB%20(Psychiatry).jpg" alt="Dr. Yamini Kannappan - Psychiatry & Behavioral Health" decoding="async">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20Yamini%20Kannappan%20%E2%80%93%20MBBS%2C%20Diploma%20in%20Psychological%20Medicine%2C%20DNB%20(Psychiatry).jpg" alt="Dr. Yamini Kannappan - Psychiatry & Behavioral Health" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Psychiatry & Behavioral Health</span>
               <span class="lang-ar">الطب النفسي والصحة النفسية</span>
@@ -2802,7 +2811,7 @@
 
         <div class="doctor-card card-hover" data-sector="Pulmonology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Pulmonology/Dr.%20Anantha%20Subramanian%20%E2%80%93%20MBBS%2C%20MD%20(Tuberculosis%20and%20Respiratory%20Medicine).jpg" alt="Dr. Anantha Subramanian - Pulmonology & Chest Medicine" decoding="async">
+            <img src="../assets/images/doctor/Pulmonology/Dr.%20Anantha%20Subramanian%20%E2%80%93%20MBBS%2C%20MD%20(Tuberculosis%20and%20Respiratory%20Medicine).jpg" alt="Dr. Anantha Subramanian - Pulmonology & Chest Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Pulmonology & Chest Medicine</span>
               <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
@@ -2822,7 +2831,7 @@
 
         <div class="doctor-card card-hover" data-sector="Pulmonology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Pulmonology/Dr.%20M.%20Harish%20%E2%80%93%20MBBS%2C%20MD%20(Pulmonary%20Medicine)%2C%20Fellowship%20in%20Intensive%20Care%20%26%20Critical%20Care%2C%20FCCP%20(USA).jpg" alt="Dr. M. Harish - Pulmonology & Chest Medicine" decoding="async">
+            <img src="../assets/images/doctor/Pulmonology/Dr.%20M.%20Harish%20%E2%80%93%20MBBS%2C%20MD%20(Pulmonary%20Medicine)%2C%20Fellowship%20in%20Intensive%20Care%20%26%20Critical%20Care%2C%20FCCP%20(USA).jpg" alt="Dr. M. Harish - Pulmonology & Chest Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Pulmonology & Chest Medicine</span>
               <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
@@ -2842,7 +2851,7 @@
 
         <div class="doctor-card card-hover" data-sector="Pulmonology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Pulmonology/Dr.%20Naveen%20Vennilavan%20%E2%80%93%20MBBS%2C%20MD%20(Pulmonary%20Medicine)%2C%20Fellowship%20in%20Sleep%20Medicine%2C%20Fellowship%20in%20Interventional%20Pulmonology.jpg" alt="Dr. Naveen Vennilavan - Pulmonology & Chest Medicine" decoding="async">
+            <img src="../assets/images/doctor/Pulmonology/Dr.%20Naveen%20Vennilavan%20%E2%80%93%20MBBS%2C%20MD%20(Pulmonary%20Medicine)%2C%20Fellowship%20in%20Sleep%20Medicine%2C%20Fellowship%20in%20Interventional%20Pulmonology.jpg" alt="Dr. Naveen Vennilavan - Pulmonology & Chest Medicine" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Pulmonology & Chest Medicine</span>
               <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
@@ -2862,7 +2871,7 @@
 
         <div class="doctor-card card-hover" data-sector="Rheumatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Rheumatology/Dr.%20M.%20Saravana%20Kumar%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Clinical%20Immunology%20%26%20Rheumatology).jpg" alt="Dr. M. Saravana Kumar - Rheumatology & Autoimmune" decoding="async">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20M.%20Saravana%20Kumar%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Clinical%20Immunology%20%26%20Rheumatology).jpg" alt="Dr. M. Saravana Kumar - Rheumatology & Autoimmune" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Rheumatology & Autoimmune</span>
               <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
@@ -2882,7 +2891,7 @@
 
         <div class="doctor-card card-hover" data-sector="Rheumatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Rheumatology/Dr.%20Nikhila%20G.%20S%20%E2%80%93%20MBBS%2C%20MD%2C%20DM.jpg" alt="Dr. Nikhila G. S - Rheumatology & Autoimmune" decoding="async">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20Nikhila%20G.%20S%20%E2%80%93%20MBBS%2C%20MD%2C%20DM.jpg" alt="Dr. Nikhila G. S - Rheumatology & Autoimmune" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Rheumatology & Autoimmune</span>
               <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
@@ -2902,7 +2911,7 @@
 
         <div class="doctor-card card-hover" data-sector="Rheumatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Rheumatology/Dr.%20S.%20Sham%20%E2%80%93%20MD%20(General%20Medicine)%2C%20DM%20(Rheumatology)%2C%20MRCP%20(UK)%2C%20FRCP%20(Edinburgh)%2C%20SCE%20(RCP%20UK)%2C%20European%20Certificate%20of%20Rheumatology.jpg" alt="Dr. S. Sham - Rheumatology & Autoimmune" decoding="async">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20S.%20Sham%20%E2%80%93%20MD%20(General%20Medicine)%2C%20DM%20(Rheumatology)%2C%20MRCP%20(UK)%2C%20FRCP%20(Edinburgh)%2C%20SCE%20(RCP%20UK)%2C%20European%20Certificate%20of%20Rheumatology.jpg" alt="Dr. S. Sham - Rheumatology & Autoimmune" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Rheumatology & Autoimmune</span>
               <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
@@ -2922,7 +2931,7 @@
 
         <div class="doctor-card card-hover" data-sector="Rheumatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Rheumatology/Dr.%20S.%20Vidya%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Rheumatology).jpg" alt="Dr. S. Vidya - Rheumatology & Autoimmune" decoding="async">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20S.%20Vidya%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Rheumatology).jpg" alt="Dr. S. Vidya - Rheumatology & Autoimmune" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Rheumatology & Autoimmune</span>
               <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
@@ -2942,7 +2951,7 @@
 
         <div class="doctor-card card-hover" data-sector="Rheumatology">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Rheumatology/Dr.%20Sri%20Lakshmi%20S%20%E2%80%93%20MBBS%2C%20MD%2C%20MRCP%20(UK)%2C%20DM%20(Clinical%20Immunology%20and%20Rheumatology).jpg" alt="Dr. Sri Lakshmi S - Rheumatology & Autoimmune" decoding="async">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20Sri%20Lakshmi%20S%20%E2%80%93%20MBBS%2C%20MD%2C%20MRCP%20(UK)%2C%20DM%20(Clinical%20Immunology%20and%20Rheumatology).jpg" alt="Dr. Sri Lakshmi S - Rheumatology & Autoimmune" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Rheumatology & Autoimmune</span>
               <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
@@ -2962,7 +2971,7 @@
 
         <div class="doctor-card card-hover" data-sector="Spine Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Spine%20Surgery/Dr.%20G.%20Balamurali%20%E2%80%93%20MBBS%2C%20MRCS%20(Edinburgh)%2C%20MD%20(UK)%2C%20FRCS%20(Surgical%20Neurology)%2C%20Fellowship%20in%20Minimally%20Invasive%20Spine%20Surgery%20(UK%2C%20USA%2C%20Switzerland)%2C%20Fellowship%20in%20Complex%20Spine%20Surgery%20(UK%2C%20Switzerland).jpg" alt="Dr. G. Balamurali - Spine & Neuro Surgery" decoding="async">
+            <img src="../assets/images/doctor/Spine%20Surgery/Dr.%20G.%20Balamurali%20%E2%80%93%20MBBS%2C%20MRCS%20(Edinburgh)%2C%20MD%20(UK)%2C%20FRCS%20(Surgical%20Neurology)%2C%20Fellowship%20in%20Minimally%20Invasive%20Spine%20Surgery%20(UK%2C%20USA%2C%20Switzerland)%2C%20Fellowship%20in%20Complex%20Spine%20Surgery%20(UK%2C%20Switzerland).jpg" alt="Dr. G. Balamurali - Spine & Neuro Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Spine & Neuro Surgery</span>
               <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
@@ -2982,7 +2991,7 @@
 
         <div class="doctor-card card-hover" data-sector="Spine Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Spine%20Surgery/Dr.%20P.%20Keerthivasan%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20DNB%20(Orthopaedics)%2C%20Postdoctoral%20Fellowship%20in%20Spine%20Surgery.jpg" alt="Dr. P. Keerthivasan - Spine & Neuro Surgery" decoding="async">
+            <img src="../assets/images/doctor/Spine%20Surgery/Dr.%20P.%20Keerthivasan%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20DNB%20(Orthopaedics)%2C%20Postdoctoral%20Fellowship%20in%20Spine%20Surgery.jpg" alt="Dr. P. Keerthivasan - Spine & Neuro Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Spine & Neuro Surgery</span>
               <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
@@ -3002,7 +3011,7 @@
 
         <div class="doctor-card card-hover" data-sector="Vascular Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Vascular%20Surgery/Dr.%20Jan%20Sujith%20%E2%80%93%20MBBS%2C%20MS%2C%20MCh%20(Vascular%20Surgery).jpg" alt="Dr. Jan Sujith - Vascular & Endovascular Surgery" decoding="async">
+            <img src="../assets/images/doctor/Vascular%20Surgery/Dr.%20Jan%20Sujith%20%E2%80%93%20MBBS%2C%20MS%2C%20MCh%20(Vascular%20Surgery).jpg" alt="Dr. Jan Sujith - Vascular & Endovascular Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Vascular & Endovascular Surgery</span>
               <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
@@ -3022,7 +3031,7 @@
 
         <div class="doctor-card card-hover" data-sector="Vascular Surgery">
           <div class="doctor-img-wrap">
-            <img src="../assets/images/doctor/Vascular%20Surgery/Dr.%20N.%20Sekar%20%E2%80%93%20MBBS%2C%20MS%20(Surgery)%2C%20MNAMS%2C%20MCh%20(Vascular%20Surgery)%2C%20FICS%2C%20D.Sc.%2C%20FRCS%20(Glasgow).jpg" alt="Dr. N. Sekar - Vascular & Endovascular Surgery" decoding="async">
+            <img src="../assets/images/doctor/Vascular%20Surgery/Dr.%20N.%20Sekar%20%E2%80%93%20MBBS%2C%20MS%20(Surgery)%2C%20MNAMS%2C%20MCh%20(Vascular%20Surgery)%2C%20FICS%2C%20D.Sc.%2C%20FRCS%20(Glasgow).jpg" alt="Dr. N. Sekar - Vascular & Endovascular Surgery" decoding="async" loading="lazy">
             <div class="doc-sector-badge">
               <span class="lang-en">Vascular & Endovascular Surgery</span>
               <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
