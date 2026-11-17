@@ -54,17 +54,6 @@
   </script>
   <script src="./js/language-switch.min.js" defer></script>
   <style>
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
 
     body {
       background: var(--white);
@@ -85,15 +74,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: transparent !important;
-    }
-    .treatment-hero .container {
-      width: 100% !important;
-      max-width: 1280px;
-      margin: 0 auto;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 3;
+      background: #121417 url("videos/medical-poster.webp") center/cover no-repeat !important;
     }
     .video-background {
       position: absolute;
@@ -106,14 +87,14 @@
       height: 100%;
       z-index: 1;
       overflow: hidden;
+      background: #121417 url("videos/medical-poster.webp") center/cover no-repeat;
     }
     .video-background video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0;
+      opacity: 1;
       filter: saturate(0.95) contrast(1.05);
-      transition: opacity 0.8s ease;
     }
     .video-background video.is-loaded {
       opacity: 1;
@@ -292,7 +273,7 @@
   <!-- Treatment Hero Section -->
   <section class="treatment-hero cardiac">
     <div class="video-background">
-      <video autoplay muted loop playsinline preload="metadata" id="heroVideo" data-video-file="medical.mp4">
+      <video autoplay muted loop playsinline preload="auto" id="heroVideo" data-video-file="medical.mp4" poster="videos/medical-poster.webp">
         <source src="videos/medical.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>

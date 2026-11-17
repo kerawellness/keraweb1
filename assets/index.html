@@ -56,17 +56,6 @@
       object-fit: cover;
       filter: saturate(0.95) contrast(1.05);
     }
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
   </style>
 </head>
 
@@ -125,8 +114,8 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="video-background">
-      <video autoplay muted loop playsinline preload="auto" id="heroVideo">
-        <source src="/assets/videos/homepage.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="auto" id="heroVideo" poster="videos/homepage-poster.webp">
+        <source src="videos/homepage.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
     </div>

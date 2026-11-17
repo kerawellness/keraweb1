@@ -63,7 +63,6 @@ function setupHeroVideos() {
   }
 
   heroVideos.forEach((video) => {
-    // Ensure all critical mobile autoplay attributes are set in code
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
@@ -87,50 +86,28 @@ function setupHeroVideos() {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch((err) => {
-          console.log("Autoplay blocked. Registering interaction trigger.", err);
+          console.log('Autoplay paused by browser policy. Registering interaction trigger.', err);
           const playOnInteraction = () => {
             const innerPromise = video.play();
             if (innerPromise !== undefined) {
               innerPromise.catch(() => {});
             }
-            document.removeEventListener("click", playOnInteraction);
-            document.removeEventListener("touchstart", playOnInteraction);
+            window.removeEventListener('click', playOnInteraction);
+            window.removeEventListener('touchstart', playOnInteraction);
+            window.removeEventListener('scroll', playOnInteraction);
           };
-          document.addEventListener("click", playOnInteraction);
-          document.addEventListener("touchstart", playOnInteraction);
+          window.addEventListener('click', playOnInteraction, { passive: true, once: true });
+          window.addEventListener('touchstart', playOnInteraction, { passive: true, once: true });
+          window.addEventListener('scroll', playOnInteraction, { passive: true, once: true });
         });
-      } else {
-        const playOnInteraction = () => {
-          video.play();
-          document.removeEventListener("click", playOnInteraction);
-          document.removeEventListener("touchstart", playOnInteraction);
-        };
-        document.addEventListener("click", playOnInteraction);
-        document.addEventListener("touchstart", playOnInteraction);
       }
     };
 
-    // If readyState is already loaded enough (HAVE_CURRENT_DATA or higher)
-    if (video.readyState >= 2) {
-      markLoaded();
-      return;
-    }
+    markLoaded();
 
-    // Set event listeners for standard loading/playability events
     video.addEventListener('loadeddata', markLoaded, { once: true });
     video.addEventListener('canplay', markLoaded, { once: true });
 
-    // Explicitly try playing to kickstart loading/playback on some mobile browsers
-    const initialPlayPromise = video.play();
-    if (initialPlayPromise !== undefined) {
-      initialPlayPromise.then(() => {
-        markLoaded();
-      }).catch(() => {
-        // Handled in markLoaded fallback if it fails
-      });
-    }
-
-    // Fallback load mechanism: if it fails to load natively after 2 seconds
     let fallbackTriggered = false;
     const triggerFallback = () => {
       if (fallbackTriggered) return;
@@ -156,7 +133,6 @@ function setupHeroVideos() {
         const nextSrc = candidates[attempt];
         attempt += 1;
 
-        // Changing video.src directly is much more reliable on mobile Safari than changing <source>
         if (nextSrc !== markupSrc) {
           video.src = nextSrc;
         } else {
@@ -170,7 +146,7 @@ function setupHeroVideos() {
           playPromise.then(() => {
             markLoaded();
           }).catch((err) => {
-            console.log("Fallback source failed to play:", nextSrc, err);
+            console.log('Fallback source failed to play:', nextSrc, err);
             tryNextSource();
           });
         } else {
@@ -181,20 +157,12 @@ function setupHeroVideos() {
       tryNextSource();
     };
 
-    // If there is an error event on the main source
     const sourceEl = video.querySelector('source');
     if (sourceEl) {
       sourceEl.addEventListener('error', () => {
         triggerFallback();
       });
     }
-
-    // Fallback if the video doesn't play or load within 2 seconds
-    setTimeout(() => {
-      if (!video.classList.contains('is-loaded')) {
-        triggerFallback();
-      }
-    }, 2000);
   });
 }
 

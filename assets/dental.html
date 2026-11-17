@@ -53,17 +53,51 @@
   </script>
   <script src="./js/language-switch.min.js" defer></script>
   <style>
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
+    /* Dental Page: Increased Doctor Photo Card Length & Aspect Ratio */
+    #specialists .doctor-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
       overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
     }
+
+    #specialists .doctor-img-wrap {
+      width: 100% !important;
+      height: 340px !important;
+      min-height: 320px !important;
+      max-height: 380px !important;
+      aspect-ratio: 3 / 3.8 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      background: #f5f5f3 !important;
+    }
+
+    #specialists .doctor-img-wrap img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: top center !important;
+      display: block !important;
+    }
+
+    @media (max-width: 767px) {
+      #specialists .doctor-scroll-container .doctor-card {
+        flex: 0 0 280px !important;
+        width: 280px !important;
+        max-width: 280px !important;
+      }
+
+      #specialists .doctor-img-wrap {
+        height: 320px !important;
+        min-height: 300px !important;
+        max-height: 350px !important;
+        aspect-ratio: 3 / 3.8 !important;
+      }
+    }
+
 
     body {
       background: var(--white);
@@ -84,7 +118,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: transparent !important;
+      background: #121417 url("videos/dental-poster.webp") center/cover no-repeat !important;
     }
     .treatment-hero .container {
       width: 100% !important;
@@ -105,14 +139,14 @@
       height: 100%;
       z-index: 1;
       overflow: hidden;
+      background: #121417 url("videos/dental-poster.webp") center/cover no-repeat;
     }
     .video-background video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0;
+      opacity: 1;
       filter: saturate(0.95) contrast(1.05);
-      transition: opacity 0.8s ease;
     }
     .video-background video.is-loaded {
       opacity: 1;
@@ -283,7 +317,7 @@
   <!-- Treatment Hero Section -->
   <section class="treatment-hero dental">
     <div class="video-background">
-      <video autoplay muted loop playsinline preload="metadata" id="heroVideo" data-video-file="dental.mp4">
+      <video autoplay muted loop playsinline preload="auto" id="heroVideo" data-video-file="dental.mp4" poster="videos/dental-poster.webp">
         <source src="videos/dental.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
