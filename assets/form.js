@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const qtyInput = document.getElementById('quantity');
       const updateResults = () => {
         const curr = getCurrency();
-        const qty = parseInt(qtyInput.value) || 1;
+        const qty = Number.parseInt(qtyInput.value, 10) || 1;
         const homePrice = Math.round(data.dubai * qty * curr.mult);
         const indiaPrice = Math.round(data.india * qty * curr.mult);
         const save = homePrice - indiaPrice;
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let emailVal = '';
       if (emailInput) {
         emailVal = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[^\s@]+@[^@\s.]+\.[^@\s.]+$/;
         if (!emailRegex.test(emailVal)) {
           const lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
           const errorMsg = lang === 'ar' ? 

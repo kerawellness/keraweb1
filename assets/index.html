@@ -56,6 +56,17 @@
       object-fit: cover;
       filter: saturate(0.95) contrast(1.05);
     }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 
@@ -75,8 +86,10 @@
       <h3>Instant VIP Callback</h3>
       <p>Enter your details below. A dedicated healthcare coordinator will call you back on WhatsApp within 15 minutes.</p>
       <form id="modalCallbackForm">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="tel" name="phone" placeholder="WhatsApp Number (e.g. +971...)" required>
+        <label for="cbModalName" class="visually-hidden">Your Name</label>
+        <input type="text" id="cbModalName" name="name" placeholder="Your Name" required>
+        <label for="cbModalPhone" class="visually-hidden">WhatsApp Number</label>
+        <input type="tel" id="cbModalPhone" name="phone" placeholder="WhatsApp Number (e.g. +971...)" required>
         <button type="submit" class="btn btn-primary" style="width: 100%;">Request Callback Now</button>
       </form>
       <div id="modalSuccess" style="display: none; color: #16a34a; margin-top: 15px; font-weight: 700;">
@@ -112,7 +125,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="video-background">
-      <video autoplay muted loop playsinline preload="auto" id="heroVideo" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="auto" id="heroVideo">
         <source src="/assets/videos/homepage.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
@@ -124,8 +137,10 @@
         <p>Expert doctors, JCI-accredited hospitals, and complete travel concierge for international patients. Receive a verified, transparent treatment plan and comprehensive pricing before you travel.</p>
         
         <form id="heroLeadForm" class="hero-form">
-          <input type="text" name="name" placeholder="Your Full Name" required>
-          <input type="tel" name="whatsapp" placeholder="WhatsApp Number" required>
+          <label for="heroLeadName" class="visually-hidden">Your Full Name</label>
+          <input type="text" id="heroLeadName" name="name" placeholder="Your Full Name" required>
+          <label for="heroLeadWhatsapp" class="visually-hidden">WhatsApp Number</label>
+          <input type="tel" id="heroLeadWhatsapp" name="whatsapp" placeholder="WhatsApp Number" required>
           <button type="submit" class="btn btn-primary">Get My Free Plan</button>
         </form>
 

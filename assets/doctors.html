@@ -30,7 +30,7 @@
     window.addEventListener('error', function(e) {
       if (e.target && e.target.tagName === 'IMG' && e.target.closest('.doctor-img-wrap')) {
         var img = e.target;
-        var count = parseInt(img.dataset.fallbackCount || '0', 10);
+        var count = Number.parseInt(img.dataset.fallbackCount || '0', 10);
         var raw = img.getAttribute('src') || '';
         var clean = raw.replace(/^(\.\.\/assets\/|\/assets\/|\.\/assets\/|\.\/)/, '');
         if (count === 0) {
@@ -3162,7 +3162,7 @@
             if (!img.getAttribute('data-fallback-attached')) {
               img.setAttribute('data-fallback-attached', '1');
               img.addEventListener('error', function() {
-                const count = parseInt(this.dataset.fallbackCount || '0', 10);
+                const count = Number.parseInt(this.dataset.fallbackCount || '0', 10);
                 const raw = this.getAttribute('src') || '';
                 const clean = raw.replace(/^(\.\.\/assets\/|\/assets\/|\.\/assets\/|\.\/)/, '');
                 if (count === 0) {

@@ -57,6 +57,18 @@
   </script>
   <script src="./assets/js/language-switch.min.js" defer></script>
   <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* Styling adjustments specifically for the Black, Gold and White Luxury look */
     html, body {
       overflow-x: hidden;
@@ -264,9 +276,12 @@
       <p class="lang-en">Enter your details below. A dedicated healthcare coordinator will call you back on WhatsApp within 15 minutes.</p>
       <p class="lang-ar">أدخل بياناتك أدناه. سيتصل بك منسق رعاية صحية مخصص على واتساب في غضون 15 دقيقة.</p>
       <form id="modalCallbackForm">
-        <input type="text" name="name" class="lang-en" placeholder="Your Name" required>
-        <input type="text" name="name_ar" class="lang-ar" placeholder="الاسم الكامل" required>
-        <input type="tel" name="phone" placeholder="WhatsApp (e.g. +971...)" required>
+        <label for="cbHomeName" class="visually-hidden lang-en">Your Name</label>
+        <input type="text" id="cbHomeName" name="name" class="lang-en" placeholder="Your Name" required>
+        <label for="cbHomeNameAr" class="visually-hidden lang-ar">الاسم الكامل</label>
+        <input type="text" id="cbHomeNameAr" name="name_ar" class="lang-ar" placeholder="الاسم الكامل" required>
+        <label for="cbHomePhone" class="visually-hidden">WhatsApp Phone</label>
+        <input type="tel" id="cbHomePhone" name="phone" placeholder="WhatsApp (e.g. +971...)" required>
         <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--black); color: var(--gold); border-color: var(--black);">
           <span class="lang-en">Request Callback Now</span>
           <span class="lang-ar">طلب اتصال الآن</span>
@@ -280,8 +295,8 @@
   </div>
 
   <!-- Patient Review Modal -->
-  <div class="review-modal" id="reviewModal" onclick="closeReviewModal(event)">
-    <div class="review-modal-content" onclick="event.stopPropagation()">
+  <div class="review-modal" id="reviewModal">
+    <div class="review-modal-content">
       <button type="button" class="review-modal-close" onclick="closeReviewModal()" aria-label="Close review">&times;</button>
       <div class="review-modal-header">
         <div class="review-modal-avatar" id="modalAvatar">M</div>
@@ -407,7 +422,7 @@
 
       <div class="treatment-selector-container" data-reveal>
         <!-- Dental Selector Card -->
-        <div class="selector-card" id="dentalCard" onclick="toggleSelector('dental')">
+        <div role="button" tabindex="0" class="selector-card" id="dentalCard" onclick="toggleSelector('dental')" onkeydown="if(event.key==='Enter'||event.key===' ')toggleSelector('dental')">
           <h3>
             <span class="lang-en">🦷 Dental Treatments</span>
             <span class="lang-ar">🦷 علاجات الأسنان</span>
@@ -417,7 +432,7 @@
         </div>
 
         <!-- Medical Selector Card -->
-        <div class="selector-card" id="medicalCard" onclick="toggleSelector('medical')">
+        <div role="button" tabindex="0" class="selector-card" id="medicalCard" onclick="toggleSelector('medical')" onkeydown="if(event.key==='Enter'||event.key===' ')toggleSelector('medical')">
           <h3>
             <span class="lang-en">❤️ Medical Treatments</span>
             <span class="lang-ar">❤️ العلاجات الطبية</span>
@@ -565,10 +580,8 @@
         <div class="calc-field-group">
           <!-- Step 2: Select Treatment Dropdown -->
           <div class="calc-field-item">
-            <label>
-              <span class="lang-en">Select Treatment</span>
-              <span class="lang-ar">اختر العلاج</span>
-            </label>
+            <label for="calcTreatment" class="lang-en">Select Treatment</label>
+            <label for="calcTreatmentAr" class="lang-ar">اختر العلاج</label>
             <select id="calcTreatment" class="lang-en" onchange="runCalculation()">
               <!-- Populated dynamically by JS -->
             </select>
@@ -578,10 +591,8 @@
           </div>
           
           <div class="calc-field-item">
-            <label>
-              <span class="lang-en">Country (From)</span>
-              <span class="lang-ar">بلد الإقامة</span>
-            </label>
+            <label for="calcCountry" class="lang-en">Country (From)</label>
+            <label for="calcCountryAr" class="lang-ar">بلد الإقامة</label>
             <select id="calcCountry" class="lang-en" onchange="runCalculation()">
               <option value="US" selected>United States</option>
               <option value="UK">United Kingdom</option>
@@ -602,7 +613,7 @@
           
           <!-- Step 3: Dynamic Quantity ( Medically Relevant Options ) -->
           <div class="calc-field-item calc-qty-wrapper" id="calcQtyWrapper">
-            <label id="calcQtyLabel">
+            <label id="calcQtyLabel" for="calcQtySelect">
               <span class="lang-en">Quantity</span>
               <span class="lang-ar">الكمية</span>
             </label>
@@ -1436,13 +1447,13 @@
       </div>
       
       <div class="gallery-grid" data-reveal>
-        <div class="gallery-item card-hover" onclick="openGalleryModal(0)">
+        <div role="button" tabindex="0" class="gallery-item card-hover" onclick="openGalleryModal(0)" onkeydown="if(event.key==='Enter'||event.key===' ')openGalleryModal(0)">
           <img src="./assets/images/WhatsApp Image 2026-06-04 at 10.51.21 AM.jpeg" alt="Premium Clinical Facility 1" loading="lazy">
         </div>
-        <div class="gallery-item card-hover" onclick="openGalleryModal(1)">
+        <div role="button" tabindex="0" class="gallery-item card-hover" onclick="openGalleryModal(1)" onkeydown="if(event.key==='Enter'||event.key===' ')openGalleryModal(1)">
           <img src="./assets/images/WhatsApp Image 2026-06-04 at 10.51.23 AM.jpeg" alt="Premium Clinical Facility 2" loading="lazy">
         </div>
-        <div class="gallery-item card-hover" onclick="openGalleryModal(2)">
+        <div role="button" tabindex="0" class="gallery-item card-hover" onclick="openGalleryModal(2)" onkeydown="if(event.key==='Enter'||event.key===' ')openGalleryModal(2)">
           <img src="./assets/images/WhatsApp Image 2026-06-04 at 10.51.24 AM (1).jpeg" alt="Premium Clinical Facility 3" loading="lazy">
         </div>
       </div>
@@ -1457,7 +1468,7 @@
     </div>
 
     <!-- Gallery Lightbox Modal -->
-    <div class="gallery-lightbox" id="galleryLightbox" style="display: none;" onclick="if(event.target === this) closeGalleryModal();">
+    <div class="gallery-lightbox" id="galleryLightbox" style="display: none;">
       <button class="lightbox-close" onclick="closeGalleryModal()" aria-label="Close Gallery">&times;</button>
       <button class="lightbox-prev" onclick="prevLightboxImage()">&#10094;</button>
       <div class="lightbox-content">
@@ -1935,7 +1946,7 @@
         }
       }
       
-      const qty = treatment.qtyType === "none" ? 1 : (parseInt(document.getElementById("calcQtySelect").value) || 1);
+      const qty = treatment.qtyType === "none" ? 1 : (Number.parseInt(document.getElementById("calcQtySelect").value, 10) || 1);
       
       const countryId = isAr ? "calcCountryAr" : "calcCountry";
       const countryCode = (document.getElementById(countryId) && document.getElementById(countryId).value) || (isAr ? "AE" : "US");
@@ -2040,6 +2051,8 @@
 
     window.openReviewModal = openReviewModal;
     window.closeReviewModal = closeReviewModal;
+    const revModal = document.getElementById("reviewModal");
+    if (revModal) revModal.addEventListener("click", closeReviewModal);
 
     // Patient Video Testimonials single-play coordination
     document.querySelectorAll('.patient-video-wrapper video').forEach(v => {

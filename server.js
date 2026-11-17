@@ -23,27 +23,14 @@ function buildDriveImageUrl(fileId) {
 let cachedAuth = null;
 let cachedSheets = null;
 
-const fallbackCredentials = {
-  type: "service_account",
-  project_id: "kera-501215",
-  private_key_id: "9e5da8c778c2a541b9acab16e8a719a633477055",
-  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDYdScIi0cBXMeC\npCLr93pVQfXj2qpDGD1SguQ0syrFytnZdWgFiZ8q+L8BuEBQPKkpSuMYp/uv3UJY\ny3pZGlGKsUo+4nj2vf58TzJjeyeNDEPUdPnXeIbLL476TzbzhqgOr//Bzeeh7HWZ\n4HTUcni/P7lyQj3or+zZiY5oc+knGp2TeMUivPz851JUMup7em6nFer6DpJzNCMu\nJ6iYIG0YPu34P3YkngFicWEK39WynqBt4hR3qFiUHGveAMoaw5U7FRl42rcryYKD\n5XiMrHU6v4oF8eYU9mqNzPzAxcvOt8nth8m1FL+vnnElitTw6gDTp0xJnNL1oXc/\nPtnKHj2DAgMBAAECggEAGaQ7JQB2v1sRyVCPUHunEr13FvBa1grjjMgzp2iICxk+\nGEwXr/w/DjScT+RXPgoJkfosj8mqf4lK6EDmc/KxsSfSX0Otx7D3Ghu5oN5Ab62B\nxYO76wH8mco++jjzDgMoGmFP/1HYfC6KOdnEjTwoQKOYYMgnFE7u1FA+vfHpLzf4\np5OfwR/BFYOrRLLPeecBCj4gTNpKWiXX44kBg8uIAzBEeej5SOb1iFbo/RxyNVoh\nnvTwra968nvakF/GmWcqp5oCQQ7XGpQBdQoLnp6HsJ3+xD4QO2L9Iu1OwVn6t+Hj\n8PVlWxQcWZo86kbzMfUlGJ3JIZjsyiKNlNoOwEl5bQKBgQDtg0vbQfGsIhN+hc+I\nKBRM/ePfWf9dD6JTbZ53nD4/JxG4iRDDZmxO6o4QSR7ft+0Oaxam5SAtvNnXFSA+\nJakxe4SklOIOSfq1Kjti4E9AU6T43TFk/EQI4IfdnKAcRV5nmUmYiqtGm+kRudGg\nL0hGisxHAx9y412FKT3LCVDGbQKBgQDpTk6rO/gjY+ECCpCNx5HkFrt7qGpgjhWL\ncuI4wYyunnumf8U4yifsGTPg7AvNm7cHUOCCzdT2GUx42PUoJzuHBcMkxqdSbL5c\n8AeL6mKBYgtWJJYVQQSJnLO2kqNZtScSAeTJdfEiOxPYUo039T4b5d55jGT+fzPy\nGwc4dHVdrwKBgQCyk+Rl/2fwz1Iu7/cA3XmeBcreNPGOi+G1rpbWQdB/dSWaxNuo\nvwqyLyMPVZr0BHslOxk19NJD8VksoQK0F2bmAIPTpulsau0oZ49tIVAVAo7oWo73\n6cBRmFgvJMMxXmrDo/o0yhZLKZCMtlTJhqNl/pfm0I9Ft3OqWj7OuLtV5QKBgQDe\nlVwOl+cz9G1OIkApU9ZHUrzJzDK5LbU2VoOnfFi4m/ECN3I0rQGLibvqAal9Hutu\nqmWXxcJAjIBd5zd1eICdYAz+gBxQUfkH9+RrQ1F5eM2yALPDUUV/+KWoMJxx0JeW\n4YGiBsjoTI6xWojqcyovOY6YTi5oc3leqRSpcsoqdwKBgA3JorYAUL1OKYf9Xihp\nuR+FUrj+M2YT6NA2tQ6LfK8uSV54dt38E/6pSc9np5Rjjh0wiBeJXUCli1SBikLG\ngd8wVrn4Fwd82oyM+MxGEg4iG1WexcXCVCTC+dLcVOvfHWiSx5cts/D6lWrUNawN\nW/O751fa94m+t4JVL93LUy/A\n-----END PRIVATE KEY-----\n",
-  client_email: "sheets-api-user@kera-501215.iam.gserviceaccount.com",
-  client_id: "115696127178775427928",
-  auth_uri: "https://accounts.google.com/o/oauth2/auth",
-  token_uri: "https://oauth2.googleapis.com/token",
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/sheets-api-user%40kera-501215.iam.gserviceaccount.com",
-  universe_domain: "googleapis.com"
-};
-
 const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '1REDw-JvWGkKQJ2KhNyiUZLnYQlhvNuzDf6QoEizqnYU';
 const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbw2aE4KIel66xfARsNRfRu5KUYQE5FpaaG8e6G1b8YUl8Rc_DAOr-Ga12LUQNyG_93U/exec';
 const GOOGLE_DRIVE_FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID || '1wTILjOi4GMxrQKlrw3mhUpaVg_P8kscg';
 
 function getGoogleAuth() {
   if (cachedAuth) return cachedAuth;
-  const credentials = process.env.GOOGLE_CREDENTIALS ? JSON.parse(process.env.GOOGLE_CREDENTIALS) : fallbackCredentials;
+  if (!process.env.GOOGLE_CREDENTIALS) { throw new Error('GOOGLE_CREDENTIALS environment variable is not defined.'); }
+  const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
   cachedAuth = new google.auth.GoogleAuth({
     credentials,
     scopes: [
