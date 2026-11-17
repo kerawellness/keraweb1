@@ -199,9 +199,78 @@ function setupHeroVideos() {
 }
 
 // On DOM load, apply preferred language and setup responsive events
+
+function updateActiveNavLink() {
+  const navLinks = document.querySelectorAll('.nav-links a:not(.lang-btn)');
+  if (!navLinks.length) return;
+
+  let activeTarget = null;
+
+  // Check if page has scrollable sections that should highlight when in view
+  const sectionsToCheck = ['testimonials', 'journey'];
+  for (const id of sectionsToCheck) {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 200 && rect.bottom >= 120) {
+        activeTarget = id;
+        break;
+      }
+    }
+  }
+
+  // Check if user scrolled to bottom of page
+  if (!activeTarget && (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+    if (document.getElementById('testimonials')) {
+      activeTarget = 'testimonials';
+    }
+  }
+
+  // Fallback to current page
+  if (!activeTarget) {
+    const pathname = (window.location.pathname || '').replace(/\\/g, '/').toLowerCase();
+    if (pathname.includes('dental')) {
+      activeTarget = 'dental';
+    } else if (pathname.includes('medical')) {
+      activeTarget = 'medical';
+    } else if (pathname.includes('doctors')) {
+      activeTarget = 'doctors';
+    } else {
+      activeTarget = 'home';
+    }
+  }
+
+  function matchLinkTarget(link, target) {
+    const href = (link.getAttribute('href') || '').toLowerCase();
+    if (target === 'testimonials') return href.includes('#testimonials');
+    if (target === 'journey') return href.includes('#journey');
+    if (target === 'dental') return href.includes('dental.html') && !href.includes('#');
+    if (target === 'medical') return href.includes('medical.html') && !href.includes('#');
+    if (target === 'doctors') return href.includes('doctors.html') && !href.includes('#');
+    if (target === 'home') {
+      return (href.endsWith('index.html') || href === '/' || href === './' || href === '../index.html') && !href.includes('#');
+    }
+    return false;
+  }
+
+  navLinks.forEach(link => {
+    if (matchLinkTarget(link, activeTarget)) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+window.updateActiveNavLink = updateActiveNavLink;
+
 document.addEventListener('DOMContentLoaded', () => {
   const preferredLang = localStorage.getItem('preferred_language') || 'en';
   setLanguage(preferredLang);
+  updateActiveNavLink();
+  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  window.addEventListener('resize', updateActiveNavLink, { passive: true });
+  window.addEventListener('languageChanged', updateActiveNavLink);
   setupHeroVideos();
   bindConsultationCTAs();
 

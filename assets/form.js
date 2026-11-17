@@ -160,11 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
       selectCountry: 'Select Country',
       dentalCare: 'Dental Care',
       medicalCare: 'Medical Care',
-      dubaiCost: 'Dubai Cost',
-      indiaCost: 'India Cost',
+      dubaiCost: 'Home Clinic Cost',
+      indiaCost: 'India Package Cost',
       estimatedSavings: 'Estimated Savings',
-      dubaiCostLabel: 'Average Dubai Cost',
-      indiaCostLabel: 'Average India Cost',
+      dubaiCostLabel: 'Average Home Clinic Cost',
+      indiaCostLabel: 'Average India Package Cost',
       qtyLabel: {
         'Dental Implants': 'Number of Implants',
         'Full Mouth Rehabilitation': 'Number of Teeth',
@@ -207,11 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
       selectCountry: 'اختر الدولة',
       dentalCare: 'رعاية الأسنان',
       medicalCare: 'الرعاية الطبية',
-      dubaiCost: 'التكلفة في دبي',
-      indiaCost: 'التكلفة في الهند',
+      dubaiCost: 'تكلفة العيادات المحلية',
+      indiaCost: 'تكلفة باقة الهند',
       estimatedSavings: 'التوفير التقديري',
-      dubaiCostLabel: 'متوسط التكلفة في دبي',
-      indiaCostLabel: 'متوسط التكلفة في الهند',
+      dubaiCostLabel: 'متوسط التكلفة المحلية',
+      indiaCostLabel: 'متوسط تكلفة باقة الهند',
       qtyLabel: {
         'Dental Implants': 'عدد الغرسات',
         'Full Mouth Rehabilitation': 'عدد الأسنان',
@@ -281,15 +281,33 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
+      const getCurrency = () => {
+        const countrySelect = document.getElementById('country');
+        const cCode = countrySelect ? countrySelect.value : '';
+        if (['AE', 'SA', 'QA', 'OM', 'KW', 'BH'].includes(cCode)) {
+          return { symbol: 'AED ', mult: 1 };
+        } else if (cCode === 'GB') {
+          return { symbol: '£', mult: 0.21 };
+        } else if (cCode === 'AU') {
+          return { symbol: 'A$', mult: 0.41 };
+        } else if (cCode === 'CA') {
+          return { symbol: 'C$', mult: 0.37 };
+        } else if (['FR', 'DE', 'IT', 'ES', 'NL', 'SE', 'NO', 'CH'].includes(cCode)) {
+          return { symbol: '€', mult: 0.25 };
+        }
+        return { symbol: '$', mult: 0.27 }; // Default USD for US and international
+      };
+
       const qtyInput = document.getElementById('quantity');
       const updateResults = () => {
+        const curr = getCurrency();
         const qty = parseInt(qtyInput.value) || 1;
-        const dubai = data.dubai * qty;
-        const india = data.india * qty;
-        const save = dubai - india;
-        document.getElementById('dubaiCost').textContent = `AED ${dubai.toLocaleString()}`;
-        document.getElementById('indiaCost').textContent = `AED ${india.toLocaleString()}`;
-        document.getElementById('savings').textContent = `AED ${save.toLocaleString()}`;
+        const homePrice = Math.round(data.dubai * qty * curr.mult);
+        const indiaPrice = Math.round(data.india * qty * curr.mult);
+        const save = homePrice - indiaPrice;
+        document.getElementById('dubaiCost').textContent = `${curr.symbol}${homePrice.toLocaleString()}`;
+        document.getElementById('indiaCost').textContent = `${curr.symbol}${indiaPrice.toLocaleString()}`;
+        document.getElementById('savings').textContent = `${curr.symbol}${save.toLocaleString()}`;
       };
       qtyInput.addEventListener('input', updateResults);
       updateResults();
@@ -297,13 +315,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = medicalData[treatment];
       if (!data) return;
       
+      const countrySelect = document.getElementById('country');
+      const cCode = countrySelect ? countrySelect.value : '';
+      let curr = { symbol: '$', mult: 0.27 };
+      if (['AE', 'SA', 'QA', 'OM', 'KW', 'BH'].includes(cCode)) {
+        curr = { symbol: 'AED ', mult: 1 };
+      } else if (cCode === 'GB') {
+        curr = { symbol: '£', mult: 0.21 };
+      } else if (cCode === 'AU') {
+        curr = { symbol: 'A$', mult: 0.41 };
+      } else if (cCode === 'CA') {
+        curr = { symbol: 'C$', mult: 0.37 };
+      }
+      
+      const homePrice = Math.round(data.dubai * curr.mult);
+      const indiaPrice = Math.round(data.india * curr.mult);
+      const save = homePrice - indiaPrice;
+
       container.innerHTML = `
         <div class="calc-section">
           <h3 class="calc-title">${t.treatments[treatment] || treatment}</h3>
           <div class="calc-results">
-            <p><span>${t.dubaiCostLabel}:</span> <span id="dubaiCost">AED ${data.dubai.toLocaleString()}</span></p>
-            <p><span>${t.indiaCostLabel}:</span> <span id="indiaCost">AED ${data.india.toLocaleString()}</span></p>
-            <p><span>${t.estimatedSavings}:</span> <span id="savings">AED ${(data.dubai - data.india).toLocaleString()}</span></p>
+            <p><span>${t.dubaiCostLabel}:</span> <span id="dubaiCost">${curr.symbol}${homePrice.toLocaleString()}</span></p>
+            <p><span>${t.indiaCostLabel}:</span> <span id="indiaCost">${curr.symbol}${indiaPrice.toLocaleString()}</span></p>
+            <p><span>${t.estimatedSavings}:</span> <span id="savings">${curr.symbol}${save.toLocaleString()}</span></p>
           </div>
         </div>
       `;
@@ -456,6 +491,11 @@ document.addEventListener('DOMContentLoaded', () => {
         whatsappInputEl.value = config.code;
       }
       whatsappInputEl.placeholder = config.placeholder;
+
+      // Re-render calculator if already open with selected treatment
+      if (categorySelect && treatmentSelect && categorySelect.value && treatmentSelect.value) {
+        renderCalculator(categorySelect.value, treatmentSelect.value);
+      }
     });
   }
 
@@ -575,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
         TreatmentCategory: categorySelect.value,
         TreatmentNeeded: treatmentSelect.value,
         ReportFileURL: reportFileURL,
-        Location: (countryConfig[countryStr] && countryConfig[countryStr].nameEn) ? countryConfig[countryStr].nameEn.split(' (')[0] : 'United Arab Emirates',
+        Location: (countryConfig[countryStr] && countryConfig[countryStr].nameEn) ? countryConfig[countryStr].nameEn.split(' (')[0] : 'International',
         Language: document.getElementById('hiddenLanguage').value,
         LeadSource: document.getElementById('hiddenLeadSource').value,
         Status: document.getElementById('hiddenStatus').value,

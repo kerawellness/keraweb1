@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title class="lang-en">Premium Medical Specialties in India | Save up to 70% | KèRa Wellness</title>
-  <title class="lang-ar">تخصصات طبية متميزة في الهند | وفر حتى 70% | KèRa Wellness</title>
+  <title class="lang-en">World-Class Medical Concierge in India | Save up to 80% | KèRa Wellness</title>
+  <title class="lang-ar">تخصصات طبية عالمية في الهند | وفر حتى 80% | KèRa Wellness</title>
   <meta name="description"
-    content="High-quality cardiology, orthopedics, cancer care, and IVF in India for UAE residents. Accredited JCI partner clinics, US/UK-trained surgeons.">
+    content="High-quality cardiology, orthopedics, cancer care, and IVF in India for international patients. Accredited JCI partner clinics, US/UK-trained surgeons.">
   <link rel="canonical" href="https://kerawellness.in/assets/medical">
 
   <!-- OpenGraph Meta Tags -->
-  <meta property="og:title" content="Premium Medical Specialties in India | Save up to 70% | KèRa Wellness">
-  <meta property="og:description" content="High-quality cardiology, orthopedics, cancer care, and IVF in India for UAE residents. Accredited JCI partner clinics, US/UK-trained surgeons.">
+  <meta property="og:title" content="World-Class Medical Concierge in India | Save up to 80% | KèRa Wellness">
+  <meta property="og:description" content="High-quality cardiology, orthopedics, cancer care, and IVF in India for international patients. Accredited JCI partner clinics, US/UK-trained surgeons.">
   <meta property="og:image" content="https://kerawellness.in/assets/images/og-image.png">
   <meta property="og:url" content="https://kerawellness.in/assets/medical">
   <meta property="og:type" content="website">
@@ -24,11 +24,11 @@
   {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "name": "KèRa Wellness - Medical Specialties",
+    "name": "KèRa Wellness - Medical Concierge",
     "alternateName": "Kera Wellness Medical",
     "url": "https://kerawellness.in/assets/medical",
     "logo": "https://kerawellness.in/assets/images/og-image.png",
-    "description": "High-quality cardiology, orthopedics, cancer care, and IVF in India for UAE residents. Accredited JCI partner clinics, US/UK-trained surgeons.",
+    "description": "High-quality cardiology, orthopedics, cancer care, and IVF in India for international patients. Accredited JCI partner clinics, US/UK-trained surgeons.",
     "telephone": "+91-99411-94191",
     "parentOrganization": {
       "@type": "MedicalBusiness",
@@ -55,6 +55,9 @@
     }
     .treatment-hero {
       position: relative;
+      width: 100% !important;
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
       color: white;
       padding-top: clamp(6.25rem, 12vw, 8.75rem);
       min-height: 70svh;
@@ -63,11 +66,22 @@
       overflow: hidden;
       background: transparent !important;
     }
+    .treatment-hero .container {
+      width: 100% !important;
+      max-width: 1280px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 3;
+    }
     .video-background {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      right: 0;
+      bottom: 0;
+      width: 100% !important;
+      min-width: 100% !important;
       height: 100%;
       z-index: 1;
       overflow: hidden;
@@ -116,6 +130,14 @@
     }
     .benefit-card p {
       color: var(--text-muted);
+    }
+    @media (min-width: 992px) {
+      #specialties .treatment-benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      #specialties .treatment-benefits-grid .benefit-card:last-child {
+        grid-column: 2;
+      }
     }
     .cta {
       background: linear-gradient(to right, rgba(255,255,255,0.92), rgba(255,255,255,0.98)),
@@ -181,6 +203,21 @@
     </div>
   </div>
 
+  <!-- Patient Review Modal -->
+  <div class="review-modal" id="reviewModal" onclick="closeReviewModal(event)">
+    <div class="review-modal-content" onclick="event.stopPropagation()">
+      <button type="button" class="review-modal-close" onclick="closeReviewModal()" aria-label="Close review">&times;</button>
+      <div class="review-modal-header">
+        <div class="review-modal-avatar" id="modalAvatar">M</div>
+        <div class="review-modal-info">
+          <h3 id="modalName">PATIENT NAME</h3>
+          <div class="stars" style="color: var(--gold); font-size: 13px; margin-top: 3px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+      <div class="review-modal-body" id="modalText"></div>
+    </div>
+  </div>
+
   <!-- Persistent Mobile Bottom Sticky CTA -->
   <div class="mobile-sticky-cta">
     <a href="https://wa.me/919941194191" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
@@ -206,10 +243,12 @@
         <a href="../index.html" class="lang-ar">الرئيسية</a>
         <a href="dental.html" class="lang-en">Dental</a>
         <a href="dental.html" class="lang-ar">طب الأسنان</a>
-        <a href="medical.html" class="lang-en">Medical</a>
-        <a href="medical.html" class="lang-ar">الطب العام</a>
+        <a href="medical.html" class="lang-en active">Medical</a>
+        <a href="medical.html" class="lang-ar active">الطب العام</a>
         <a href="../index.html#journey" class="lang-en">Patient Journey</a>
         <a href="../index.html#journey" class="lang-ar">رحلة المريض</a>
+        <a href="doctors.html" class="lang-en">Specialists</a>
+        <a href="doctors.html" class="lang-ar">الأطباء</a>
         <a href="#testimonials" class="lang-en">Success Stories</a>
         <a href="#testimonials" class="lang-ar">قصص النجاح</a>
       </div>
@@ -270,49 +309,203 @@
         <p class="lang-ar">إجراءات طبية وجراحية متطورة على أيدي نخبة من رؤساء الأقسام الجراحية المرموقين.</p>
       </div>
 
-      <div class="treatment-benefits-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <div class="benefit-card card-hover" data-reveal id="cardiology">
+      <div class="treatment-benefits-grid">
+        <a href="doctors.html?sector=Vascular%20Surgery" class="benefit-card card-hover" data-reveal id="cardiology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div style="font-size: 24px; margin-bottom: 8px;">❤️</div>
           <h3 class="lang-en">Cardiology &amp; CABG</h3>
           <h3 class="lang-ar">أمراض وجراحة القلب</h3>
           <p class="lang-en">Heart bypass surgery (CABG), valve replacements, and minimally invasive robotic cardiac procedures.</p>
           <p class="lang-ar">عمليات مجازة الشريان التاجي (CABG)، استبدال صمامات القلب، وإجراءات القلب الروبوتية طفيفة التوغل.</p>
-        </div>
-        <div class="benefit-card card-hover" data-reveal data-reveal-delay="40" id="ortho">
+        </a>
+        <a href="doctors.html?sector=Orthopaedicians" class="benefit-card card-hover" data-reveal data-reveal-delay="40" id="orthopedics" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div style="font-size: 24px; margin-bottom: 8px;">🦴</div>
           <h3 class="lang-en">Orthopedics &amp; Joints</h3>
           <h3 class="lang-ar">جراحة العظام والمفاصل</h3>
-          <p class="lang-en">Robotic-assisted total knee replacements and hip reconstructions with Stryker / Zimmer structures.</p>
-          <p class="lang-ar">عمليات استبدال مفصل الركبة وإعادة بناء الفخذ بمساعدة الروبوت باستخدام تقنيات Stryker و Zimmer.</p>
-        </div>
-        <div class="benefit-card card-hover" data-reveal data-reveal-delay="80" id="oncology">
+          <p class="lang-en">Robotic-assisted total knee replacements, hip reconstructions, and complex sports injury rehabilitations.</p>
+          <p class="lang-ar">عمليات استبدال مفصل الركبة وإعادة بناء الفخذ بمساعدة الروبوت وعلاج الإصابات الرياضية المعقدة.</p>
+        </a>
+        <a href="doctors.html?sector=General%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="80" id="oncology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div style="font-size: 24px; margin-bottom: 8px;">🎗️</div>
           <h3 class="lang-en">Oncology &amp; Cancer Care</h3>
           <h3 class="lang-ar">علاج الأورام والسرطان</h3>
           <p class="lang-en">Advanced chemotherapy, proton beam radiation, immunotherapy, and precision cancer tumor removals.</p>
           <p class="lang-ar">العلاج الكيميائي المتقدم، العلاج الإشعاعي بالبروتونات، العلاج المناعي، واستئصال الأورام بدقة عالية.</p>
-        </div>
-        <div class="benefit-card card-hover" data-reveal data-reveal-delay="120" id="ivf">
+        </a>
+        <a href="doctors.html?sector=Obstetrics%20and%20Gynecology" class="benefit-card card-hover" data-reveal data-reveal-delay="120" id="ivf" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div style="font-size: 24px; margin-bottom: 8px;">🍼</div>
           <h3 class="lang-en">IVF &amp; Fertility Care</h3>
           <h3 class="lang-ar">أطفال الأنابيب وتنشيط الخصوبة</h3>
           <p class="lang-en">Advanced ICSI cycles, embryological blastocyst cultures, and PGS/PGD pre-implantation genetic screening.</p>
           <p class="lang-ar">دورات حقن مجهري (ICSI) متقدمة، زراعة الأجنة بمرحلة الكيسة الأريمية، والفحص الوراثي قبل الانغراس (PGS/PGD).</p>
-        </div>
-        <div class="benefit-card card-hover" data-reveal data-reveal-delay="160" id="neurology">
+        </a>
+        <a href="doctors.html?sector=Spine%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="160" id="neurology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div style="font-size: 24px; margin-bottom: 8px;">🧠</div>
           <h3 class="lang-en">Neurology &amp; Neurosurgery</h3>
           <h3 class="lang-ar">طب وجراحة الأعصاب</h3>
           <p class="lang-en">Brain surgery, deep brain stimulation (DBS), and complex spine decompression procedures.</p>
           <p class="lang-ar">جراحات الدماغ، التحفيز العميق للدماغ (DBS)، وعمليات إزالة الضغط المعقدة عن العمود الفقري.</p>
-        </div>
-        <div class="benefit-card card-hover" data-reveal data-reveal-delay="200" id="cosmeticsurg">
+        </a>
+        <a href="doctors.html?sector=Plastic%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="200" id="cosmeticsurg" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
           <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
-          <h3 class="lang-en">Cosmetic Surgery</h3>
-          <h3 class="lang-ar">جراحة التجميل</h3>
-          <p class="lang-en">Premium aesthetics, rhinoplasties, breast revisions, liposuctions, and complete body contouring.</p>
-          <p class="lang-ar">إجراءات تجميلية متميزة، تجميل الأنف، ترميم الثدي، شفط الدهون، وتنسيق القوام بالكامل.</p>
-        </div>
+          <h3 class="lang-en">Plastic &amp; Cosmetic Surgery</h3>
+          <h3 class="lang-ar">جراحة التجميل والترميم</h3>
+          <p class="lang-en">Aesthetic body contouring, rhinoplasties, breast reconstruction, liposuction, and reconstructive microsurgery.</p>
+          <p class="lang-ar">إجراءات تجميل وتنسيق القوام، تجميل الأنف، ترميم الثدي، شفط الدهون، والجراحات المجهرية الترميمية.</p>
+        </a>
+        <a href="doctors.html?sector=Liver%20Disease" class="benefit-card card-hover" data-reveal id="liver" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🫀</div>
+          <h3 class="lang-en">Liver &amp; Organ Transplant</h3>
+          <h3 class="lang-ar">أمراض وزراعة الكبد والأعضاء</h3>
+          <p class="lang-en">Living-donor liver transplants, hepatobiliary surgeries, and multidisciplinary liver disease management.</p>
+          <p class="lang-ar">عمليات زراعة الكبد من متبرع حي، جراحات الكبد والقنوات الصفراوية، وإدارة أمراض الكبد المتقدمة.</p>
+        </a>
+        <a href="doctors.html?sector=Nephrology%20and%20Urology%20Science" class="benefit-card card-hover" data-reveal data-reveal-delay="40" id="nephrology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🫘</div>
+          <h3 class="lang-en">Nephrology &amp; Urology</h3>
+          <h3 class="lang-ar">أمراض الكلى والمسالك البولية</h3>
+          <p class="lang-en">Kidney transplantations, dialysis management, laser lithotripsy, and minimally invasive urological surgery.</p>
+          <p class="lang-ar">عمليات زراعة الكلى، الغسيل الكلوي، تفتيت الحصوات بالليزر، وجراحات المسالك البولية طفيفة التوغل.</p>
+        </a>
+        <a href="doctors.html?sector=Gastroenterology" class="benefit-card card-hover" data-reveal data-reveal-delay="80" id="gastroenterology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🔬</div>
+          <h3 class="lang-en">Gastroenterology &amp; Hepatology</h3>
+          <h3 class="lang-ar">أمراض وجراحة الجهاز الهضمي</h3>
+          <p class="lang-en">Advanced diagnostic & therapeutic endoscopy, ERCP, EUS, and GI tract disorder therapies.</p>
+          <p class="lang-ar">المناظير الهضمية التشخيصية والعلاجية، مناظير القنوات المرارية (ERCP)، والموجات الصوتية بالمنظار (EUS).</p>
+        </a>
+        <a href="doctors.html?sector=General%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="120" id="generalsurgery" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🔪</div>
+          <h3 class="lang-en">General &amp; Laparoscopic Surgery</h3>
+          <h3 class="lang-ar">الجراحة العامة والمناظير</h3>
+          <p class="lang-en">Minimally invasive laparoscopic abdominal surgeries, hernia repairs, and bariatric metabolic procedures.</p>
+          <p class="lang-ar">جراحات البطن بالمنظار طفيفة التوغل، ترميم الفتق المعقد، وجراحات السمنة والتمثيل الغذائي.</p>
+        </a>
+        <a href="doctors.html?sector=Vascular%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="160" id="vascular" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🩸</div>
+          <h3 class="lang-en">Vascular &amp; Endovascular Surgery</h3>
+          <h3 class="lang-ar">جراحة الأوعية الدموية والقسطرة</h3>
+          <p class="lang-en">Aortic aneurysm repairs, peripheral arterial stenting, varicose vein ablation, and diabetic limb salvage.</p>
+          <p class="lang-ar">علاج تمدد الشريان الأبهر، دعامات الشرايين الطرفية، علاج الدوالي، وإنقاذ الأطراف لمرضى السكري.</p>
+        </a>
+        <a href="doctors.html?sector=Pulmonology" class="benefit-card card-hover" data-reveal data-reveal-delay="200" id="pulmonology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🫁</div>
+          <h3 class="lang-en">Pulmonology &amp; Respiratory Care</h3>
+          <h3 class="lang-ar">أمراض الصدر والجهاز التنفسي</h3>
+          <p class="lang-en">Comprehensive pulmonary diagnostics, bronchoscopy, asthma management, and advanced sleep apnea therapies.</p>
+          <p class="lang-ar">تشخيص أمراض الرئة، مناظير الشعب الهوائية، علاج الربو، وبرامج علاج اضطرابات التنفس أثناء النوم.</p>
+        </a>
+        <a href="doctors.html?sector=Paediatrics%20and%20Neonatology" class="benefit-card card-hover" data-reveal id="paediatrics" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">👶</div>
+          <h3 class="lang-en">Paediatrics &amp; Neonatology</h3>
+          <h3 class="lang-ar">طب الأطفال وحديثي الولادة</h3>
+          <p class="lang-en">Level-3 neonatal ICU (NICU), pediatric super-specialty surgery, congenital defect corrections, and child wellness.</p>
+          <p class="lang-ar">العناية المركزة لحديثي الولادة (NICU)، جراحات الأطفال التخصصية، علاج العيوب الخلقية، وصحة الطفل.</p>
+        </a>
+        <a href="doctors.html?sector=Obstetrics%20and%20Gynecology" class="benefit-card card-hover" data-reveal data-reveal-delay="40" id="obstetrics" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🤰</div>
+          <h3 class="lang-en">Obstetrics &amp; Gynecology</h3>
+          <h3 class="lang-ar">طب النساء والتوليد</h3>
+          <p class="lang-en">High-risk maternity care, laparoscopic hysterectomies, fibroid myomectomies, and gynecological oncology.</p>
+          <p class="lang-ar">رعاية الحمل عالي الخطورة، استئصال الأورام الليفية والرحم بالمنظار، وجراحات الأورام النسائية.</p>
+        </a>
+        <a href="doctors.html?sector=ENT%2C%20Head%20and%20Neck%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="80" id="ent" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">👂</div>
+          <h3 class="lang-en">ENT, Head &amp; Neck Surgery</h3>
+          <h3 class="lang-ar">الأنف والأذن والحنجرة وجراحة الرأس</h3>
+          <p class="lang-en">Endoscopic sinus surgeries, cochlear implants, voice microsurgeries, and head & neck tumor resections.</p>
+          <p class="lang-ar">جراحات الجيوب الأنفية بالمنظار، زراعة القوقعة، جراحات الصوت المجهرية، واستئصال أورام الرأس والرقبة.</p>
+        </a>
+        <a href="doctors.html?sector=Ophthalmology" class="benefit-card card-hover" data-reveal data-reveal-delay="120" id="ophthalmology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">👁️</div>
+          <h3 class="lang-en">Ophthalmology &amp; Eye Surgery</h3>
+          <h3 class="lang-ar">طب وجراحة العيون</h3>
+          <p class="lang-en">Femtosecond blade-free LASIK, micro-incision cataract surgeries, retinal repairs, and corneal transplants.</p>
+          <p class="lang-ar">تصحيح النظر بالفيمتو ليزك، جراحات المياه البيضاء بالموجات الدقيقة، جراحة الشبكية، وزراعة القرنية.</p>
+        </a>
+        <a href="doctors.html?sector=Dermatology" class="benefit-card card-hover" data-reveal data-reveal-delay="160" id="dermatology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🧴</div>
+          <h3 class="lang-en">Dermatology &amp; Skin Care</h3>
+          <h3 class="lang-ar">الأمراض الجلدية والتجميل الطبي</h3>
+          <p class="lang-en">Clinical dermatopathology, laser scar revisions, biological therapies for psoriasis, and medical cosmetics.</p>
+          <p class="lang-ar">علاج الأمراض الجلدية السريرية، ليزر تجديد البشرة والندبات، العلاجات البيولوجية، والتجميل الطبي.</p>
+        </a>
+        <a href="doctors.html?sector=Diabetology" class="benefit-card card-hover" data-reveal data-reveal-delay="200" id="diabetology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🩺</div>
+          <h3 class="lang-en">Diabetology &amp; Endocrinology</h3>
+          <h3 class="lang-ar">السكري والغدد الصماء</h3>
+          <p class="lang-en">Intensive glycemic control, insulin pump protocols, thyroid nodule interventions, and metabolic health.</p>
+          <p class="lang-ar">التحكم المكثف في السكر، مضخات الإنسولين، علاج اضطرابات الغدة الدرقية، وصحة الأيض والتمثيل الغذائي.</p>
+        </a>
+        <a href="doctors.html?sector=Rheumatology" class="benefit-card card-hover" data-reveal id="rheumatology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🩹</div>
+          <h3 class="lang-en">Rheumatology &amp; Autoimmune</h3>
+          <h3 class="lang-ar">أمراض الروماتيزم والمناعة الذاتية</h3>
+          <p class="lang-en">Biological disease-modifying therapies, rheumatoid arthritis control, lupus care, and musculoskeletal ultrasound.</p>
+          <p class="lang-ar">العلاجات البيولوجية الموجهة، السيطرة على التهاب المفاصل الروماتويدي، رعاية الذئبة الحمراء، والسونار العضلي.</p>
+        </a>
+        <a href="doctors.html?sector=Spine%20Surgery" class="benefit-card card-hover" data-reveal data-reveal-delay="40" id="spine" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🩻</div>
+          <h3 class="lang-en">Spine Surgery &amp; Reconstruction</h3>
+          <h3 class="lang-ar">جراحة العمود الفقري والتشوهات</h3>
+          <p class="lang-en">Endoscopic discectomy, spinal fusion, scoliosis deformity corrections, and motion-preserving disc replacement.</p>
+          <p class="lang-ar">استئصال الانزلاق الغضروفي بالمنظار، دمج الفقرات، تصحيح اعوجاج العمود الفقري (الجنف)، واستبدال الغضروف.</p>
+        </a>
+        <a href="doctors.html?sector=Dental%20Maxillofacial" class="benefit-card card-hover" data-reveal data-reveal-delay="80" id="dental" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🦷</div>
+          <h3 class="lang-en">Dental &amp; Maxillofacial</h3>
+          <h3 class="lang-ar">طب وجراحة الأسنان والوجه والفكين</h3>
+          <p class="lang-en">Full-arch All-on-4 dental implants, corrective jaw orthognathic surgery, and E-max aesthetic smile makeovers.</p>
+          <p class="lang-ar">زراعة الأسنان الكاملة All-on-4، جراحات الفكين التقويمية، وابتسامة هوليوود بفينير إيماكس الخزفي.</p>
+        </a>
+        <a href="doctors.html?sector=Critical%20Care" class="benefit-card card-hover" data-reveal data-reveal-delay="120" id="criticalcare" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🏥</div>
+          <h3 class="lang-en">Critical Care &amp; Intensive Care (ICU)</h3>
+          <h3 class="lang-ar">العناية المركزة والحرجة</h3>
+          <p class="lang-en">Round-the-clock intensive life support, advanced hemodynamic monitoring, and post-surgical trauma stabilization.</p>
+          <p class="lang-ar">دعم الحياة والعناية المركزة على مدار الساعة، المراقبة الديناميكية الحيوية، ورعاية حالات ما بعد الجراحات الكبرى.</p>
+        </a>
+        <a href="doctors.html?sector=Anesthesiology" class="benefit-card card-hover" data-reveal data-reveal-delay="160" id="anesthesiology" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">💉</div>
+          <h3 class="lang-en">Anesthesiology &amp; Pain Management</h3>
+          <h3 class="lang-ar">التخدير وعلاج الألم المزمن</h3>
+          <p class="lang-en">Specialized neuro & cardiac anesthesia, ultrasound-guided nerve blocks, and acute/chronic pain relief clinics.</p>
+          <p class="lang-ar">تخدير جراحات المخ والقلب التخصصي، إحصار الأعصاب الموجه بالسونار، وعيادات علاج الألم الحاد والمزمن.</p>
+        </a>
+        <a href="doctors.html?sector=General%20Medicine" class="benefit-card card-hover" data-reveal data-reveal-delay="200" id="generalmedicine" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🩺</div>
+          <h3 class="lang-en">General &amp; Internal Medicine</h3>
+          <h3 class="lang-ar">الطب الباطني العام والرعاية الشاملة</h3>
+          <p class="lang-en">Comprehensive multi-system medical evaluations, lifestyle disease prevention, and executive health screenings.</p>
+          <p class="lang-ar">التقييم الطبي الشامل لجميع أجهزة الجسم، الوقاية من أمراض نمط الحياة، والفحوصات الطبية التنفيذية.</p>
+        </a>
+        <a href="doctors.html?sector=Geriatrics" class="benefit-card card-hover" data-reveal id="geriatrics" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">👵</div>
+          <h3 class="lang-en">Geriatric Medicine &amp; Elder Care</h3>
+          <h3 class="lang-ar">طب ورعاية كبار السن</h3>
+          <p class="lang-en">Specialized senior healthcare, cognitive assessment, polypharmacy management, and restorative elder rehabilitation.</p>
+          <p class="lang-ar">الرعاية الصحية المتخصصة لكبار السن، تقييم القدرات المعرفية، إدارة الأدوية المتعددة، وإعادة التأهيل الشامل.</p>
+        </a>
+        <a href="doctors.html?sector=Infectious%20Disease" class="benefit-card card-hover" data-reveal data-reveal-delay="40" id="infectiousdisease" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🦠</div>
+          <h3 class="lang-en">Infectious Diseases &amp; Travel Medicine</h3>
+          <h3 class="lang-ar">الأمراض المعدية وطب السفر الدولي</h3>
+          <p class="lang-en">Complex infectious disease consultations, travel immunization protocols, and tropical medicine diagnostics.</p>
+          <p class="lang-ar">استشارات الأمراض المعدية المعقدة، بروتوكولات تطعيمات السفر الدولي، وتشخيص أمراض المناطق الحارة.</p>
+        </a>
+        <a href="doctors.html?sector=Laboratory%20Services" class="benefit-card card-hover" data-reveal data-reveal-delay="80" id="laboratory" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🧪</div>
+          <h3 class="lang-en">Laboratory &amp; Diagnostic Pathology</h3>
+          <h3 class="lang-ar">المختبرات والتشخيص المخبري والباثولوجي</h3>
+          <p class="lang-en">High-throughput automated biochemistry, histopathology, molecular genetic testing, and rapid turnaround diagnostics.</p>
+          <p class="lang-ar">التحاليل الكيميائية الحيوية الآلية، الفحص النسيجي الميكروسكوبي، الفحوصات الجينية، ونتائج التشخيص السريعة.</p>
+        </a>
+        <a href="doctors.html?sector=Psychiatry" class="benefit-card card-hover" data-reveal data-reveal-delay="120" id="psychiatry" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🧘</div>
+          <h3 class="lang-en">Psychiatry &amp; Behavioral Health</h3>
+          <h3 class="lang-ar">الطب النفسي والصحة السلوكية</h3>
+          <p class="lang-en">Evidence-based psychiatric therapies, clinical mood disorder management, stress relief, and holistic mental wellness.</p>
+          <p class="lang-ar">العلاجات النفسية القائمة على الأدلة، علاج اضطرابات المزاج والقلق، إدارة الضغوط، والصحة النفسية الشاملة.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -362,11 +555,21 @@
               <span class="lang-en">Country (From)</span>
               <span class="lang-ar">بلد الإقامة</span>
             </label>
-            <select id="calcCountry" class="lang-en">
-              <option value="UAE" selected>United Arab Emirates</option>
+            <select id="calcCountry" class="lang-en" onchange="runCalculation()">
+              <option value="US" selected>United States</option>
+              <option value="UK">United Kingdom</option>
+              <option value="AU">Australia</option>
+              <option value="CA">Canada</option>
+              <option value="EU">Europe</option>
+              <option value="AE">United Arab Emirates</option>
             </select>
-            <select id="calcCountryAr" class="lang-ar">
-              <option value="UAE" selected>الإمارات العربية المتحدة</option>
+            <select id="calcCountryAr" class="lang-ar" onchange="runCalculation()">
+              <option value="US">الولايات المتحدة</option>
+              <option value="UK">المملكة المتحدة</option>
+              <option value="AU">أستراليا</option>
+              <option value="CA">كندا</option>
+              <option value="EU">أوروبا</option>
+              <option value="AE" selected>الإمارات العربية المتحدة</option>
             </select>
           </div>
           <div class="calc-field-item">
@@ -381,9 +584,9 @@
           <div class="comparison-bars">
             <div class="bar-item">
               <div class="bar-label">
-                <span class="lang-en">Dubai / UAE Average Cost</span>
-                <span class="lang-ar">متوسط التكلفة في دبي / الإمارات</span>
-                <span id="resDubaiPrice" style="color: #ea580c; font-weight:800;">AED 105,000</span>
+                <span class="lang-en" id="lblHomeCountryCost">US Average Cost</span>
+                <span class="lang-ar" id="lblHomeCountryCostAr">متوسط التكلفة في بلدك</span>
+                <span id="resDubaiPrice" style="color: #ea580c; font-weight:800;">$28,350</span>
               </div>
               <div class="bar-track">
                 <div class="bar-fill dubai" id="resDubaiBar" style="width: 100%; background: #ea580c;"></div>
@@ -414,36 +617,671 @@
     </div>
   </section>
 
-  <!-- Section 4: Patient Stories -->
+    
+  <!-- Section 4: Verified Patient Recovery Stories -->
+
   <section class="testimonials" id="testimonials" style="background: var(--white); padding: var(--section-py) 0;">
     <div class="container">
       <div class="section-title" data-reveal>
-        <h2 class="lang-en">Elite Patient Recovery Stories</h2>
-        <h2 class="lang-ar">قصص شفاء مرضانا المميزين</h2>
-        <p class="lang-en">Read detailed medical tourism cases from patients who experienced our coordinated clinical care.</p>
-        <p class="lang-ar">اقرأ قصص وتفاصيل حالات السفر الطبي لمرضانا الذين تلقوا رعاية سريرية منسقة بالكامل.</p>
+        <h2 class="lang-en">Verified Patient Recovery Stories</h2>
+        <h2 class="lang-ar">قصص شفاء مرضانا الموثقة</h2>
+        <p class="lang-en">Authentic recovery accounts and doctor commendations from international and domestic patients.</p>
+        <p class="lang-ar">شهادات شفاء وتجارب حقيقية من مرضى محليين ودوليين تلقوا رعاية طبية متقدمة في مستشفياتنا الشريكة.</p>
+      </div>
+                  <!-- Patient Video Testimonials Showcase -->
+      <div class="patient-video-testimonials" data-reveal>
+        <div class="patient-video-grid">
+          <!-- Video Card 1 -->
+          <div class="patient-video-card card-hover">
+            <div class="patient-video-wrapper">
+              <video preload="metadata" playsinline controls poster="videos/patient-testimonial-1-poster.jpg" src="videos/patient-testimonial-1.mp4"></video>
+            </div>
+            <div class="patient-video-info">
+              <div class="patient-video-badge">
+                <span style="color: var(--gold);">&#9733;</span>
+                <span class="lang-en">Verified Patient Story</span>
+                <span class="lang-ar">&#1602;&#1589;&#1577; &#1605;&#1585;&#1610;&#1590;&#1577; &#1605;&#1608;&#1579;&#1602;&#1577;</span>
+              </div>
+              <h4 class="patient-video-title">
+                <span class="lang-en">International Patient Care Experience</span>
+                <span class="lang-ar">&#1578;&#1580;&#1585;&#1576;&#1577; &#1575;&#1604;&#1585;&#1593;&#1575;&#1610;&#1577; &#1575;&#1604;&#1591;&#1576;&#1610;&#1577; &#1604;&#1605;&#1585;&#1610;&#1590;&#1577; &#1575;&#1604;&#1583;&#1608;&#1604;&#1610;&#1577;</span>
+              </h4>
+              <p class="patient-video-desc">
+                <span class="lang-en">Comprehensive surgical care, compassionate nursing, and seamless recovery journey in Chennai.</span>
+                <span class="lang-ar">&#1585;&#1593;&#1575;&#1610;&#1577; &#1580;&#1585;&#1575;&#1581;&#1610;&#1577; &#1588;&#1575;&#1605;&#1604;&#1577; &#1608;&#1578;&#1605;&#1585;&#1610;&#1590; &#1605;&#1578;&#1601;&#1575;&#1606;&#1613; &#1608;&#1578;&#1593;&#1575;&#1601;&#1613; &#1605;&#1578;&#1605;&#1610;&#1586; &#1601;&#1610; &#1578;&#1588;&#1610;&#1606;&#1575;&#1610;.</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Video Card 2 -->
+          <div class="patient-video-card card-hover">
+            <div class="patient-video-wrapper">
+              <video preload="metadata" playsinline controls poster="videos/patient-testimonial-2-poster.jpg" src="videos/patient-testimonial-2.mp4"></video>
+            </div>
+            <div class="patient-video-info">
+              <div class="patient-video-badge">
+                <span style="color: var(--gold);">&#9733;</span>
+                <span class="lang-en">Verified Patient Story</span>
+                <span class="lang-ar">&#1602;&#1589;&#1577; &#1605;&#1585;&#1610;&#1590; &#1605;&#1608;&#1579;&#1602;&#1577;</span>
+              </div>
+              <h4 class="patient-video-title">
+                <span class="lang-en">Treatment &amp; Recovery Testimonial</span>
+                <span class="lang-ar">&#1588;&#1607;&#1575;&#1583;&#1577; &#1606;&#1580;&#1575;&#1581; &#1575;&#1604;&#1593;&#1604;&#1575;&#1580; &#1608;&#1575;&#1604;&#1578;&#1593;&#1575;&#1601;&#1610;</span>
+              </h4>
+              <p class="patient-video-desc">
+                <span class="lang-en">Personal account of world-class medical expertise, accurate diagnosis, and excellent outcome.</span>
+                <span class="lang-ar">&#1578;&#1580;&#1585;&#1576;&#1577; &#1588;&#1588;&#1582;&#1589;&#1610;&#1577; &#1578;&#1576;&#1585;&#1586; &#1583;&#1602;&#1577; &#1575;&#1604;&#1578;&#1588;&#1582;&#1610;&#1589; &#1608;&#1575;&#1604;&#1578;&#1601;&#1608;&#1602; &#1575;&#1604;&#1591;&#1576;&#1610; &#1608;&#1575;&#1604;&#1606;&#1578;&#1575;&#1574;&#1580; &#1575;&#1604;&#1605;&#1605;&#1578;&#1575;&#1586;&#1577;.</span>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="testimonial-grid testimonial-grid--cols-2">
-        <div class="testimonial-card card-hover" data-reveal>
-          <div style="color: var(--gold); font-size: 20px; margin-bottom: 8px;">★★★★★</div>
-          <h3 class="lang-en">Coronary Bypass (CABG)</h3>
-          <h3 class="lang-ar">عملية مجازة الشريان التاجي (القلب)</h3>
-          <p class="lang-en">“When Dubai pricing for heart surgery was out of reach, KèRa Wellness organized my Angiography review, immediate visa, and a private JCI-accredited cardiac suite. The surgery was exceptionally successful.”</p>
-          <p class="lang-ar">“عندما كانت تكلفة جراحة القلب في دبي تفوق إمكانياتي، نظمت KèRa Wellness مراجعة تصوير الشرايين، وحصلت على تأشيرة فورية، وجناح قلب خاص في مستشفى معتمد من JCI. كانت الجراحة ناجحة للغاية.”</p>
-          <h4 style="margin-top: 15px;" class="lang-en">— John D., Abu Dhabi</h4>
-          <h4 style="margin-top: 15px;" class="lang-ar">— جون د.، أبو ظبي</h4>
-        </div>
-        <div class="testimonial-card card-hover" data-reveal data-reveal-delay="80">
-          <div style="color: var(--gold); font-size: 20px; margin-bottom: 8px;">★★★★★</div>
-          <h3 class="lang-en">Discreet IVF Stimulation Cycle</h3>
-          <h3 class="lang-ar">دورة تنشيط وتلقيح مجهري سرية (IVF)</h3>
-          <p class="lang-en">“Coordinating stimulations locally in the UAE and retrieval in India saved us massive stress. The embryology JCI standards were perfect, and PGS screening succeeded on attempt one!”</p>
-          <p class="lang-ar">“تنسيق مراحل التنشيط محلياً في الإمارات وسحب البويضات في الهند وفر علينا ضغوطاً هائلة. كانت معايير أجنة JCI ممتازة، ونجح الفحص الجيني للأجنة من المحاولة الأولى!”</p>
-          <h4 style="margin-top: 15px;" class="lang-en">— Amna K., Dubai</h4>
-          <h4 style="margin-top: 15px;" class="lang-ar">— آمنة ك.، دبي</h4>
+      <!-- Horizontal Scrollable Testimonials Carousel -->
+      <div class="testimonials-scroll-wrapper" data-reveal>
+        <div class="testimonials-scroll-container" id="testimonialsTrack">
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">M</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MAYA NAGARAJAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“The hospital ambiance is clean. The staff and doctors are so helpful. I want to particularly mention and place my appreciation for Divya at the front office and Dr. Kavitha and Dr. Ramya too. Dr. Jayabharathi was highly informative and caring. Thanks a lot.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">L</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">LALITHA ANANTHANARAYANAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Excellent service by the staffs. Friendly and cheerful nurses and ward managers. Doctors are very friendly and well experienced and gave good treatment for this serious condition and discharged us in two days. Housekeeping and security staffs did an excellent work.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">A</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ANONYMOUS</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“All the Doctors and Hospital staff were wonderful. Everyone was extremely supportive Dr.Manikandhan, Dr.Sridhar and the entire ICU team. Dr.Sundar, Dr.S.Kannan, Dr.Yamini were extremely approachable and understanding. We are extremely grateful to them.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">D</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">DR. SITA KRISHNAMOORTHY, SILVER SPRING, MD, USA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My heartfelt gratitude for the wonderful medical care Dr. Aravindan and his team rendered me at Kauvery hospital when I was admitted for surgical treatment of multiple fractures of my left ankle. I have to commend Dr. Aravindan’s surgical skills because of which I am walking today and my ankle function has mostly recovered in spite of multiple surgical implants needed. My primary orthopedic surgeon in USA was particularly appreciative of his expertise and even mentioned that he or anyone else in USA could not have done a better job. Dr. Mukund was very diligent and provided excellent post-op care. In short, the entire experience was exemplary and on par with the quality medical care provided at other countries around the world. I highly recommend any prospective patients to visit while considering orthopedic surgery or general medical care.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">P</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">PROF. F. W. DULLE, MOROGORO, TANZANIA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My wife having suffered from her right hand and left leg pains for so many years without finding a proper solution in my home country hospitals, we took trouble to travel to India for medical check-ups and treatment. We visited the Kauvery Spine Centre and met Dr Balamurali for advice. The surgery was done successfully and from that day my wife is feeling better than ever before. We sincerely appreciate high quality services offered by this hospital and at a very reasonable cost. High professionalism shown by Balamurali and his team is also highly appreciated.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">B</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">BALAKUMARAN, AUTHOR, ACTOR & SCREENPLAY WRITER</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“I have to tell about Kauvery Hospital. This is a complete hospital. The team of good doctors are very sharp and concerned about their patients. The hospital is absolutely clean, not even the smell of medicines is there. The rooms are cool and comfortable. All medical test facilities including CT Scan are available. Decisions are taken then and there. Expenses are less compared to other high end hospitals. Transportation is easy. You can trust and come to Kauvery hospital.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">K</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">KUMARARAJ MUTHUKUMARASWAMY</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Surgeon Dr Gopal Murugan & Cardiologist Dr. Shivakadasham clearly explained the importance of Angioplasty before surgery. I was very comfortable with services they provided, that includes surgery. All the staff nurses took good care of me and my attendants. All medical and non-medical staffs monitored me during my stay here. The hospital is cleanly maintained and the environment is also good. I thank all the staff for the co-operation extended to me.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">M</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MS. KAMALA RAMAMURTHY</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My experience and that of my family with Kauvery Hospital has been excellent the past six years. I underwent bi-lateral TKR here. I have been having severe back pain for which I met Dr. Aravindan Selvaraj and Dr. Balamurali. The entire spine team and nursing staff saw to it that I was kept calm and comfortable all through my stay. I have recovered well after two months and have got back to my active volunteering life. Kauvery is indeed a Family Hospital!”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">V</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">VENKATARAMAN NARAYANAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Competent doctors and caring staff. My father, aged 89 was cared for so well by the nurses who ran the extra mile in motivating my father and helping him heal faster. Room facilities and services were timely and responsive.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SANDHYA RAJAGOPALAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“We are very satisfied with the staff’s n sisters. Very much satisfied. Thank you for the hospitality with the patients. Very good. Thank you.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">A</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ANONYMOUS</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Insurance staff are very courteous and fast in their response better than Apollo and Malar. You need to maintain this when the volume increases. All nursing staff are courteous and good. Special mention to Subha and Priya.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">N</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">NAREN KARTHIK</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My wife had very good pregnancy care under Dr Sabeeha and her team and also the nursing care given by nursing staffs was excellent. They also took care of my munchkin very well when he was down with neonatal jaundice.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">J</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">JIBBY POSIA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Very good facility and they have taken very good care. Very happy with the service.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">A</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ANONYMOUS</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“It was a great opportunity to meet an amazing personality Dr R Balasubramaniam, Nephrologist at Kauvery Hospital. Life is all about meeting good people. I felt happy and blessed to interact with him, though for few minutes but gave a lot of insight to living quality life, apart of my Medical Consultation with him. Kauvery Hospital is gifted to have such rare personalities.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">A</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ANONYMOUS</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“I am Dr.Aravindan Selvaraj’s patient. I was admitted for Arthroscopy. All the staff members treated me like a family member and I am so happy for that. This type of approach and care has given me confidence that my problem and stress would subside 50-60% after treatment. Thanks to all staff and Dr.Aravindan Selvaraj.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SRI</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“It was a great opportunity to meet an amazing personality Dr R Balasubramaniam Nephrologist at Kauvery Hospital. I felt happy and blessed to interact with him, though for few minutes but gave a lot of insight to living quality life. My prayers to God to Bless him and his family.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">A</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ANONYMOUS</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Dr.Avijit Basu was excellent. God bless. All the nurses were excellent and attentive. Overall excellent team. Keep up the good work and facilities. God bless. Thanks and Regards.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">A</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ANONYMOUS</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Good care taken by Dr.Sekar, Dr.Sairam and nurses.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">J</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">JOSEPH VAZ</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“I am treating my father for the past one year for dialysis and I am completely satisfied with the treatment and the cooperation given by all the departments in the hospital. I like to personally thank Dr.Balasubramaniam and his dedicated team for the excellent work they do for me and all the patients.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">M</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MAHEESH NATARAJAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“On behalf of Brig. R Ranganathan (Retd.) 94 yrs a BIG THANK YOU to Dr Aravindan Selvaraj and his entire team at Kauvery Hospitals, Chennai. This phenomenal team led by Dr Aravindan Selvaraj have revolutionised ‘Geriatric Care’. Special thanks to the wonderful and dedicated nursing staff.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SHANMITHA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“I’ve never encountered a person whose heart is so tender, compassionate and pleasant. Dr. Yamini Kannappan is a shining example of what every doctor should strive to be. Her faith in me has lifted me up countless times and pushed me to fight for what I thought was impossible.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SHILPA PANKAJ DESHPANDE</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Very good hospital. Excellent service from admission to discharge. Professional nursing care. Excellent diagnostic and superb intervention by Dr Premsekar, one of the top notch Paediatric cardiologists who is exceptional in his field besides having highest ethical standards.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">M</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MADHUSUDHANAN SRINIVASAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Our precious little bundle of joy had a VSD (Large) that required open heart surgery. The overwhelming support from Dr. Premsekhar and Dr. Prasanth Shah gave us great confidence. Complete support with admission and ICU care from Dr. Lakshmi and her team. Once again our sincere thanks to the entire surgical team.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">R</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RAMAKRISHNA RAMANATHAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“From the moment I contacted Dr. Aravindan and till this minute, the support I have received both medically and psychologically out of Kauvery is OUTSTANDING. Maintaining excellence with clinical talent and patient warmth proves the system is at work. You return home with a better state of mind.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">M. SURIYA NARAYANAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Very sincere doctors and nursing staff. Dedicated care and prompt attention throughout the treatment.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">M</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MURALI KRISHNAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Excellent Hospital, I really recommend this hospital to all my neighbors. Doctor’s treatment is very good.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">B</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">BALAMURUGAN KRISHNAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Well-experienced doctors and nurses. State-of-the-art equipment and facilities. Good hospital for cardiac ailments and treatments.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">V</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">VIMAL KANNAN</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Admitted my dad for angioplasty at this hospital. They have done their Job well and they all are very kind to my family.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">R</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RENGANATHAN P</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My wife is taking treatment from June for liver cancer. Best doctors (Dr. Bhaskar Rao, Dr. Anees). Best nurses. Super lab facilities. Congratulations. Keep it up, administration.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">B</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">BALAMURUGAN SELVARAJU</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Dr B Vijaya Sekharan, MD, DM took complete care and did comprehensive analysis & Angiogram for my father. Thanks very much for his detailed attention and thanks to Kauvery Hospital overall.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">I</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ISSAC JOHNY</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Have undergone spinal Surgery under Dr. Jos Jasper and his team. The way they treat me is best and all of them especially Dr. Sri Hari, Dr. Mayilan, Dr. Praveen are in six sigma level perfection. The team is a gift to Kauvery and to the society too.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">K</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">KUMAR ASHOK</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Kauvery Hospital’s other arm is Kauvery Heart City. A specialized hospital for heart and related ailments. Leading doctors in the city are available here. You can expect good service.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">G</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">GHAYAZ GHAYAZ</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“It has always been a convincing experience. Appreciate the competence and the teamwork of Medical professionals and the staff nurses. Special mention to Dr. Senguttuvan; he has been absolutely incredible in his core area.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SARAVANAN R</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My dad was admitted on emergency with low reading on vitals. From admission to discharge, we had a positive experience. Doctors and staff showed transparency and professionalism. Sincere thanks to Dr Varun Prassana and Dr Nadar Pradap and team.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SARAVANAA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“We came here for the Annual Health checkup. The overall experience is great: hospital staff are guided really well and the environment is clean. Also the physician explained in detail. Highly recommended.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">S</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SIVA SAKTHI</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“Dr. S. Ravikumar’s surgery is one of the most turning points of my life. Thank you so much sir. He is so kind & caring. Lot of thanks to you sir. Nurses also give good care. Thanks for everything.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">P</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">PRIYA SIVA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“We are very happy with this hospital. I delivered a second baby at 29 weeks in a critical situation. He was admitted in NICU under Dr. Rajkumar sir (paediatrician). Excellent treatment was given. Now my son has fully recovered.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">K</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">KOUSALYA</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“We would like to recommend Dr. Kabilan sir. We had admitted our father for angio. As a doctor he had clearly explained what was the issue and gave clarity on how to solve it. We thank Kabilan Sir from our family.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">K</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">KALAI VANI</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“My mom got admitted here. Cardiologists are great here. The environment is good. Overall, a good hospital in Chennai.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">K</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">KATHERINE SILVE</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“One of the best hospitals, cardiologist treatment was really good, better than other super-speciality hospitals in Bangalore and Hosur.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">V</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">VIGNESH SUKUMAR</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“We visited Kauvery Hospital for my mother’s surgery. Dr. Murali Jayaraman is soft-spoken and friendly. He patiently answered all our queries. We are very happy with the treatment. Nursing staff is kind and co-operative.”</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card card-hover">
+            <div class="testimonial-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <div class="testimonial-avatar" style="width: 34px; height: 34px; border-radius: 50%; background: var(--gold-light); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; border: 1.5px solid rgba(var(--gold-rgb), 0.35); flex-shrink: 0;">V</div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0; font-size: 0.775rem; font-weight: 700; color: var(--black); line-height: 1.25; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">VIDYA SHREE</h4>
+                <div style="color: var(--gold); font-size: 11px; margin-top: 1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
+            </div>
+            <div class="testimonial-body">
+              <p style="font-size: 0.8125rem; line-height: 1.48; color: var(--text-muted); margin: 0;">“I had a good experience with Dr. Magesh L. He is very genuine and worth visiting. I am totally satisfied with him for my 6-month-old daughter.”</p>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+<!-- Gallery Section -->
+  <section class="gallery-section" id="gallery" style="background: var(--bg-secondary); padding: var(--section-py) 0; border-top: 1px solid var(--border-gray);">
+    <div class="container">
+      <div class="section-title" data-reveal>
+        <h2 class="lang-en">Our Premium Facility &amp; Clinical Gallery</h2>
+        <h2 class="lang-ar">معرض العيادات والمرافق الطبية الفاخرة</h2>
+        <p class="lang-en">Take a virtual tour of our Tier-1 JCI-accredited partner hospitals, surgical suites, and luxury patient lounges.</p>
+        <p class="lang-ar">خذ جولة افتراضية في المستشفيات الشريكة المعتمدة دولياً، وأجنحة الجراحة المتقدمة، وصالات استقبال المرضى الفاخرة.</p>
+      </div>
+      
+      <div class="gallery-grid" data-reveal>
+        <div class="gallery-item card-hover" onclick="openGalleryModal(0)">
+          <img src="../assets/images/facility-luxury-reception-lounge.webp" alt="Executive Patient Lounge" loading="lazy">
+          <div style="position: absolute; bottom: 12px; left: 14px; z-index: 3; color: #fff;">
+            <strong style="display: block; font-size: 0.85rem;" class="lang-en">Executive Patient Lounge</strong>
+            <strong style="display: block; font-size: 0.85rem;" class="lang-ar">جناح واستقبال المرضى الدوليين</strong>
+          </div>
+        </div>
+        <div class="gallery-item card-hover" onclick="openGalleryModal(1)">
+          <img src="../assets/images/facility-advanced-surgical-suite.jpg" alt="Advanced Robotic Surgical Suite" loading="lazy">
+          <div style="position: absolute; bottom: 12px; left: 14px; z-index: 3; color: #fff;">
+            <strong style="display: block; font-size: 0.85rem;" class="lang-en">Robotic Surgical Theatre</strong>
+            <strong style="display: block; font-size: 0.85rem;" class="lang-ar">جناح الجراحة الميكروسكوبية والروبوتية</strong>
+          </div>
+        </div>
+        <div class="gallery-item card-hover" onclick="openGalleryModal(2)">
+          <img src="../assets/images/facility-neonatal-pediatric-icu.jpg" alt="Neonatal & Critical Care Suites" loading="lazy">
+          <div style="position: absolute; bottom: 12px; left: 14px; z-index: 3; color: #fff;">
+            <strong style="display: block; font-size: 0.85rem;" class="lang-en">Neonatal &amp; Critical Care ICU</strong>
+            <strong style="display: block; font-size: 0.85rem;" class="lang-ar">وحدة العناية المركزة المتقدمة</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <button class="btn btn-primary" onclick="openGalleryModal(0)" style="background: var(--black); color: var(--gold); border-color: var(--black);">
+          <span class="lang-en">See More Photos</span>
+          <span class="lang-ar">شاهد المزيد من الصور</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Gallery Lightbox Modal -->
+    <div class="gallery-lightbox" id="galleryLightbox" style="display: none;" onclick="if(event.target === this) closeGalleryModal();">
+      <button class="lightbox-close" onclick="closeGalleryModal()" aria-label="Close Gallery">&times;</button>
+      <button class="lightbox-prev" onclick="prevLightboxImage()">&#10094;</button>
+      <div class="lightbox-content">
+        <img id="lightboxActiveImg" src="" alt="Active Gallery Image">
+        <div class="lightbox-counter" id="lightboxCounter">1 / 17</div>
+      </div>
+      <button class="lightbox-next" onclick="nextLightboxImage()">&#10095;</button>
+      <div class="lightbox-thumbnails" id="lightboxThumbnails"></div>
     </div>
   </section>
 
@@ -501,7 +1339,7 @@
       <p data-reveal data-reveal-delay="80" class="lang-ar">احصل على خطة علاج مخصصة، وتكاليف تقديرية، وإرشادات الخبراء من منسق المرضى لدينا.</p>
       
       <form id="consultationForm" class="consultation-form" novalidate data-reveal data-reveal-delay="160">
-        <input type="hidden" id="hiddenLocation" name="location" value="Dubai, UAE" />
+        <input type="hidden" id="hiddenLocation" name="location" value="International" />
         <input type="hidden" id="hiddenLeadSource" name="leadSource" value="Website" />
         <input type="hidden" id="hiddenLanguage" name="language" value="English" />
         <input type="hidden" id="hiddenStatus" name="status" value="New Lead" />
@@ -686,6 +1524,15 @@
       spine: { name: "Spine Surgery", dubai: 75000, india: 20000, selectOption: "IVF & Fertility" }
     };
 
+    const countryData = {
+      US: { name: "USA", symbol: "$", mult: 0.27, titleEn: "US Average Cost", titleAr: "متوسط التكلفة في أمريكا" },
+      UK: { name: "UK", symbol: "£", mult: 0.21, titleEn: "UK Private Clinic Cost", titleAr: "متوسط التكلفة في بريطانيا" },
+      AU: { name: "Australia", symbol: "A$", mult: 0.41, titleEn: "Australia Average Cost", titleAr: "متوسط التكلفة في أستراليا" },
+      CA: { name: "Canada", symbol: "C$", mult: 0.37, titleEn: "Canada Average Cost", titleAr: "متوسط التكلفة في كندا" },
+      EU: { name: "Europe", symbol: "€", mult: 0.25, titleEn: "Europe Average Cost", titleAr: "متوسط التكلفة في أوروبا" },
+      AE: { name: "UAE", symbol: "AED ", mult: 1, titleEn: "UAE Average Cost", titleAr: "متوسط التكلفة في الإمارات" }
+    };
+
     function runCalculation() {
       const isAr = document.documentElement.getAttribute('lang') === 'ar';
       const selectId = isAr ? "calcTreatmentAr" : "calcTreatment";
@@ -693,28 +1540,99 @@
       const data = pricingData[treatmentKey];
       const qty = 1;
 
-      const dubaiCost = data.dubai * qty;
-      const indiaCost = data.india * qty;
-      const savings = dubaiCost - indiaCost;
-      const savingsPct = Math.round((savings / dubaiCost) * 100);
+      const countryId = isAr ? "calcCountryAr" : "calcCountry";
+      const countryCode = (document.getElementById(countryId) && document.getElementById(countryId).value) || (isAr ? "AE" : "US");
+      const cInfo = countryData[countryCode] || countryData.US;
+
+      const homeCost = Math.round(data.dubai * qty * cInfo.mult);
+      const indiaCost = Math.round(data.india * qty * cInfo.mult);
+      const savings = homeCost - indiaCost;
+      const savingsPct = Math.round((savings / homeCost) * 100);
+
+      // Update titles
+      const lblHome = document.getElementById("lblHomeCountryCost");
+      const lblHomeAr = document.getElementById("lblHomeCountryCostAr");
+      if (lblHome) lblHome.textContent = cInfo.titleEn;
+      if (lblHomeAr) lblHomeAr.textContent = cInfo.titleAr;
 
       // Render outputs
-      document.getElementById("resDubaiPrice").textContent = "AED " + dubaiCost.toLocaleString();
-      document.getElementById("resIndiaPrice").textContent = "AED " + indiaCost.toLocaleString();
+      document.getElementById("resDubaiPrice").textContent = cInfo.symbol + homeCost.toLocaleString();
+      document.getElementById("resIndiaPrice").textContent = cInfo.symbol + indiaCost.toLocaleString();
       
       if (isAr) {
-        document.getElementById("resSavingsAmt").textContent = "AED " + savings.toLocaleString() + " (وفر " + savingsPct + "%)";
+        document.getElementById("resSavingsAmt").textContent = cInfo.symbol + savings.toLocaleString() + " (وفر " + savingsPct + "%)";
       } else {
-        document.getElementById("resSavingsAmt").textContent = "AED " + savings.toLocaleString() + " (" + savingsPct + "% Saved)";
+        document.getElementById("resSavingsAmt").textContent = cInfo.symbol + savings.toLocaleString() + " (" + savingsPct + "% Saved)";
       }
 
       // Progress bars
       document.getElementById("resDubaiBar").style.width = "100%";
-      document.getElementById("resIndiaBar").style.width = Math.max(15, Math.round((indiaCost / dubaiCost) * 100)) + "%";
+      document.getElementById("resIndiaBar").style.width = Math.max(15, Math.round((indiaCost / homeCost) * 100)) + "%";
     }
 
     // Auto-populate form treatment when clicking calculator quote
     // Supports both EN/AR form selects
+    
+    function scrollReviews(btn, dir) {
+      const wrapper = btn.closest('.testimonials-scroll-wrapper');
+      const track = wrapper ? wrapper.querySelector('.testimonials-scroll-container') : document.getElementById('testimonialsTrack');
+      if (track) {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        const amount = (track.clientWidth * 0.75) * dir * (isRtl ? -1 : 1);
+        track.scrollBy({ left: amount, behavior: 'smooth' });
+      }
+    }
+    window.scrollReviews = scrollReviews;
+
+    function openReviewModal(btn) {
+      const card = btn.closest('.testimonial-card');
+      if (!card) return;
+      const avatar = card.querySelector('.testimonial-avatar') ? card.querySelector('.testimonial-avatar').textContent.trim() : '';
+      const name = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+      const text = card.querySelector('.testimonial-body p') ? card.querySelector('.testimonial-body p').textContent.trim() : '';
+
+      const modal = document.getElementById('reviewModal');
+      if (!modal) return;
+      
+      const modalAvatar = modal.querySelector('#modalAvatar');
+      const modalName = modal.querySelector('#modalName');
+      const modalText = modal.querySelector('#modalText');
+      
+      if (modalAvatar) modalAvatar.textContent = avatar;
+      if (modalName) modalName.textContent = name;
+      if (modalText) modalText.textContent = text;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReviewModal(e) {
+      if (e && e.target && !e.target.classList.contains('review-modal') && !e.target.classList.contains('review-modal-close') && !e.target.closest('.review-modal-close')) {
+        return;
+      }
+      const modal = document.getElementById('reviewModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    window.openReviewModal = openReviewModal;
+    window.closeReviewModal = closeReviewModal;
+
+    // Patient Video Testimonials single-play coordination
+    document.querySelectorAll('.patient-video-wrapper video').forEach(v => {
+      v.addEventListener('play', () => {
+        document.querySelectorAll('.patient-video-wrapper video').forEach(other => {
+          if (other !== v) other.pause();
+        });
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeReviewModal();
+    });
+
     function setFormTreatment() {
       const isAr = document.documentElement.getAttribute('lang') === 'ar';
       const selectId = isAr ? "calcTreatmentAr" : "calcTreatment";
@@ -775,6 +1693,23 @@
     });
   </script>
   <script src="form.min.js"></script>
-  <script src="./js/scroll-reveal.min.js" defer></script>
+  <script src="./js/scroll-reveal.min.js" defer>
+    function filterDoctorSector(sector, btn) {
+      const container = btn.closest('.doctors-section') || document;
+      const tabs = container.querySelectorAll('.doctor-filter-tabs .doc-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = container.querySelectorAll('.doctor-grid .doctor-card');
+      cards.forEach(card => {
+        const cardSector = card.getAttribute('data-sector');
+        if (sector === 'all' || cardSector === sector) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+</script>
 </body>
 </html>

@@ -1,0 +1,3203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Specialities &amp; Doctors Directory | KèRa Wellness</title>
+  <meta name="description"
+    content="Browse top board-certified medical specialists and surgeons across 25 accredited clinical disciplines in JCI partner hospitals in India.">
+  <link rel="canonical" href="https://kerawellness.in/assets/doctors">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.min.css">
+  <script src="./js/language-switch.min.js"></script>
+
+  <script>
+    // Universal image fallback guard for doctor images
+    window.addEventListener('error', function(e) {
+      if (e.target && e.target.tagName === 'IMG' && e.target.closest('.doctor-img-wrap')) {
+        var img = e.target;
+        var count = parseInt(img.dataset.fallbackCount || '0', 10);
+        var raw = img.getAttribute('src') || '';
+        var clean = raw.replace(/^(\.\.\/assets\/|\/assets\/|\.\/assets\/|\.\/)/, '');
+        if (count === 0) {
+          img.dataset.fallbackCount = '1';
+          img.src = './' + clean;
+        } else if (count === 1) {
+          img.dataset.fallbackCount = '2';
+          img.src = '/assets/' + clean;
+        }
+      }
+    }, true);
+  </script>
+
+    <style>
+    /* ==========================================================================
+       Master-Detail Responsive Doctor Specialities & Directory Section
+       ========================================================================== */
+
+    /* Global Viewport & Section Overflow Guard */
+    html, body {
+      overflow-x: clip;
+      overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+    }
+
+    .page-hero-header {
+      background: linear-gradient(rgba(17, 17, 17, 0.88), rgba(17, 17, 17, 0.92)), url('../assets/images/facility-advanced-surgical-suite.jpg') center/cover;
+      color: #fff;
+      text-align: center;
+      margin-top: 76px;
+      padding: 70px 0 55px;
+    }
+
+    #directorySection {
+      background: var(--bg-primary);
+      padding: 40px 0 60px;
+      width: 100%;
+      overflow-x: clip;
+    }
+
+    /* Container Spacing: Desktop (1200px+) */
+    #directorySection .container {
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 3.5vw, 48px);
+      box-sizing: border-box;
+    }
+
+    /* 1. Large Desktop Layout (1200px and above): 280px Sidebar + 3-Column Doctor Grid */
+    .specialties-split-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 28px;
+      align-items: flex-start;
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Left Sidebar: Desktop */
+    .specialties-sidebar-container {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      border-radius: 16px;
+      overflow: hidden;
+      position: sticky;
+      top: 96px;
+      box-shadow: 0 4px 20px rgba(17, 17, 17, 0.04);
+      transition: all 0.3s ease;
+    }
+
+    .specialties-sidebar-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-gray);
+      background: #fafaf8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .specialties-sidebar-header h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--black);
+    }
+
+    .specialties-sidebar-list {
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+      padding: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) #f0f0f0;
+    }
+
+    .specialties-sidebar-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .specialties-sidebar-list::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .specialty-sidebar-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-size: 0.885rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: all 0.22s ease;
+      margin-bottom: 4px;
+      touch-action: manipulation;
+    }
+
+    .specialty-sidebar-btn:hover {
+      background: rgba(var(--gold-rgb), 0.08);
+      color: var(--gold-dark);
+      border-color: rgba(var(--gold-rgb), 0.25);
+    }
+
+    .specialty-sidebar-btn.active {
+      background: var(--black);
+      color: var(--gold);
+      border-color: var(--black);
+      box-shadow: 0 4px 12px rgba(17, 17, 17, 0.15);
+    }
+
+    .specialty-sidebar-btn .spec-icon {
+      font-size: 1.15rem;
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .specialty-sidebar-btn .spec-text {
+      flex-grow: 1;
+      line-height: 1.3;
+    }
+
+    html[lang="ar"] .specialty-sidebar-btn {
+      text-align: right;
+    }
+
+    /* Right Main Content & 3-Column Doctor Grid */
+    .specialties-main-content {
+      min-width: 0;
+      max-width: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #doctorsGrid {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 24px !important;
+      margin-top: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    /* Doctor Card Frame & Proportions: Desktop Default */
+    .doctor-card {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--border-gray);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(17, 17, 17, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    #doctorsGrid .doctor-card.is-hidden {
+      display: none !important;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 14px 28px rgba(17, 17, 17, 0.08);
+      border-color: rgba(var(--gold-rgb), 0.5);
+    }
+
+    .doctor-img-wrap {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      aspect-ratio: 4 / 5;
+      height: auto;
+      min-height: 220px;
+      background: #f5f5f3;
+      overflow: hidden;
+    }
+
+    .doctor-img-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .doctor-card:hover .doctor-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .doctor-info {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .doc-sector-title {
+      color: var(--gold-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      letter-spacing: 0.4px;
+    }
+
+    .doc-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--black);
+      margin: 0 0 6px;
+      line-height: 1.3;
+    }
+
+    .doc-qualifications {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0;
+      min-height: 2.9em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .doc-sector-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.68rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 2;
+    }
+
+    html[lang="ar"] .doc-sector-badge {
+      left: auto;
+      right: 10px;
+    }
+
+    /* ==========================================================================
+       2. Medium Desktop / Laptop (1024px – 1199px): Balanced Sidebar & Grid
+       ========================================================================== */
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      .specialties-split-layout {
+        grid-template-columns: 240px 1fr;
+        gap: 20px;
+      }
+
+      #doctorsGrid {
+        gap: 16px !important;
+      }
+
+      .doctor-img-wrap {
+        min-height: 200px;
+      }
+
+      .doctor-info {
+        padding: 12px 14px;
+      }
+
+      .doc-name {
+        font-size: 0.98rem;
+      }
+
+      .doc-qualifications {
+        font-size: 0.78rem;
+      }
+
+      .doc-sector-badge {
+        font-size: 0.64rem;
+        padding: 2px 8px;
+        bottom: 8px;
+        left: 8px;
+      }
+
+      html[lang="ar"] .doc-sector-badge {
+        left: auto;
+        right: 8px;
+      }
+    }
+
+    /* ==========================================================================
+       3. Tablet Layout (768px – 1023px): Top Horizontal Chips & 3-Column Grid
+       ========================================================================== */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .page-hero-header {
+        margin-top: 68px;
+        padding: 50px 0 40px;
+      }
+
+      #directorySection {
+        padding: 28px 0 48px;
+      }
+
+      #directorySection .container {
+        padding: 0 20px !important;
+      }
+
+      .specialties-split-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 20px !important;
+      }
+
+      /* Horizontal Speciality Selector on Tablet */
+      .specialties-sidebar-container {
+        position: static !important;
+        top: auto !important;
+        border-radius: 14px !important;
+        box-shadow: 0 4px 16px rgba(17, 17, 17, 0.04) !important;
+        border: 1px solid var(--border-gray) !important;
+        background: var(--white) !important;
+        overflow: hidden !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+
+      .specialties-sidebar-header {
+        padding: 10px 16px !important;
+        border-bottom: 1px solid var(--border-gray) !important;
+      }
+
+      .specialties-sidebar-list {
+        max-height: none !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        padding: 10px 14px !important;
+        gap: 8px !important;
+        scroll-behavior: smooth !important;
+      }
+
+      .specialties-sidebar-list::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .specialty-sidebar-btn {
+        width: auto !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        margin-bottom: 0 !important;
+        padding: 8px 14px !important;
+        min-height: 38px !important;
+        border-radius: 999px !important;
+        border: 1.5px solid var(--border-gray) !important;
+        background: var(--white) !important;
+        color: var(--text-dark) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 0.82rem !important;
+      }
+
+      .specialty-sidebar-btn .spec-text,
+      .specialty-sidebar-btn span {
+        white-space: nowrap !important;
+      }
+
+      .specialty-sidebar-btn.active {
+        background: var(--black) !important;
+        color: var(--gold) !important;
+        border-color: var(--black) !important;
+        box-shadow: 0 4px 12px rgba(17, 17, 17, 0.15) !important;
+      }
+
+      /* 3-Column Doctor Grid on Tablet */
+      #doctorsGrid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+        width: 100% !important;
+      }
+
+      .doctor-card {
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #doctorsGrid .doctor-card.is-hidden {
+        display: none !important;
+      }
+
+      .doctor-img-wrap {
+        width: 100% !important;
+        aspect-ratio: 1 / 1.08 !important;
+        height: auto !important;
+        min-height: unset !important;
+        max-height: 220px !important;
+        padding-top: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: #f5f5f3 !important;
+      }
+
+      .doctor-img-wrap img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: top center !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      .doctor-info {
+        padding: 12px 14px 14px !important;
+      }
+
+      .doc-sector-title {
+        display: none !important;
+      }
+
+      .doc-name {
+        font-size: 0.95rem !important;
+        margin: 0 0 4px !important;
+        line-height: 1.25 !important;
+      }
+
+      .doc-qualifications {
+        font-size: 0.76rem !important;
+        line-height: 1.35 !important;
+        min-height: 2.7em !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+
+      .doc-sector-badge {
+        font-size: 0.62rem !important;
+        padding: 2px 8px !important;
+        bottom: 8px !important;
+        left: 8px !important;
+      }
+
+      html[lang="ar"] .doc-sector-badge {
+        left: auto !important;
+        right: 8px !important;
+      }
+    }
+
+    /* ==========================================================================
+       4. Mobile Layout (below 768px): Compact 2-Column Reduced Card Grid
+       ========================================================================== */
+    @media (max-width: 767px) {
+      .page-hero-header {
+        margin-top: 60px;
+        padding: 38px 12px 30px;
+      }
+
+      #directorySection {
+        padding: 20px 0 36px;
+      }
+
+      #directorySection .container {
+        padding: 0 12px !important;
+      }
+
+      .specialties-split-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 12px !important;
+        margin-top: 0.5rem !important;
+      }
+
+      /* Speciality Navigation: Immediately visible chips without data-reveal block */
+      .specialties-sidebar-container {
+        position: static !important;
+        top: auto !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+        margin-bottom: 4px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+
+      .specialties-sidebar-header {
+        display: none !important;
+      }
+
+      /* Convert specialities into horizontally scrollable chips */
+      .specialties-sidebar-list {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        max-height: none !important;
+        padding: 2px 2px 8px 2px !important;
+        gap: 6px !important;
+        scroll-behavior: smooth !important;
+      }
+
+      .specialties-sidebar-list::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .specialty-sidebar-btn {
+        width: auto !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        margin-bottom: 0 !important;
+        padding: 7px 12px !important;
+        min-height: 36px !important;
+        border-radius: 999px !important;
+        border: 1.5px solid var(--border-gray) !important;
+        background: var(--white) !important;
+        color: var(--text-dark) !important;
+        box-shadow: 0 2px 6px rgba(17, 17, 17, 0.04) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+      }
+
+      .specialty-sidebar-btn:hover {
+        border-color: rgba(var(--gold-rgb), 0.4) !important;
+      }
+
+      .specialty-sidebar-btn.active {
+        background: var(--black) !important;
+        color: var(--gold) !important;
+        border-color: var(--black) !important;
+        box-shadow: 0 4px 14px rgba(17, 17, 17, 0.18) !important;
+        font-weight: 700 !important;
+      }
+
+      .specialty-sidebar-btn .spec-icon {
+        font-size: 0.95rem !important;
+        width: auto !important;
+      }
+
+      .specialty-sidebar-btn .spec-text,
+      .specialty-sidebar-btn span {
+        white-space: nowrap !important;
+      }
+
+      /* Doctor Directory: Compact 2x2 Grid on Mobile with Reduced Card & Photo Size */
+      #doctorsGrid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+      }
+
+      .doctor-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 10px !important;
+        border: 1px solid var(--border-gray) !important;
+        box-shadow: 0 2px 6px rgba(17, 17, 17, 0.04) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        background: var(--white) !important;
+      }
+
+      #doctorsGrid .doctor-card.is-hidden {
+        display: none !important;
+      }
+
+      /* Reduced Doctor Photo Wrap (Compact 1:1 square ratio for 2x2 grid) */
+      .doctor-img-wrap {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        min-height: 120px !important;
+        max-height: 165px !important;
+        padding-top: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: #f5f5f3 !important;
+      }
+
+      .doctor-img-wrap img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: top center !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      /* Compact Speciality Badge Overlaid at Bottom of Image */
+      .doc-sector-badge {
+        position: absolute !important;
+        bottom: 5px !important;
+        left: 5px !important;
+        z-index: 2 !important;
+        font-size: 0.54rem !important;
+        padding: 2px 6px !important;
+        border-radius: 999px !important;
+        background: var(--gold) !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2px !important;
+        max-width: calc(100% - 10px) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      html[lang="ar"] .doc-sector-badge {
+        left: auto !important;
+        right: 5px !important;
+      }
+
+      /* Compact Doctor Info Below Image */
+      .doctor-info {
+        padding: 7px 8px 8px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        flex-grow: 1 !important;
+      }
+
+      .doc-sector-title {
+        display: none !important;
+      }
+
+      .doc-name {
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        color: var(--black) !important;
+        margin: 0 0 2px 0 !important;
+        line-height: 1.25 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+
+      /* 2-Line Clamping for Qualifications */
+      .doc-qualifications {
+        font-size: 0.68rem !important;
+        line-height: 1.3 !important;
+        color: var(--text-muted) !important;
+        min-height: 2.6em !important;
+        max-height: none !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        word-break: normal !important;
+        white-space: normal !important;
+        margin: 0 !important;
+      }
+    }
+
+    /* 5. Small Phone Layout (< 360px) */
+    @media (max-width: 359px) {
+      #directorySection .container {
+        padding: 0 6px !important;
+      }
+
+      #doctorsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+      }
+
+      .doctor-img-wrap {
+        aspect-ratio: 1 / 1 !important;
+        max-height: 135px !important;
+        min-height: 100px !important;
+      }
+
+      .doctor-info {
+        padding: 5px 6px 6px !important;
+      }
+
+      .doc-name {
+        font-size: 0.76rem !important;
+      }
+
+      .doc-qualifications {
+        font-size: 0.62rem !important;
+        line-height: 1.25 !important;
+      }
+
+      .doc-sector-badge {
+        font-size: 0.48rem !important;
+        padding: 1px 5px !important;
+        bottom: 4px !important;
+        left: 4px !important;
+      }
+
+      html[lang="ar"] .doc-sector-badge {
+        left: auto !important;
+        right: 4px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Persistent Mobile Bottom Sticky CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="https://wa.me/919941194191" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+      <span class="lang-en">WhatsApp</span>
+      <span class="lang-ar">واتساب</span>
+    </a>
+    <a href="medical.html#consultation" class="btn btn-primary" style="background: var(--black); color: var(--gold); border-color: var(--black);">
+      <span class="lang-en">Free Consultation</span>
+      <span class="lang-ar">استشارة مجانية</span>
+    </a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="container nav-wrapper">
+      <a href="../index.html" class="logo" style="color: var(--black);">KèRa Wellness<span style="color: var(--gold);">.</span></a>
+      <div class="nav-links">
+        <div class="lang-switcher lang-switcher-desktop">
+          <button onclick="setLanguage('en')" class="lang-btn btn-lang-en active" id="btn-lang-en">EN</button>
+          <span>|</span>
+          <button onclick="setLanguage('ar')" class="lang-btn btn-lang-ar" id="btn-lang-ar">عربي</button>
+        </div>
+        <a href="../index.html" class="lang-en">Home</a>
+        <a href="../index.html" class="lang-ar">الرئيسية</a>
+        <a href="dental.html" class="lang-en">Dental</a>
+        <a href="dental.html" class="lang-ar">طب الأسنان</a>
+        <a href="medical.html" class="lang-en">Medical</a>
+        <a href="medical.html" class="lang-ar">الطب العام</a>
+        <a href="../index.html#journey" class="lang-en">Patient Journey</a>
+        <a href="../index.html#journey" class="lang-ar">رحلة المريض</a>
+        <a href="doctors.html" class="lang-en active">Specialists</a>
+        <a href="doctors.html" class="lang-ar active">الأطباء</a>
+        <a href="medical.html#testimonials" class="lang-en">Success Stories</a>
+        <a href="medical.html#testimonials" class="lang-ar">قصص النجاح</a>
+      </div>
+      <div class="lang-switcher lang-switcher-mobile">
+        <button onclick="setLanguage('en')" class="lang-btn btn-lang-en active">EN</button>
+        <span>|</span>
+        <button onclick="setLanguage('ar')" class="lang-btn btn-lang-ar">عربي</button>
+      </div>
+      <button class="burger-menu-btn" id="burgerMenuBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero Header -->
+  <header class="page-hero-header">
+    <div class="container" data-reveal>
+      <div class="hero-badge" style="display: inline-block; margin-bottom: 14px; background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); color: var(--gold-light);">
+        <span class="lang-en">Multi-Specialty Clinical Excellence</span>
+        <span class="lang-ar">نخبة كبار الاستشاريين والجراحين المعتمدين</span>
+      </div>
+      <h1 style="color: #fff; font-size: clamp(2rem, 3.8vw + 0.5rem, 3.2rem); margin-bottom: 1rem;">
+        <span class="lang-en">Our Specialities &amp; Doctors</span>
+        <span class="lang-ar">تخصصاتنا وأطباؤنا الاستشاريون</span>
+      </h1>
+      <p style="color: rgba(255, 255, 255, 0.85); max-width: 780px; margin: 0 auto; font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.6;">
+        <span class="lang-en">Select any medical specialty to view distinguished department chiefs, fellows of UK Royal Colleges, and board-certified surgeons.</span>
+        <span class="lang-ar">اختر أي تخصص طبي لاستعراض كبار رؤساء الأقسام وزملاء الكليات الملكية البريطانية والدولية.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- Master-Detail Section: Left Specialties / Right Doctors -->
+  <section id="directorySection">
+    <div class="container">
+      
+      <div class="specialties-split-layout">
+        
+        <!-- Left Side: Specialties Navigation Sidebar -->
+        <aside class="specialties-sidebar-container" id="specialtiesSidebar">
+          <div class="specialties-sidebar-header">
+            <h3>
+              <span class="lang-en">Our Specialities</span>
+              <span class="lang-ar">تخصصاتنا الطبية</span>
+            </h3>
+          </div>
+          <div class="specialties-sidebar-list" id="specialtiesSidebarList">
+        <button class="specialty-sidebar-btn active" data-sector="Anesthesiology" onclick="selectSpecialty('Anesthesiology', this)">
+          <span class="spec-icon">💉</span>
+          <span class="spec-text">
+            <span class="lang-en">Anesthesiology</span>
+            <span class="lang-ar">التخدير وعلاج الألم</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Critical Care" onclick="selectSpecialty('Critical Care', this)">
+          <span class="spec-icon">🏥</span>
+          <span class="spec-text">
+            <span class="lang-en">Critical Care & ICU</span>
+            <span class="lang-ar">العناية المركزة والحرجة</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Dental Maxillofacial" onclick="selectSpecialty('Dental Maxillofacial', this)">
+          <span class="spec-icon">🦷</span>
+          <span class="spec-text">
+            <span class="lang-en">Dental Maxillofacial</span>
+            <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Dermatology" onclick="selectSpecialty('Dermatology', this)">
+          <span class="spec-icon">🧴</span>
+          <span class="spec-text">
+            <span class="lang-en">Dermatology</span>
+            <span class="lang-ar">الأمراض الجلدية والتجميل الطبي</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Diabetology" onclick="selectSpecialty('Diabetology', this)">
+          <span class="spec-icon">🩺</span>
+          <span class="spec-text">
+            <span class="lang-en">Diabetology & Metabolic</span>
+            <span class="lang-ar">السكري والتمثيل الغذائي</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Endocrinology" onclick="selectSpecialty('Endocrinology', this)">
+          <span class="spec-icon">🧬</span>
+          <span class="spec-text">
+            <span class="lang-en">Endocrinology</span>
+            <span class="lang-ar">الغدد الصماء وجراحتها</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="ENT, Head and Neck Surgery" onclick="selectSpecialty('ENT, Head and Neck Surgery', this)">
+          <span class="spec-icon">👂</span>
+          <span class="spec-text">
+            <span class="lang-en">ENT, Head & Neck Surgery</span>
+            <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Gastroenterology" onclick="selectSpecialty('Gastroenterology', this)">
+          <span class="spec-icon">🔬</span>
+          <span class="spec-text">
+            <span class="lang-en">Gastroenterology</span>
+            <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="General Medicine" onclick="selectSpecialty('General Medicine', this)">
+          <span class="spec-icon">🩺</span>
+          <span class="spec-text">
+            <span class="lang-en">General Medicine</span>
+            <span class="lang-ar">الطب الباطني العام</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="General Surgery" onclick="selectSpecialty('General Surgery', this)">
+          <span class="spec-icon">🔪</span>
+          <span class="spec-text">
+            <span class="lang-en">General Surgery</span>
+            <span class="lang-ar">الجراحة العامة والمناظير</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Geriatrics" onclick="selectSpecialty('Geriatrics', this)">
+          <span class="spec-icon">👵</span>
+          <span class="spec-text">
+            <span class="lang-en">Geriatrics</span>
+            <span class="lang-ar">طب ورعاية كبار السن</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Infectious Disease" onclick="selectSpecialty('Infectious Disease', this)">
+          <span class="spec-icon">🦠</span>
+          <span class="spec-text">
+            <span class="lang-en">Infectious Disease</span>
+            <span class="lang-ar">الأمراض المعدية وطب السفر</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Laboratory Services" onclick="selectSpecialty('Laboratory Services', this)">
+          <span class="spec-icon">🧪</span>
+          <span class="spec-text">
+            <span class="lang-en">Laboratory Services</span>
+            <span class="lang-ar">المختبرات والتحاليل الطبية</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Liver Disease" onclick="selectSpecialty('Liver Disease', this)">
+          <span class="spec-icon">🫀</span>
+          <span class="spec-text">
+            <span class="lang-en">Liver Disease & Transplant</span>
+            <span class="lang-ar">أمراض وزراعة الكبد</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Nephrology and Urology Science" onclick="selectSpecialty('Nephrology and Urology Science', this)">
+          <span class="spec-icon">🫘</span>
+          <span class="spec-text">
+            <span class="lang-en">Nephrology & Urology</span>
+            <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Obstetrics and Gynecology" onclick="selectSpecialty('Obstetrics and Gynecology', this)">
+          <span class="spec-icon">🤰</span>
+          <span class="spec-text">
+            <span class="lang-en">Obstetrics & Gynecology</span>
+            <span class="lang-ar">النساء والتوليد والإخصاب</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Ophthalmology" onclick="selectSpecialty('Ophthalmology', this)">
+          <span class="spec-icon">👁️</span>
+          <span class="spec-text">
+            <span class="lang-en">Ophthalmology</span>
+            <span class="lang-ar">طب وجراحة العيون</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Orthopaedicians" onclick="selectSpecialty('Orthopaedicians', this)">
+          <span class="spec-icon">🦴</span>
+          <span class="spec-text">
+            <span class="lang-en">Orthopaedics & Joints</span>
+            <span class="lang-ar">جراحة العظام والمفاصل</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Paediatrics and Neonatology" onclick="selectSpecialty('Paediatrics and Neonatology', this)">
+          <span class="spec-icon">👶</span>
+          <span class="spec-text">
+            <span class="lang-en">Paediatrics & Neonatology</span>
+            <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Plastic Surgery" onclick="selectSpecialty('Plastic Surgery', this)">
+          <span class="spec-icon">⚡</span>
+          <span class="spec-text">
+            <span class="lang-en">Plastic Surgery</span>
+            <span class="lang-ar">جراحة التجميل والترميم</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Psychiatry" onclick="selectSpecialty('Psychiatry', this)">
+          <span class="spec-icon">🧘</span>
+          <span class="spec-text">
+            <span class="lang-en">Psychiatry</span>
+            <span class="lang-ar">الطب النفسي والصحة السلوكية</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Pulmonology" onclick="selectSpecialty('Pulmonology', this)">
+          <span class="spec-icon">🫁</span>
+          <span class="spec-text">
+            <span class="lang-en">Pulmonology</span>
+            <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Rheumatology" onclick="selectSpecialty('Rheumatology', this)">
+          <span class="spec-icon">🩹</span>
+          <span class="spec-text">
+            <span class="lang-en">Rheumatology</span>
+            <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Spine Surgery" onclick="selectSpecialty('Spine Surgery', this)">
+          <span class="spec-icon">🩻</span>
+          <span class="spec-text">
+            <span class="lang-en">Spine Surgery</span>
+            <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
+          </span>
+        </button>
+        <button class="specialty-sidebar-btn" data-sector="Vascular Surgery" onclick="selectSpecialty('Vascular Surgery', this)">
+          <span class="spec-icon">🩸</span>
+          <span class="spec-text">
+            <span class="lang-en">Vascular Surgery</span>
+            <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
+          </span>
+        </button>
+          </div>
+        </aside>
+
+        <!-- Right Side: Selected Specialty Details & Doctor Cards Grid -->
+        <main class="specialties-main-content">
+          
+          <!-- Doctor Cards Grid for Selected Specialty -->
+          <div class="doctor-grid" id="doctorsGrid">
+        <div class="doctor-card card-hover" data-sector="Anesthesiology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Deepak%20B%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesiology)%2C%20Fellowship%20in%20Transplant%20Anaesthesia%20%26%20Critical%20Care.jpg" alt="Dr. Deepak B - Cardiac & Transplant Anesthesiology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Deepak B</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Anaesthesiology), Fellowship in Transplant Anaesthesia & Critical Care">MBBS, MD (Anaesthesiology), Fellowship in Transplant Anaesthesia & Critical Care</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Anesthesiology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Dhivya%20D%20%E2%80%93%20MBBS%2C%20DA%2C%20DNB%20(Anaesthesia)%2C%20DrNB%20(Cardiac%20Anaesthesia)%2C%20FIACTA.jpg" alt="Dr. Dhivya D - Cardiac & Transplant Anesthesiology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Dhivya D</h3>
+              <p class="doc-qualifications" title="MBBS, DA, DNB (Anaesthesia), DrNB (Cardiac Anaesthesia), FIACTA">MBBS, DA, DNB (Anaesthesia), DrNB (Cardiac Anaesthesia), FIACTA</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Anesthesiology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20G.%20N.%20Jeevanandam%20%E2%80%93%20MD%2C%20FNB%20(Cardiac%20Anaesthesia)%2C%20FTEE.jpg" alt="Dr. G. N. Jeevanandam - Cardiac & Transplant Anesthesiology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. G. N. Jeevanandam</h3>
+              <p class="doc-qualifications" title="MD, FNB (Cardiac Anaesthesia), FTEE">MD, FNB (Cardiac Anaesthesia), FTEE</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Anesthesiology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Anesthesiology/Dr.%20Vigneshwaran%20K%20%E2%80%93%20MBBS%2C%20DA%2C%20FRCA%2C%20Fellowship%20in%20Liver%20Transplant%20Anaesthesia%20(UK).jpg" alt="Dr. Vigneshwaran K - Cardiac & Transplant Anesthesiology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Cardiac & Transplant Anesthesiology</span>
+              <span class="lang-ar">تخدير جراحات القلب والزراعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Vigneshwaran K</h3>
+              <p class="doc-qualifications" title="MBBS, DA, FRCA, Fellowship in Liver Transplant Anaesthesia (UK)">MBBS, DA, FRCA, Fellowship in Liver Transplant Anaesthesia (UK)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Critical Care">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Buddhan%20Rajarathinam%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesia)%2C%20EDIC%2C%20IDCCM%2C%20PDFCCM.jpg" alt="Dr. Buddhan Rajarathinam - Critical Care & ICU" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Buddhan Rajarathinam</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Anaesthesia), EDIC, IDCCM, PDFCCM">MBBS, MD (Anaesthesia), EDIC, IDCCM, PDFCCM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Critical Care">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Gokulakrishnan%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesia)%2C%20DrNB%20(Critical%20Care%20Medicine).jpg" alt="Dr. Gokulakrishnan - Critical Care & ICU" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Gokulakrishnan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Anaesthesia), DrNB (Critical Care Medicine)">MBBS, MD (Anaesthesia), DrNB (Critical Care Medicine)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Critical Care">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20N.%20Sridhar%20%E2%80%93%20MBBS%2C%20MD%20(Anaesthesiology)%2C%20FRCA%20(UK)%2C%20FFICM.jpg" alt="Dr. N. Sridhar - Critical Care & ICU" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. N. Sridhar</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Anaesthesiology), FRCA (UK), FFICM">MBBS, MD (Anaesthesiology), FRCA (UK), FFICM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Critical Care">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20P.%20Saravana%20Kumar%20%E2%80%93%20MBBS%2C%20MD%2C%20DM%20(Critical%20Care).jpg" alt="Dr. P. Saravana Kumar - Critical Care & ICU" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. P. Saravana Kumar</h3>
+              <p class="doc-qualifications" title="MBBS, MD, DM (Critical Care)">MBBS, MD, DM (Critical Care)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Critical Care">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Critical%20Care/Dr.%20Vetriselvan%20P%20%E2%80%93%20MBBS%2C%20MD%2C%20MRCP%20(A)%2C%20DM%20(AIIMS%2C%20New%20Delhi).jpg" alt="Dr. Vetriselvan P - Critical Care & ICU" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Critical Care & ICU</span>
+              <span class="lang-ar">العناية المركزة والحرجة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Vetriselvan P</h3>
+              <p class="doc-qualifications" title="MBBS, MD, MRCP (A), DM (AIIMS, New Delhi)">MBBS, MD, MRCP (A), DM (AIIMS, New Delhi)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20M.%20Raj%20Mohan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. M. Raj Mohan - Dental & Maxillofacial" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. M. Raj Mohan</h3>
+              <p class="doc-qualifications" title="BDS, MDS">BDS, MDS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Manikandan%20Ramanathan%20%E2%80%93%20BDS%2C%20MDS%2C%20FDSRCS%20(England)%2C%20FFDRCS%20(Ireland).jpg" alt="Dr. Manikandan Ramanathan - Dental & Maxillofacial" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Manikandan Ramanathan</h3>
+              <p class="doc-qualifications" title="BDS, MDS, FDSRCS (England), FFDRCS (Ireland)">BDS, MDS, FDSRCS (England), FFDRCS (Ireland)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Preeti%20L.%20Anand%20%E2%80%93%20BDS%2C%20MDS%2C%20PGCOI.jpg" alt="Dr. Preeti L. Anand - Dental & Maxillofacial" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Preeti L. Anand</h3>
+              <p class="doc-qualifications" title="BDS, MDS, PGCOI">BDS, MDS, PGCOI</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20S.%20Elangovan%20%E2%80%93%20BDS%2C%20MDS.jpg" alt="Dr. S. Elangovan - Dental & Maxillofacial" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Elangovan</h3>
+              <p class="doc-qualifications" title="BDS, MDS">BDS, MDS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dental Maxillofacial">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dental%20Maxillofacial/Dr.%20Vijayalakshmi%20P%20%E2%80%93%20BDS%2C%20MDS%20(Oral%20%26%20Maxillofacial%20Surgery)%2C%20FAOMSI%20(Fellowship%20in%20Craniofacial%20Trauma).jpg" alt="Dr. Vijayalakshmi P - Dental & Maxillofacial" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dental & Maxillofacial</span>
+              <span class="lang-ar">طب وجراحة الأسنان والوجه والفكين</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Vijayalakshmi P</h3>
+              <p class="doc-qualifications" title="BDS, MDS (Oral & Maxillofacial Surgery), FAOMSI (Fellowship in Craniofacial Trauma)">BDS, MDS (Oral & Maxillofacial Surgery), FAOMSI (Fellowship in Craniofacial Trauma)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dermatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20A.%20S.%20Niraaimathi%20%E2%80%93%20MBBS%2C%20MD%2C%20DNB.jpg" alt="Dr. A. S. Niraaimathi - Dermatology & Skin Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. A. S. Niraaimathi</h3>
+              <p class="doc-qualifications" title="MBBS, MD, DNB">MBBS, MD, DNB</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dermatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20M.%20Shoba%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. M. Shoba - Dermatology & Skin Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. M. Shoba</h3>
+              <p class="doc-qualifications" title="MBBS, MD (DVL)">MBBS, MD (DVL)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dermatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20Pravin%20Vinil%20Raja%20%E2%80%93%20MBBS%2C%20MD%2C%20DVL.jpg" alt="Dr. Pravin Vinil Raja - Dermatology & Skin Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Pravin Vinil Raja</h3>
+              <p class="doc-qualifications" title="MBBS, MD, DVL">MBBS, MD, DVL</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dermatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20R.%20Indhra%20Priyadharshini%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. R. Indhra Priyadharshini - Dermatology & Skin Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. R. Indhra Priyadharshini</h3>
+              <p class="doc-qualifications" title="MBBS, MD (DVL)">MBBS, MD (DVL)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Dermatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Dermatology/Dr.%20V.%20Madhumitha%20%E2%80%93%20MBBS%2C%20MD%20(DVL).jpg" alt="Dr. V. Madhumitha - Dermatology & Skin Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Dermatology & Skin Care</span>
+              <span class="lang-ar">الجلدية والتجميل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. V. Madhumitha</h3>
+              <p class="doc-qualifications" title="MBBS, MD (DVL)">MBBS, MD (DVL)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Diabetology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20Ezhilan%20Naganathan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. Ezhilan Naganathan - Diabetology & Endocrinology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Ezhilan Naganathan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine)">MBBS, MD (General Medicine)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Diabetology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20Gopal%20Parthasarathy%20%E2%80%93%20MBBS%2C%20D.Sc.%20(Hon.).jpg" alt="Dr. Gopal Parthasarathy - Diabetology & Endocrinology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Gopal Parthasarathy</h3>
+              <p class="doc-qualifications" title="MBBS, D.Sc. (Hon.)">MBBS, D.Sc. (Hon.)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Diabetology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20K.%20Baraneedharan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. K. Baraneedharan - Diabetology & Endocrinology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. K. Baraneedharan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine)">MBBS, MD (General Medicine)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Diabetology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Diabetology/Dr.%20S.%20Sivaram%20Kannan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FRCP%20(Glasgow).jpg" alt="Dr. S. Sivaram Kannan - Diabetology & Endocrinology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Diabetology & Endocrinology</span>
+              <span class="lang-ar">الغدد الصماء والسكري</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Sivaram Kannan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), FRCP (Glasgow)">MBBS, MD (General Medicine), FRCP (Glasgow)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Endocrinology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Endocrinology/Dr.%20Dhalapathy%20Sadacharan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Endocrine%20Surgery).jpg" alt="Dr. Dhalapathy Sadacharan - Endocrine Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Endocrine Surgery</span>
+              <span class="lang-ar">جراحة الغدد الصماء</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Endocrine Surgery</span>
+              <span class="lang-ar">جراحة الغدد الصماء</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Dhalapathy Sadacharan</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MCh (Endocrine Surgery)">MBBS, MS (General Surgery), MCh (Endocrine Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Endocrinology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Endocrinology/Dr.%20S.%20Sivaprakash%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Endocrinology).jpg" alt="Dr. S. Sivaprakash - Endocrine Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Endocrine Surgery</span>
+              <span class="lang-ar">جراحة الغدد الصماء</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Endocrine Surgery</span>
+              <span class="lang-ar">جراحة الغدد الصماء</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Sivaprakash</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DM (Endocrinology)">MBBS, MD (General Medicine), DM (Endocrinology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Endocrinology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Endocrinology/Dr.%20Vignesh%20%E2%80%93%20MD%2C%20DM.jpg" alt="Dr. Vignesh - Endocrine Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Endocrine Surgery</span>
+              <span class="lang-ar">جراحة الغدد الصماء</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Endocrine Surgery</span>
+              <span class="lang-ar">جراحة الغدد الصماء</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Vignesh</h3>
+              <p class="doc-qualifications" title="MD, DM">MD, DM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Deepika%20M%20Vijai%20%E2%80%93%20MBBS%2C%20MS%20(ENT).jpg" alt="Dr. Deepika M Vijai - ENT & Head/Neck Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Deepika M Vijai</h3>
+              <p class="doc-qualifications" title="MBBS, MS (ENT)">MBBS, MS (ENT)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Niraj%20Kumar%20Joshi%20%E2%80%93%20MBBS%2C%20MD%20(Physiology)%2C%20DNB%20(Oto-Rhino-Laryngology)%2C%20FAGE.jpg" alt="Dr. Niraj Kumar Joshi - ENT & Head/Neck Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Niraj Kumar Joshi</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Physiology), DNB (Oto-Rhino-Laryngology), FAGE">MBBS, MD (Physiology), DNB (Oto-Rhino-Laryngology), FAGE</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Preethi%20P%20%E2%80%93%20MBBS%2C%20DLO%2C%20DNB%20(ENT).jpg" alt="Dr. Preethi P - ENT & Head/Neck Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Preethi P</h3>
+              <p class="doc-qualifications" title="MBBS, DLO, DNB (ENT)">MBBS, DLO, DNB (ENT)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="ENT, Head and Neck Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/ENT%2C%20Head%20and%20Neck%20Surgery/Dr.%20Vinothan%20%E2%80%93%20MBBS%2C%20DLO%2C%20MS%20(ENT)%2C%20DNB%20(ENT).jpg" alt="Dr. Vinothan - ENT & Head/Neck Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">ENT & Head/Neck Surgery</span>
+              <span class="lang-ar">الأنف والأذن والحنجرة والرأس</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Vinothan</h3>
+              <p class="doc-qualifications" title="MBBS, DLO, MS (ENT), DNB (ENT)">MBBS, DLO, MS (ENT), DNB (ENT)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Gastroenterology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Gastroenterology/Dr.%20M.%20A.%20Arvind%20%E2%80%93%20MBBS%2C%20MD%2C%20DM%20(Medical%20Gastroenterology)%2C%20Fellowship%20in%20ERCP%20(2018)%2C%20Fellowship%20in%20Advanced%20EUS%20(2022).jpg" alt="Dr. M. A. Arvind - Gastroenterology & GI Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. M. A. Arvind</h3>
+              <p class="doc-qualifications" title="MBBS, MD, DM (Medical Gastroenterology), Fellowship in ERCP (2018), Fellowship in Advanced EUS (2022)">MBBS, MD, DM (Medical Gastroenterology), Fellowship in ERCP (2018), Fellowship in Advanced EUS (2022)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Gastroenterology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Gastroenterology/Dr.%20S.%20Vadivel%20Kumaran%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology).jpg" alt="Dr. S. Vadivel Kumaran - Gastroenterology & GI Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Vadivel Kumaran</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DM (Gastroenterology)">MBBS, MD (General Medicine), DM (Gastroenterology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Gastroenterology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Gastroenterology/Dr.%20Swati%20Raju%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology)%2C%20Postdoctoral%20Fellowship%20in%20Liver%20Diseases%20(Chennai).jpg" alt="Dr. Swati Raju - Gastroenterology & GI Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Swati Raju</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DM (Gastroenterology), Postdoctoral Fellowship in Liver Diseases (Chennai)">MBBS, MD (General Medicine), DM (Gastroenterology), Postdoctoral Fellowship in Liver Diseases (Chennai)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Gastroenterology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Gastroenterology/Prof.%20D.%20Kannan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Surgical%20Gastroenterology)%2C%20FRCS%20(Glasgow).jpg" alt="Prof. D. Kannan - Gastroenterology & GI Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gastroenterology & GI Surgery</span>
+              <span class="lang-ar">أمراض وجراحة الجهاز الهضمي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Prof. D. Kannan</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MCh (Surgical Gastroenterology), FRCS (Glasgow)">MBBS, MS (General Surgery), MCh (Surgical Gastroenterology), FRCS (Glasgow)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Medicine">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Ezhilan%20Naganathan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine).jpg" alt="Dr. Ezhilan Naganathan - General & Internal Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Ezhilan Naganathan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine)">MBBS, MD (General Medicine)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Medicine">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Medicine/dr.%20S.%20Sivaram%20Kannan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FRCP%20(Glasgow).jpg" alt="Dr. S. Sivaram Kannan - General & Internal Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Sivaram Kannan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), FRCP (Glasgow)">MBBS, MD (General Medicine), FRCP (Glasgow)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Medicine">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Supriyaa%20B%20B%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FIDM%2C%20FIID.jpg" alt="Dr. Supriyaa B B - General & Internal Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Supriyaa B B</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), FIDM, FIID">MBBS, MD (General Medicine), FIDM, FIID</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Medicine">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Thangaprajan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20MRCP%20(UK).jpg" alt="Dr. Thangaprajan - General & Internal Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Thangaprajan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), MRCP (UK)">MBBS, MD (General Medicine), MRCP (UK)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Medicine">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Medicine/Dr.%20Yashica%20Priya%20R%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20CCEBDM.jpg" alt="Dr. Yashica Priya R - General & Internal Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Internal Medicine</span>
+              <span class="lang-ar">الطب الباطني العام</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Yashica Priya R</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), CCEBDM">MBBS, MD (General Medicine), CCEBDM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20A.%20Aravinth%20%E2%80%93%20MBBS%2C%20MS%2C%20DNB.jpg" alt="Dr. A. Aravinth - General & Laparoscopic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. A. Aravinth</h3>
+              <p class="doc-qualifications" title="MBBS, MS, DNB">MBBS, MS, DNB</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20Muralidharan%20Parthasarathy%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20FRCS%20(General%20Surgery).jpg" alt="Dr. Muralidharan Parthasarathy - General & Laparoscopic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Muralidharan Parthasarathy</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MRCS (Edinburgh), FRCS (General Surgery)">MBBS, MS (General Surgery), MRCS (Edinburgh), FRCS (General Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20P.%20V.%20Dhanapal%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FAIS.jpg" alt="Dr. P. V. Dhanapal - General & Laparoscopic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. P. V. Dhanapal</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), FAIS">MBBS, MS (General Surgery), FAIS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20S.%20Srividhya%20%E2%80%93%20MS%20(General%20Surgery)%2C%20FMAS%2C%20DMAS%2C%20DLO%20(Otorhinolaryngology).jpg" alt="Dr. S. Srividhya - General & Laparoscopic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Srividhya</h3>
+              <p class="doc-qualifications" title="MS (General Surgery), FMAS, DMAS, DLO (Otorhinolaryngology)">MS (General Surgery), FMAS, DMAS, DLO (Otorhinolaryngology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="General Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/General%20Surgery/Dr.%20Senthil%20Gnanasekaran%20%E2%80%93%20MBBS%2C%20MS%2C%20MCh%2C%20PDF%20(Liver%20Transplant).jpg" alt="Dr. Senthil Gnanasekaran - General & Laparoscopic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">General & Laparoscopic Surgery</span>
+              <span class="lang-ar">الجراحة العامة والمناظير</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Senthil Gnanasekaran</h3>
+              <p class="doc-qualifications" title="MBBS, MS, MCh, PDF (Liver Transplant)">MBBS, MS, MCh, PDF (Liver Transplant)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Geriatrics">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Geriatrics/Dr.K.Sushmitha%20mbbs%2Cmd.jpg" alt="Dr. K.Sushmitha mbbs,md - Geriatric Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Geriatric Medicine</span>
+              <span class="lang-ar">طب ورعاية كبار السن</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Geriatric Medicine</span>
+              <span class="lang-ar">طب ورعاية كبار السن</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. K.Sushmitha mbbs,md</h3>
+              <p class="doc-qualifications" title="Senior Consultant">Senior Consultant</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Geriatrics">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Geriatrics/dr.s.lavanya%20mbbs%2Cmd.jpg" alt="Dr. s.lavanya mbbs,md - Geriatric Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Geriatric Medicine</span>
+              <span class="lang-ar">طب ورعاية كبار السن</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Geriatric Medicine</span>
+              <span class="lang-ar">طب ورعاية كبار السن</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. s.lavanya mbbs,md</h3>
+              <p class="doc-qualifications" title="Senior Consultant">Senior Consultant</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Infectious Disease">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Infectious%20Disease/Dr.%20Sowmya%20Sridharan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20FNB%20(Infectious%20Disease)%2C%20MRCP%20(UK)%2C%20CIC.jpg" alt="Dr. Sowmya Sridharan - Infectious Diseases" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Infectious Diseases</span>
+              <span class="lang-ar">الأمراض المعدية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Infectious Diseases</span>
+              <span class="lang-ar">الأمراض المعدية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sowmya Sridharan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), FNB (Infectious Disease), MRCP (UK), CIC">MBBS, MD (General Medicine), FNB (Infectious Disease), MRCP (UK), CIC</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Laboratory Services">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Laboratory%20Services/Dr.%20Meenachi%20Chidambaram%20%E2%80%93%20MBBS%2C%20MD%20(Microbiology).jpg" alt="Dr. Meenachi Chidambaram - Laboratory & Diagnostics" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Laboratory & Diagnostics</span>
+              <span class="lang-ar">المختبرات والتحاليل الطبية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Laboratory & Diagnostics</span>
+              <span class="lang-ar">المختبرات والتحاليل الطبية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Meenachi Chidambaram</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Microbiology)">MBBS, MD (Microbiology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Laboratory Services">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Laboratory%20Services/Dr.%20Thilagavathy%20%E2%80%93%20MBBS%2C%20MD%20(Microbiology).jpg" alt="Dr. Thilagavathy - Laboratory & Diagnostics" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Laboratory & Diagnostics</span>
+              <span class="lang-ar">المختبرات والتحاليل الطبية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Laboratory & Diagnostics</span>
+              <span class="lang-ar">المختبرات والتحاليل الطبية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Thilagavathy</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Microbiology)">MBBS, MD (Microbiology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Liver Disease">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20D.%20Gawtham%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FMAS%2C%20Fellowship%20in%20Hepatobiliary%20and%20Liver%20Transplant%20Surgery%20(Medanta%2C%20Gurugram).jpg" alt="Dr. D. Gawtham - Liver & Organ Transplant" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. D. Gawtham</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), FMAS, Fellowship in Hepatobiliary and Liver Transplant Surgery (Medanta, Gurugram)">MBBS, MS (General Surgery), FMAS, Fellowship in Hepatobiliary and Liver Transplant Surgery (Medanta, Gurugram)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Liver Disease">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Sumanth%20Srivatsan%20C%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery).jpg" alt="Dr. Sumanth Srivatsan C - Liver & Organ Transplant" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sumanth Srivatsan C</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery)">MBBS, MS (General Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Liver Disease">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Swaminathan%20Sambandam%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20Abdominal%20Transplant%20Fellowship%20(USA).jpg" alt="Dr. Swaminathan Sambandam - Liver & Organ Transplant" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Swaminathan Sambandam</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MRCS (Edinburgh), Abdominal Transplant Fellowship (USA)">MBBS, MS (General Surgery), MRCS (Edinburgh), Abdominal Transplant Fellowship (USA)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Liver Disease">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Liver%20Disease/Dr.%20Swati%20Raju%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Gastroenterology)%2C%20Postdoctoral%20Fellowship%20in%20Liver%20Diseases%20(Chennai).jpg" alt="Dr. Swati Raju - Liver & Organ Transplant" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Swati Raju</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DM (Gastroenterology), Postdoctoral Fellowship in Liver Diseases (Chennai)">MBBS, MD (General Medicine), DM (Gastroenterology), Postdoctoral Fellowship in Liver Diseases (Chennai)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Liver Disease">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Liver%20Disease/Prof.%20D.%20Kannan%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Surgical%20Gastroenterology)%2C%20FRCS%20(Glasgow).jpg" alt="Prof. D. Kannan - Liver & Organ Transplant" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Liver & Organ Transplant</span>
+              <span class="lang-ar">أمراض وزراعة الكبد</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Prof. D. Kannan</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MCh (Surgical Gastroenterology), FRCS (Glasgow)">MBBS, MS (General Surgery), MCh (Surgical Gastroenterology), FRCS (Glasgow)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Aarthy%20P%20%E2%80%93%20MBBS%2C%20MS%2C%20DrNB.jpg" alt="Dr. Aarthy P - Nephrology & Urology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Aarthy P</h3>
+              <p class="doc-qualifications" title="MBBS, MS, DrNB">MBBS, MS, DrNB</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Anandan%20Nagalingam%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FRCS%20(Edinburgh)%2C%20Diploma%20in%20Urology%20(London).jpg" alt="Dr. Anandan Nagalingam - Nephrology & Urology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Anandan Nagalingam</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), FRCS (Edinburgh), Diploma in Urology (London)">MBBS, MS (General Surgery), FRCS (Edinburgh), Diploma in Urology (London)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Anu%20Ramesh%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MRCS%20(Edinburgh)%2C%20DNB%20(General%20Surgery)%2C%20MCh%20(Urology).jpg" alt="Dr. Anu Ramesh - Nephrology & Urology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Anu Ramesh</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MRCS (Edinburgh), DNB (General Surgery), MCh (Urology)">MBBS, MS (General Surgery), MRCS (Edinburgh), DNB (General Surgery), MCh (Urology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20Balaji%20Kirushnan%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DNB%20(Nephrology).jpg" alt="Dr. Balaji Kirushnan - Nephrology & Urology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Balaji Kirushnan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DNB (Nephrology)">MBBS, MD (General Medicine), DNB (Nephrology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Nephrology and Urology Science">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Nephrology%20and%20Urology%20Science/Dr.%20R.%20Balasubramaniyam%20%E2%80%93%20MBBS%2C%20DNB%20(General%20Medicine)%2C%20DNB%20(Nephrology).jpg" alt="Dr. R. Balasubramaniyam - Nephrology & Urology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Nephrology & Urology</span>
+              <span class="lang-ar">أمراض الكلى والمسالك البولية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. R. Balasubramaniyam</h3>
+              <p class="doc-qualifications" title="MBBS, DNB (General Medicine), DNB (Nephrology)">MBBS, DNB (General Medicine), DNB (Nephrology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Parimala%20Devi%20%E2%80%93%20MBBS%2C%20DGO%2C%20DNB%20(OBG)%2C%20FMAS%2C%20F.ART%2C%20DRM%20(Germany).jpg" alt="Dr. Parimala Devi - Gynecology, Obstetrics & IVF" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Parimala Devi</h3>
+              <p class="doc-qualifications" title="MBBS, DGO, DNB (OBG), FMAS, F.ART, DRM (Germany)">MBBS, DGO, DNB (OBG), FMAS, F.ART, DRM (Germany)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Sahityalakshmi%20Manoharan%20%E2%80%93%20MBBS%2C%20MS%20(O%26G)%2C%20DNB%20(O%26G)%2C%20Fellowship%20in%20Reproductive%20Medicine%2C%20Fellowship%20in%20Cosmetic%20Gynaecology.jpg" alt="Dr. Sahityalakshmi Manoharan - Gynecology, Obstetrics & IVF" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sahityalakshmi Manoharan</h3>
+              <p class="doc-qualifications" title="MBBS, MS (O&G), DNB (O&G), Fellowship in Reproductive Medicine, Fellowship in Cosmetic Gynaecology">MBBS, MS (O&G), DNB (O&G), Fellowship in Reproductive Medicine, Fellowship in Cosmetic Gynaecology</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Sheela%20M%20%E2%80%93%20MBBS%2C%20DGO%2C%20MRCOG%20(UK)%2C%20MRCPI%20O%26G%20(Ireland)%2C%20EFOG-EBCOG%20(Europe)%2C%20DMAS%2C%20FMAS.jpg" alt="Dr. Sheela M - Gynecology, Obstetrics & IVF" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sheela M</h3>
+              <p class="doc-qualifications" title="MBBS, DGO, MRCOG (UK), MRCPI O&G (Ireland), EFOG-EBCOG (Europe), DMAS, FMAS">MBBS, DGO, MRCOG (UK), MRCPI O&G (Ireland), EFOG-EBCOG (Europe), DMAS, FMAS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Shruthi%20Sreedhar%20%E2%80%93%20MS%20(OG)%2C%20MRCOG%2C%20FMAS.jpg" alt="Dr. Shruthi Sreedhar - Gynecology, Obstetrics & IVF" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Shruthi Sreedhar</h3>
+              <p class="doc-qualifications" title="MS (OG), MRCOG, FMAS">MS (OG), MRCOG, FMAS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Obstetrics and Gynecology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Obstetrics%20and%20Gynecology/Dr.%20Thendral%20%E2%80%93%20MBBS%2C%20MS%20(OBG)%2C%20DNB%20(OBG)%2C%20FMAS%2C%20MRCOG.jpg" alt="Dr. Thendral - Gynecology, Obstetrics & IVF" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Gynecology, Obstetrics & IVF</span>
+              <span class="lang-ar">النساء والتوليد وأطفال الأنابيب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Thendral</h3>
+              <p class="doc-qualifications" title="MBBS, MS (OBG), DNB (OBG), FMAS, MRCOG">MBBS, MS (OBG), DNB (OBG), FMAS, MRCOG</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Ophthalmology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20Anil%20Chandra%20%E2%80%93%20MBBS%2C%20MS%20(Ophthalmology).jpg" alt="Dr. Anil Chandra - Ophthalmology & Eye Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Anil Chandra</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Ophthalmology)">MBBS, MS (Ophthalmology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Ophthalmology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20J.%20Radha%20%E2%80%93%20MBBS%2C%20DO%2C%20DNB%20(Ophthalmology)%2C%20FICO%2C%20FIGO.jpg" alt="Dr. J. Radha - Ophthalmology & Eye Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. J. Radha</h3>
+              <p class="doc-qualifications" title="MBBS, DO, DNB (Ophthalmology), FICO, FIGO">MBBS, DO, DNB (Ophthalmology), FICO, FIGO</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Ophthalmology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20K.%20S.%20Suganya%20%E2%80%93%20MBBS%2C%20MS%20(Ophthalmology)%2C%20Fellowship%20in%20Paediatric%20Ophthalmology%20and%20Squint.jpg" alt="Dr. K. S. Suganya - Ophthalmology & Eye Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. K. S. Suganya</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Ophthalmology), Fellowship in Paediatric Ophthalmology and Squint">MBBS, MS (Ophthalmology), Fellowship in Paediatric Ophthalmology and Squint</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Ophthalmology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Ophthalmology/Dr.%20Sudha%20Bhuvaneshwari%20%E2%80%93%20MBBS%2C%20Diploma%20in%20Ophthalmology.jpg" alt="Dr. Sudha Bhuvaneshwari - Ophthalmology & Eye Care" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Ophthalmology & Eye Care</span>
+              <span class="lang-ar">طب وجراحة العيون</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sudha Bhuvaneshwari</h3>
+              <p class="doc-qualifications" title="MBBS, Diploma in Ophthalmology">MBBS, Diploma in Ophthalmology</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Orthopaedicians">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20A.%20William%20Abraham%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FIJR.jpg" alt="Dr. A. William Abraham - Orthopaedics & Joint Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. A. William Abraham</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Orthopaedics), FIJR">MBBS, MS (Orthopaedics), FIJR</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Orthopaedicians">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20Aravindan%20Selvaraj%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FRCS%20(Orthopaedics)%2C%20UK%20%26%20Ireland.jpg" alt="Dr. Aravindan Selvaraj - Orthopaedics & Joint Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Aravindan Selvaraj</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Orthopaedics), FRCS (Orthopaedics), UK & Ireland">MBBS, MS (Orthopaedics), FRCS (Orthopaedics), UK & Ireland</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Orthopaedicians">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20Mukunth%20Krishnamoorthy%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20FIA%20(Germany)%2C%20Executive%20Hip%20Fellowship%20(UK).jpg" alt="Dr. Mukunth Krishnamoorthy - Orthopaedics & Joint Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Mukunth Krishnamoorthy</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Orthopaedics), FIA (Germany), Executive Hip Fellowship (UK)">MBBS, MS (Orthopaedics), FIA (Germany), Executive Hip Fellowship (UK)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Orthopaedicians">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20P.%20Keerthivasan%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20DNB%20(Orthopaedics)%2C%20Postdoctoral%20Fellowship%20in%20Spine%20Surgery.jpg" alt="Dr. P. Keerthivasan - Orthopaedics & Joint Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. P. Keerthivasan</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Orthopaedics), DNB (Orthopaedics), Postdoctoral Fellowship in Spine Surgery">MBBS, MS (Orthopaedics), DNB (Orthopaedics), Postdoctoral Fellowship in Spine Surgery</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Orthopaedicians">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Orthopaedicians/Dr.%20V.%20Singaravadivelu%20%E2%80%93%20MBBS%2C%20D.Ortho%2C%20MS%20(Orthopaedics)%2C%20PhD.jpg" alt="Dr. V. Singaravadivelu - Orthopaedics & Joint Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Orthopaedics & Joint Surgery</span>
+              <span class="lang-ar">جراحة العظام والمفاصل</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. V. Singaravadivelu</h3>
+              <p class="doc-qualifications" title="MBBS, D.Ortho, MS (Orthopaedics), PhD">MBBS, D.Ortho, MS (Orthopaedics), PhD</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Karthik%20Thiyagarajan%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics)%2C%20DNB%20(Neonatology).jpg" alt="Dr. Karthik Thiyagarajan - Paediatrics & Neonatology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Karthik Thiyagarajan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Paediatrics), DNB (Neonatology)">MBBS, MD (Paediatrics), DNB (Neonatology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Lakshmi%20Prashant%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics).jpg" alt="Dr. Lakshmi Prashant - Paediatrics & Neonatology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Lakshmi Prashant</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Paediatrics)">MBBS, MD (Paediatrics)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Pushkala%20%E2%80%93%20MBBS%2C%20MD%20(Paediatrics)%2C%20PGDID.jpg" alt="Dr. Pushkala - Paediatrics & Neonatology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Pushkala</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Paediatrics), PGDID">MBBS, MD (Paediatrics), PGDID</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Sivasankar%20Jayakumar%20%E2%80%93%20MBBS%2C%20MRCS%20(Glasgow%2C%20UK)%2C%20PGCME%2C%20FEBPS%20(UK).jpg" alt="Dr. Sivasankar Jayakumar - Paediatrics & Neonatology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sivasankar Jayakumar</h3>
+              <p class="doc-qualifications" title="MBBS, MRCS (Glasgow, UK), PGCME, FEBPS (UK)">MBBS, MRCS (Glasgow, UK), PGCME, FEBPS (UK)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Paediatrics and Neonatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Paediatrics%20and%20Neonatology/Dr.%20Velmurugan%20R%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Paediatric%20Surgery).jpg" alt="Dr. Velmurugan R - Paediatrics & Neonatology" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Paediatrics & Neonatology</span>
+              <span class="lang-ar">طب الأطفال وحديثي الولادة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Velmurugan R</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MCh (Paediatric Surgery)">MBBS, MS (General Surgery), MCh (Paediatric Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Plastic Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Arul%20Mozhi%20Mangai%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20MCh%20(Plastic%20%26%20Reconstructive%20Surgery).jpg" alt="Dr. Arul Mozhi Mangai - Plastic & Cosmetic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Arul Mozhi Mangai</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), MCh (Plastic & Reconstructive Surgery)">MBBS, MS (General Surgery), MCh (Plastic & Reconstructive Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Plastic Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Sathish%20Manivel%20%E2%80%93%20MBBS%2C%20DNB%20(General%20Surgery)%2C%20MCh%20(Plastic%20%26%20Reconstructive%20Surgery).jpg" alt="Dr. Sathish Manivel - Plastic & Cosmetic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sathish Manivel</h3>
+              <p class="doc-qualifications" title="MBBS, DNB (General Surgery), MCh (Plastic & Reconstructive Surgery)">MBBS, DNB (General Surgery), MCh (Plastic & Reconstructive Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Plastic Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Dr.%20Sharat%20Kumar%20%E2%80%93%20MBBS%2C%20MS%20(General%20Surgery)%2C%20FMAS%20(Fellowship%20in%20Minimal%20Access%20Surgery)%2C%20MCh%20(Plastic%20Surgery).jpg" alt="Dr. Sharat Kumar - Plastic & Cosmetic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sharat Kumar</h3>
+              <p class="doc-qualifications" title="MBBS, MS (General Surgery), FMAS (Fellowship in Minimal Access Surgery), MCh (Plastic Surgery)">MBBS, MS (General Surgery), FMAS (Fellowship in Minimal Access Surgery), MCh (Plastic Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Plastic Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Plastic%20Surgery/Prof.%20V.%20B.%20Narayana%20Murthy%20%E2%80%93%20MBBS%2C%20FRCS%20(Glasgow).jpg" alt="Prof. V. B. Narayana Murthy - Plastic & Cosmetic Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Plastic & Cosmetic Surgery</span>
+              <span class="lang-ar">جراحة التجميل والترميم</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Prof. V. B. Narayana Murthy</h3>
+              <p class="doc-qualifications" title="MBBS, FRCS (Glasgow)">MBBS, FRCS (Glasgow)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Psychiatry">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20A.%20Geetha%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. A. Geetha - Psychiatry & Behavioral Health" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. A. Geetha</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Psychiatry)">MBBS, MD (Psychiatry)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Psychiatry">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20M.%20B.%20Abdul%20Rahuman%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. M. B. Abdul Rahuman - Psychiatry & Behavioral Health" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. M. B. Abdul Rahuman</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Psychiatry)">MBBS, MD (Psychiatry)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Psychiatry">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20Singaravelu%20Thiyagarajan%20%E2%80%93%20MBBS%2C%20DPM%2C%20MRCP%20(UK)%2C%20CCT%20(Psychiatry).jpg" alt="Dr. Singaravelu Thiyagarajan - Psychiatry & Behavioral Health" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Singaravelu Thiyagarajan</h3>
+              <p class="doc-qualifications" title="MBBS, DPM, MRCP (UK), CCT (Psychiatry)">MBBS, DPM, MRCP (UK), CCT (Psychiatry)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Psychiatry">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20V.%20Kandasamy%20%E2%80%93%20MBBS%2C%20MD%20(Psychiatry).jpg" alt="Dr. V. Kandasamy - Psychiatry & Behavioral Health" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. V. Kandasamy</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Psychiatry)">MBBS, MD (Psychiatry)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Psychiatry">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Psychiatry/Dr.%20Yamini%20Kannappan%20%E2%80%93%20MBBS%2C%20Diploma%20in%20Psychological%20Medicine%2C%20DNB%20(Psychiatry).jpg" alt="Dr. Yamini Kannappan - Psychiatry & Behavioral Health" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Psychiatry & Behavioral Health</span>
+              <span class="lang-ar">الطب النفسي والصحة النفسية</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Yamini Kannappan</h3>
+              <p class="doc-qualifications" title="MBBS, Diploma in Psychological Medicine, DNB (Psychiatry)">MBBS, Diploma in Psychological Medicine, DNB (Psychiatry)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Pulmonology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Pulmonology/Dr.%20Anantha%20Subramanian%20%E2%80%93%20MBBS%2C%20MD%20(Tuberculosis%20and%20Respiratory%20Medicine).jpg" alt="Dr. Anantha Subramanian - Pulmonology & Chest Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Pulmonology & Chest Medicine</span>
+              <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Pulmonology & Chest Medicine</span>
+              <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Anantha Subramanian</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Tuberculosis and Respiratory Medicine)">MBBS, MD (Tuberculosis and Respiratory Medicine)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Pulmonology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Pulmonology/Dr.%20M.%20Harish%20%E2%80%93%20MBBS%2C%20MD%20(Pulmonary%20Medicine)%2C%20Fellowship%20in%20Intensive%20Care%20%26%20Critical%20Care%2C%20FCCP%20(USA).jpg" alt="Dr. M. Harish - Pulmonology & Chest Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Pulmonology & Chest Medicine</span>
+              <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Pulmonology & Chest Medicine</span>
+              <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. M. Harish</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Pulmonary Medicine), Fellowship in Intensive Care & Critical Care, FCCP (USA)">MBBS, MD (Pulmonary Medicine), Fellowship in Intensive Care & Critical Care, FCCP (USA)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Pulmonology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Pulmonology/Dr.%20Naveen%20Vennilavan%20%E2%80%93%20MBBS%2C%20MD%20(Pulmonary%20Medicine)%2C%20Fellowship%20in%20Sleep%20Medicine%2C%20Fellowship%20in%20Interventional%20Pulmonology.jpg" alt="Dr. Naveen Vennilavan - Pulmonology & Chest Medicine" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Pulmonology & Chest Medicine</span>
+              <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Pulmonology & Chest Medicine</span>
+              <span class="lang-ar">أمراض الصدر والجهاز التنفسي</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Naveen Vennilavan</h3>
+              <p class="doc-qualifications" title="MBBS, MD (Pulmonary Medicine), Fellowship in Sleep Medicine, Fellowship in Interventional Pulmonology">MBBS, MD (Pulmonary Medicine), Fellowship in Sleep Medicine, Fellowship in Interventional Pulmonology</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Rheumatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20M.%20Saravana%20Kumar%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Clinical%20Immunology%20%26%20Rheumatology).jpg" alt="Dr. M. Saravana Kumar - Rheumatology & Autoimmune" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. M. Saravana Kumar</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DM (Clinical Immunology & Rheumatology)">MBBS, MD (General Medicine), DM (Clinical Immunology & Rheumatology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Rheumatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20Nikhila%20G.%20S%20%E2%80%93%20MBBS%2C%20MD%2C%20DM.jpg" alt="Dr. Nikhila G. S - Rheumatology & Autoimmune" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Nikhila G. S</h3>
+              <p class="doc-qualifications" title="MBBS, MD, DM">MBBS, MD, DM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Rheumatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20S.%20Sham%20%E2%80%93%20MD%20(General%20Medicine)%2C%20DM%20(Rheumatology)%2C%20MRCP%20(UK)%2C%20FRCP%20(Edinburgh)%2C%20SCE%20(RCP%20UK)%2C%20European%20Certificate%20of%20Rheumatology.jpg" alt="Dr. S. Sham - Rheumatology & Autoimmune" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Sham</h3>
+              <p class="doc-qualifications" title="MD (General Medicine), DM (Rheumatology), MRCP (UK), FRCP (Edinburgh), SCE (RCP UK), European Certificate of Rheumatology">MD (General Medicine), DM (Rheumatology), MRCP (UK), FRCP (Edinburgh), SCE (RCP UK), European Certificate of Rheumatology</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Rheumatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20S.%20Vidya%20%E2%80%93%20MBBS%2C%20MD%20(General%20Medicine)%2C%20DM%20(Rheumatology).jpg" alt="Dr. S. Vidya - Rheumatology & Autoimmune" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. S. Vidya</h3>
+              <p class="doc-qualifications" title="MBBS, MD (General Medicine), DM (Rheumatology)">MBBS, MD (General Medicine), DM (Rheumatology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Rheumatology">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Rheumatology/Dr.%20Sri%20Lakshmi%20S%20%E2%80%93%20MBBS%2C%20MD%2C%20MRCP%20(UK)%2C%20DM%20(Clinical%20Immunology%20and%20Rheumatology).jpg" alt="Dr. Sri Lakshmi S - Rheumatology & Autoimmune" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Rheumatology & Autoimmune</span>
+              <span class="lang-ar">أمراض الروماتيزم والمناعة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Sri Lakshmi S</h3>
+              <p class="doc-qualifications" title="MBBS, MD, MRCP (UK), DM (Clinical Immunology and Rheumatology)">MBBS, MD, MRCP (UK), DM (Clinical Immunology and Rheumatology)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Spine Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Spine%20Surgery/Dr.%20G.%20Balamurali%20%E2%80%93%20MBBS%2C%20MRCS%20(Edinburgh)%2C%20MD%20(UK)%2C%20FRCS%20(Surgical%20Neurology)%2C%20Fellowship%20in%20Minimally%20Invasive%20Spine%20Surgery%20(UK%2C%20USA%2C%20Switzerland)%2C%20Fellowship%20in%20Complex%20Spine%20Surgery%20(UK%2C%20Switzerland).jpg" alt="Dr. G. Balamurali - Spine & Neuro Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Spine & Neuro Surgery</span>
+              <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Spine & Neuro Surgery</span>
+              <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. G. Balamurali</h3>
+              <p class="doc-qualifications" title="MBBS, MRCS (Edinburgh), MD (UK), FRCS (Surgical Neurology), Fellowship in Minimally Invasive Spine Surgery (UK, USA, Switzerland), Fellowship in Complex Spine Surgery (UK, Switzerland)">MBBS, MRCS (Edinburgh), MD (UK), FRCS (Surgical Neurology), Fellowship in Minimally Invasive Spine Surgery (UK, USA, Switzerland), Fellowship in Complex Spine Surgery (UK, Switzerland)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Spine Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Spine%20Surgery/Dr.%20P.%20Keerthivasan%20%E2%80%93%20MBBS%2C%20MS%20(Orthopaedics)%2C%20DNB%20(Orthopaedics)%2C%20Postdoctoral%20Fellowship%20in%20Spine%20Surgery.jpg" alt="Dr. P. Keerthivasan - Spine & Neuro Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Spine & Neuro Surgery</span>
+              <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Spine & Neuro Surgery</span>
+              <span class="lang-ar">جراحة العمود الفقري والأعصاب</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. P. Keerthivasan</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Orthopaedics), DNB (Orthopaedics), Postdoctoral Fellowship in Spine Surgery">MBBS, MS (Orthopaedics), DNB (Orthopaedics), Postdoctoral Fellowship in Spine Surgery</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Vascular Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Vascular%20Surgery/Dr.%20Jan%20Sujith%20%E2%80%93%20MBBS%2C%20MS%2C%20MCh%20(Vascular%20Surgery).jpg" alt="Dr. Jan Sujith - Vascular & Endovascular Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Vascular & Endovascular Surgery</span>
+              <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Vascular & Endovascular Surgery</span>
+              <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. Jan Sujith</h3>
+              <p class="doc-qualifications" title="MBBS, MS, MCh (Vascular Surgery)">MBBS, MS, MCh (Vascular Surgery)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-card card-hover" data-sector="Vascular Surgery">
+          <div class="doctor-img-wrap">
+            <img src="../assets/images/doctor/Vascular%20Surgery/Dr.%20N.%20Sekar%20%E2%80%93%20MBBS%2C%20MS%20(Surgery)%2C%20MNAMS%2C%20MCh%20(Vascular%20Surgery)%2C%20FICS%2C%20D.Sc.%2C%20FRCS%20(Glasgow).jpg" alt="Dr. N. Sekar - Vascular & Endovascular Surgery" decoding="async">
+            <div class="doc-sector-badge">
+              <span class="lang-en">Vascular & Endovascular Surgery</span>
+              <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
+            </div>
+          </div>
+          <div class="doctor-info">
+            <div class="doc-sector-title" style="color: var(--gold-dark); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;">
+              <span class="lang-en">Vascular & Endovascular Surgery</span>
+              <span class="lang-ar">جراحة الأوعية الدموية والقسطرة</span>
+            </div>
+            <div>
+              <h3 class="doc-name">Dr. N. Sekar</h3>
+              <p class="doc-qualifications" title="MBBS, MS (Surgery), MNAMS, MCh (Vascular Surgery), FICS, D.Sc., FRCS (Glasgow)">MBBS, MS (Surgery), MNAMS, MCh (Vascular Surgery), FICS, D.Sc., FRCS (Glasgow)</p>
+            </div>
+          </div>
+        </div>
+          </div>
+
+        </main>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Consultation CTA Section -->
+  <section style="background: var(--black); color: #fff; padding: var(--section-py) 0; text-align: center;">
+    <div class="container" data-reveal>
+      <h2 style="color: #fff; margin-bottom: 1rem;">
+        <span class="lang-en">Connect With a Specialist Care Coordinator</span>
+        <span class="lang-ar">تواصل مع منسق الرعاية الطبية المتخصص</span>
+      </h2>
+      <p style="color: rgba(255, 255, 255, 0.78); max-width: 650px; margin: 0 auto 2rem; font-size: 1.05rem;">
+        <span class="lang-en">Send us your medical reports for a direct preliminary review and complimentary second opinion from our department chiefs.</span>
+        <span class="lang-ar">أرسل تقاريرك الطبية للحصول على تقييم أولي مباشر واستشارة رأي ثانٍ مجانية من رؤساء أقسامنا الطبية.</span>
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="medical.html#consultation" class="btn btn-primary" style="background: var(--gold); color: #fff; border-color: var(--gold); padding: 14px 32px; font-weight: 700; border-radius: 999px;">
+          <span class="lang-en">Submit Medical Reports</span>
+          <span class="lang-ar">إرسال التقارير الطبية</span>
+        </a>
+        <a href="https://wa.me/919941194191" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="padding: 14px 32px; font-weight: 700; border-radius: 999px;">
+          <span class="lang-en">Chat on WhatsApp</span>
+          <span class="lang-ar">محادثة فورية على واتساب</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #111; color: #888; padding: 2.5rem 0; font-size: 0.875rem; text-align: center;">
+    <div class="container">
+      <p style="margin: 0;">&copy; 2026 KèRa Wellness. Premium Medical &amp; Dental Tourism Concierge India. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating FAB -->
+  <a href="https://wa.me/919941194191" class="whatsapp" target="_blank" rel="noopener noreferrer"
+    aria-label="Chat with a Coordinator on WhatsApp">
+    <span class="whatsapp-pulse" aria-hidden="true"></span>
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path
+        d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.164.577 4.195 1.583 5.952l-1.683 6.148 6.306-1.654c1.705.932 3.657 1.454 5.794 1.454 6.627 0 12-5.373 12-12s-5.373-12-12-12z" />
+    </svg>
+  </a>
+
+  <!-- Master-Detail Interactive Selection & Filtering Script -->
+  <script>
+    const sectorMetaData = {"Anesthesiology":{"en":"Anesthesiology","ar":"التخدير وعلاج الألم","descEn":"Specialized neuro & cardiac anesthesia, ultrasound-guided nerve blocks, and acute/chronic pain relief clinics.","descAr":"تخدير جراحات المخ والقلب التخصصي، إحصار الأعصاب الموجه بالسونار، وعيادات علاج الألم الحاد والمزمن.","icon":"💉","count":4},"Critical Care":{"en":"Critical Care & ICU","ar":"العناية المركزة والحرجة","descEn":"Round-the-clock intensive life support, advanced hemodynamic monitoring, and post-surgical trauma stabilization.","descAr":"دعم الحياة والعناية المركزة على مدار الساعة، المراقبة الديناميكية الحيوية، ورعاية حالات ما بعد الجراحات الكبرى.","icon":"🏥","count":5},"Dental Maxillofacial":{"en":"Dental Maxillofacial","ar":"طب وجراحة الأسنان والوجه والفكين","descEn":"Full-arch All-on-4 dental implants, corrective jaw orthognathic surgery, and E-max aesthetic smile makeovers.","descAr":"زراعة الأسنان الكاملة All-on-4، جراحات الفكين التقويمية، وابتسامة هوليوود بفينير إيماكس الخزفي.","icon":"🦷","count":5},"Dermatology":{"en":"Dermatology","ar":"الأمراض الجلدية والتجميل الطبي","descEn":"Clinical dermatopathology, laser scar revisions, biological therapies for psoriasis, and medical cosmetics.","descAr":"علاج الأمراض الجلدية السريرية، ليزر تجديد البشرة والندبات، العلاجات البيولوجية، والتجميل الطبي.","icon":"🧴","count":5},"Diabetology":{"en":"Diabetology & Metabolic","ar":"السكري والتمثيل الغذائي","descEn":"Intensive glycemic control, continuous glucose monitoring protocols, and metabolic syndrome therapies.","descAr":"التحكم المكثف في السكر، مراقبة الجلوكوز المستمرة، وبرامج علاج متلازمة التمثيل الغذائي.","icon":"🩺","count":4},"Endocrinology":{"en":"Endocrinology","ar":"الغدد الصماء وجراحتها","descEn":"Thyroid, parathyroid, and adrenal disorder management, hormone balancing, and minimally invasive endocrine surgery.","descAr":"علاج اضطرابات الغدة الدرقية والكظرية، توازن الهرمونات، وجراحات الغدد الصماء طفيفة التوغل.","icon":"🧬","count":3},"ENT, Head and Neck Surgery":{"en":"ENT, Head & Neck Surgery","ar":"الأنف والأذن والحنجرة والرأس","descEn":"Endoscopic sinus surgeries, cochlear implants, voice microsurgeries, and head & neck tumor resections.","descAr":"جراحات الجيوب الأنفية بالمنظار، زراعة القوقعة، جراحات الصوت المجهرية، واستئصال أورام الرأس والرقبة.","icon":"👂","count":4},"Gastroenterology":{"en":"Gastroenterology","ar":"أمراض وجراحة الجهاز الهضمي","descEn":"Advanced diagnostic & therapeutic endoscopy, ERCP, EUS, and GI tract disorder therapies.","descAr":"المناظير الهضمية التشخيصية والعلاجية، مناظير القنوات المرارية (ERCP)، والموجات الصوتية بالمنظار (EUS).","icon":"🔬","count":4},"General Medicine":{"en":"General Medicine","ar":"الطب الباطني العام","descEn":"Comprehensive multi-system medical evaluations, lifestyle disease prevention, and executive health screenings.","descAr":"التقييم الطبي الشامل لجميع أجهزة الجسم، الوقاية من أمراض نمط الحياة، والفحوصات الطبية التنفيذية.","icon":"🩺","count":5},"General Surgery":{"en":"General Surgery","ar":"الجراحة العامة والمناظير","descEn":"Minimally invasive laparoscopic abdominal surgeries, complex hernia repairs, and bariatric metabolic procedures.","descAr":"جراحات البطن بالمنظار طفيفة التوغل، ترميم الفتق المعقد، وجراحات السمنة والتمثيل الغذائي.","icon":"🔪","count":5},"Geriatrics":{"en":"Geriatrics","ar":"طب ورعاية كبار السن","descEn":"Specialized senior healthcare, cognitive assessment, polypharmacy management, and restorative elder rehabilitation.","descAr":"الرعاية الصحية المتخصصة لكبار السن، تقييم القدرات المعرفية، إدارة الأدوية المتعددة، وإعادة التأهيل الشامل.","icon":"👵","count":2},"Infectious Disease":{"en":"Infectious Disease","ar":"الأمراض المعدية وطب السفر","descEn":"Complex infectious disease consultations, travel immunization protocols, and tropical medicine diagnostics.","descAr":"استشارات الأمراض المعدية المعقدة، بروتوكولات تطعيمات السفر الدولي، وتشخيص أمراض المناطق الحارة.","icon":"🦠","count":1},"Laboratory Services":{"en":"Laboratory Services","ar":"المختبرات والتحاليل الطبية","descEn":"High-throughput automated biochemistry, histopathology, molecular genetic testing, and rapid turnaround diagnostics.","descAr":"التحاليل الكيميائية الحيوية الآلية، الفحص النسيجي الميكروسكوبي، الفحوصات الجينية، ونتائج التشخيص السريعة.","icon":"🧪","count":2},"Liver Disease":{"en":"Liver Disease & Transplant","ar":"أمراض وزراعة الكبد","descEn":"Living-donor liver transplants, hepatobiliary surgeries, and multidisciplinary liver disease management.","descAr":"عمليات زراعة الكبد من متبرع حي، جراحات الكبد والقنوات الصفراوية، وإدارة أمراض الكبد المتقدمة.","icon":"🫀","count":5},"Nephrology and Urology Science":{"en":"Nephrology & Urology","ar":"أمراض الكلى والمسالك البولية","descEn":"Kidney transplantations, dialysis management, laser lithotripsy, and minimally invasive urological surgery.","descAr":"عمليات زراعة الكلى، الغسيل الكلوي، تفتيت الحصوات بالليزر، وجراحات المسالك البولية طفيفة التوغل.","icon":"🫘","count":5},"Obstetrics and Gynecology":{"en":"Obstetrics & Gynecology","ar":"النساء والتوليد والإخصاب","descEn":"High-risk maternity care, advanced IVF/ICSI fertility cycles, and laparoscopic gynecological surgeries.","descAr":"رعاية الحمل عالي الخطورة، دورات أطفال الأنابيب والحقن المجهري (ICSI)، وجراحات المناظير النسائية.","icon":"🤰","count":5},"Ophthalmology":{"en":"Ophthalmology","ar":"طب وجراحة العيون","descEn":"Femtosecond blade-free LASIK, micro-incision cataract surgeries, retinal repairs, and corneal transplants.","descAr":"تصحيح النظر بالفيمتو ليزك، جراحات المياه البيضاء بالموجات الدقيقة، جراحة الشبكية، وزراعة القرنية.","icon":"👁️","count":4},"Orthopaedicians":{"en":"Orthopaedics & Joints","ar":"جراحة العظام والمفاصل","descEn":"Robotic-assisted total knee replacements, hip reconstructions, and complex sports injury rehabilitations.","descAr":"عمليات استبدال مفصل الركبة وإعادة بناء الفخذ بمساعدة الروبوت وعلاج الإصابات الرياضية المعقدة.","icon":"🦴","count":5},"Paediatrics and Neonatology":{"en":"Paediatrics & Neonatology","ar":"طب الأطفال وحديثي الولادة","descEn":"Level-3 neonatal ICU (NICU), pediatric super-specialty surgery, congenital defect corrections, and child wellness.","descAr":"العناية المركزة لحديثي الولادة (NICU)، جراحات الأطفال التخصصية، علاج العيوب الخلقية، وصحة الطفل.","icon":"👶","count":5},"Plastic Surgery":{"en":"Plastic Surgery","ar":"جراحة التجميل والترميم","descEn":"Aesthetic body contouring, rhinoplasties, breast reconstruction, liposuction, and reconstructive microsurgery.","descAr":"إجراءات تجميل وتنسيق القوام، تجميل الأنف، ترميم الثدي، شفط الدهون، والجراحات المجهرية الترميمية.","icon":"⚡","count":4},"Psychiatry":{"en":"Psychiatry","ar":"الطب النفسي والصحة السلوكية","descEn":"Evidence-based psychiatric therapies, clinical mood disorder management, stress relief, and holistic mental wellness.","descAr":"العلاجات النفسية القائمة على الأدلة، علاج اضطرابات المزاج والقلق، إدارة الضغوط، والصحة النفسية الشاملة.","icon":"🧘","count":5},"Pulmonology":{"en":"Pulmonology","ar":"أمراض الصدر والجهاز التنفسي","descEn":"Comprehensive pulmonary diagnostics, bronchoscopy, asthma management, and advanced sleep apnea therapies.","descAr":"تشخيص أمراض الرئة، مناظير الشعب الهوائية، علاج الربو، وبرامج علاج اضطرابات التنفس أثناء النوم.","icon":"🫁","count":3},"Rheumatology":{"en":"Rheumatology","ar":"أمراض الروماتيزم والمناعة","descEn":"Biological disease-modifying therapies, rheumatoid arthritis control, lupus care, and musculoskeletal ultrasound.","descAr":"العلاجات البيولوجية الموجهة، السيطرة على التهاب المفاصل الروماتويدي، رعاية الذئبة الحمراء، والسونار العضلي.","icon":"🩹","count":5},"Spine Surgery":{"en":"Spine Surgery","ar":"جراحة العمود الفقري والأعصاب","descEn":"Endoscopic discectomy, spinal fusion, scoliosis deformity corrections, and motion-preserving disc replacement.","descAr":"استئصال الانزلاق الغضروفي بالمنظار، دمج الفقرات، تصحيح اعوجاج العمود الفقري (الجنف)، واستبدال الغضروف.","icon":"🩻","count":2},"Vascular Surgery":{"en":"Vascular Surgery","ar":"جراحة الأوعية الدموية والقسطرة","descEn":"Aortic aneurysm repairs, peripheral arterial stenting, varicose vein ablation, and diabetic limb salvage.","descAr":"علاج تمدد الشريان الأبهر، دعامات الشرايين الطرفية، علاج الدوالي، وإنقاذ الأطراف لمرضى السكري.","icon":"🩸","count":2}};
+
+    function selectSpecialty(sectorId, triggerBtn, isInitial) {
+      // 1. Update active state in sidebar
+      const sidebarBtns = document.querySelectorAll('#specialtiesSidebarList .specialty-sidebar-btn');
+      let activeBtn = null;
+      sidebarBtns.forEach(btn => {
+        if (btn.getAttribute('data-sector') === sectorId) {
+          btn.classList.add('active');
+          activeBtn = btn;
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Smoothly center the active chip in the horizontal container on mobile/tablet without window vertical scroll
+      if (activeBtn && window.innerWidth < 1024) {
+        try {
+          const listContainer = document.getElementById('specialtiesSidebarList');
+          if (listContainer && listContainer.scrollWidth > listContainer.clientWidth) {
+            const btnOffset = activeBtn.offsetLeft;
+            const btnWidth = activeBtn.offsetWidth;
+            const containerWidth = listContainer.clientWidth;
+            const targetScroll = btnOffset - (containerWidth / 2) + (btnWidth / 2);
+            listContainer.scrollTo({
+              left: Math.max(0, targetScroll),
+              behavior: isInitial ? 'auto' : 'smooth'
+            });
+          }
+        } catch (e) {}
+      }
+
+      // 2. Ensure grid container is explicitly visible
+      const grid = document.getElementById('doctorsGrid');
+      if (grid) {
+        grid.removeAttribute('data-reveal');
+        grid.classList.add('is-visible');
+        grid.style.opacity = '1';
+        grid.style.visibility = 'visible';
+        grid.style.transform = 'none';
+      }
+
+      // 3. Filter doctor cards on the right side
+      const cards = document.querySelectorAll('#doctorsGrid .doctor-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardSector = card.getAttribute('data-sector');
+        if (cardSector === sectorId) {
+          card.classList.remove('is-hidden');
+          card.removeAttribute('hidden');
+          card.style.removeProperty('display');
+          card.style.opacity = '1';
+          card.style.visibility = 'visible';
+          card.style.transform = 'none';
+          
+          // Eagerly trigger image load and robust error fallback for revealed cards
+          const img = card.querySelector('.doctor-img-wrap img');
+          if (img) {
+            img.loading = 'eager';
+            if (!img.getAttribute('data-fallback-attached')) {
+              img.setAttribute('data-fallback-attached', '1');
+              img.addEventListener('error', function() {
+                const count = parseInt(this.dataset.fallbackCount || '0', 10);
+                const raw = this.getAttribute('src') || '';
+                const clean = raw.replace(/^(\.\.\/assets\/|\/assets\/|\.\/assets\/|\.\/)/, '');
+                if (count === 0) {
+                  this.dataset.fallbackCount = '1';
+                  this.src = './' + clean;
+                } else if (count === 1) {
+                  this.dataset.fallbackCount = '2';
+                  this.src = '/assets/' + clean;
+                }
+              });
+            }
+          }
+          visibleCount++;
+        } else {
+          card.classList.add('is-hidden');
+          card.setAttribute('hidden', '');
+        }
+      });
+    }
+
+    // Auto-select based on URL query param (?sector=...) or hash, or default to first
+    function initSpecialtySelection() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const sectorParam = urlParams.get('sector') || window.location.hash.replace('#', '');
+      
+      const targetSector = sectorParam || 'Anesthesiology';
+      const allBtns = Array.from(document.querySelectorAll('#specialtiesSidebarList .specialty-sidebar-btn'));
+      const targetBtn = allBtns.find(b => b.getAttribute('data-sector') === targetSector);
+
+      if (targetBtn) {
+        selectSpecialty(targetSector, targetBtn, true);
+      } else if (allBtns.length > 0) {
+        const firstSector = allBtns[0].getAttribute('data-sector');
+        selectSpecialty(firstSector, allBtns[0], true);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSpecialtySelection);
+    } else {
+      initSpecialtySelection();
+    }
+  </script>
+
+  <script src="./js/scroll-reveal.min.js" defer></script>
+</body>
+</html>
